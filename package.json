@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src/** --ext .ts,.tsx",
+    "lint:fix": "eslint src/** --ext .ts,.tsx --fix"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -17,6 +20,7 @@
     "@types/node": "^15.0.3",
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.5",
+    "@types/spotify-api": "^0.0.8",
     "@typescript-eslint/eslint-plugin": "^4.23.0",
     "@typescript-eslint/parser": "^4.23.0",
     "autoprefixer": "^10.2.5",
