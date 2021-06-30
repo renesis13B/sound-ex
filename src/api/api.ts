@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios"
 import { Buffer } from 'buffer';
-import { AcsessToken, AcsessTokenId } from '../../models/accessToken'
+import { AcsessToken, AcsessTokenId } from '../models/accessToken'
 
 const spotifyAuthorization = axios.create({
   baseURL: 'https://accounts.spotify.com'
