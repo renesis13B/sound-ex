@@ -2,13 +2,14 @@ import Layout from "../components/templates/Layout";
 import { topSongsApi } from '../api/top-songs'
 import { InferGetStaticPropsType } from 'next';
 import CardIndex from '../components/organisms/CardIndex'
+import { authApi } from '../api/auth'
 // import { $api } from '../api/api'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 const Index = ({ topSongs }: Props) => {
-  // $api.setAccessToken()
-  // $api.setAccessToken()
+  const { setAccessToken } = authApi()
+  setAccessToken()
   return (
     <Layout title="SOUND EX">
       { topSongs && topSongs.map((song) => <CardIndex key={song.id} song={song}/>)}
