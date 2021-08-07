@@ -1,6 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useRouter } from 'next/router'
 
 const Header = ():JSX.Element => {
+  const [term, setTerm] = useState('')
+  const router = useRouter()
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    router.push({
+      pathname: '/searches',
+      query: { query: `${term}` }
+    })
+  }
   return (
     <div className="bg-deep-purple-accent-700">
       <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
@@ -58,12 +68,15 @@ const Header = ():JSX.Element => {
               </p>
             </div>
             <div>
-              <a
-                href="/"
-                className="inline-flex items-center justify-center h-12 px-6 font-semibold tracking-wide text-teal-900 transition duration-200 rounded shadow-md hover:text-deep-purple-900 bg-teal-accent-400 hover:bg-deep-purple-accent-100 focus:shadow-outline focus:outline-none"
-              >
-                Get started
-              </a>
+              <form onSubmit= { handleSubmit }>
+                <input
+                  type="text"
+                  placeholder="検索"
+                  onChange={ e => setTerm(e.target.value) }
+                  value={ term }
+                />
+                <button>検索ボタン</button>
+              </form>
             </div>
           </div>
         </div>

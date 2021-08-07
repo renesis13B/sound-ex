@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 type Props = {
   playlist: {
     id: string
@@ -8,48 +10,49 @@ type Props = {
   }
 }
 
-const CardIndex = (props:Props) => {
+const CardIndex = ({ song }: any) => {
   return (
     <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-      {props.playlist.map(item => (
-        <div className="flex flex-col shadow-lg" key={item.id}>
-        <div className="flex flex-row justify-start p-3 sm:p-6 hover:bg-gray-100">
-          <div className="block mr-4">
-            <figure className="w-16 h-16 bg-center bg-cover border-gray-200">
-              <img className="rounded-lg" src={item.albumImage} alt="" />
-            </figure>
+      <div className="flex flex-col shadow-lg" key={song.id}>
+        <Link href={`/top-songs/${song.id}`}>
+          <div className="flex flex-row justify-start p-3 sm:p-6 hover:bg-gray-100">
+            <div className="block mr-4">
+              <figure className="w-16 h-16 bg-center bg-cover border-gray-200">
+                <img className="rounded-lg" src={song.albumImage} alt="" />
+              </figure>
+            </div>
+            <div className="flex-1 text-gray-800">
+              <p className="text-sm font-light uppercase sm:text-base">
+                {song.artistsName}
+              </p>
+              <p className="pr-2 text-xl font-light sm:text-2xl">
+                {song.trackName}
+              </p>
+            </div>
+            <div className="pr-8 text-center">
+              <p className="text-2xl text-gray-700 font-base sm:text-3xl">
+                { song.key }
+              </p>
+              <p className="text-xs uppercase">Key</p>
+            </div>
+            <div className="hidden pr-8 text-center sm:block">
+              <p className="text-2xl text-gray-700 font-base sm:text-3xl">
+                { song.duration }
+              </p>
+              <p className="text-xs uppercase">
+                Duration
+              </p>
+            </div>
+            <div className="text-center">
+              <p className="text-2xl text-gray-700 font-base sm:text-3xl">
+                { song.bpm }
+              </p>
+              <p className="text-xs uppercase">
+                BPM
+              </p>
+            </div>
           </div>
-          <div className="flex-1 text-gray-800">
-            <p className="text-sm font-light uppercase sm:text-base">
-              {item.artistsName}
-            </p>
-            <p className="pr-2 text-xl font-light sm:text-2xl">
-              {item.trackName}
-            </p>
-          </div>
-          <div className="pr-8 text-center">
-            <p className="text-2xl text-gray-700 font-base sm:text-3xl">
-              D
-            </p>
-            <p className="text-xs uppercase">Key</p>
-          </div>
-          <div className="hidden pr-8 text-center sm:block">
-            <p className="text-2xl text-gray-700 font-base sm:text-3xl">
-              3:52
-            </p>
-            <p className="text-xs uppercase">
-              Duration
-            </p>
-          </div>
-          <div className="text-center">
-            <p className="text-2xl text-gray-700 font-base sm:text-3xl">
-              117
-            </p>
-            <p className="text-xs uppercase">
-              BPM
-            </p>
-          </div>
-        </div>
+        </Link>
         <div className="flex flex-row border-t border-gray-200">
           <a href="" className="flex-1 p-3 font-light text-center transition-colors duration-200 ease-in-out">
             <span className="hidden pr-2 sm:inline">
@@ -60,7 +63,6 @@ const CardIndex = (props:Props) => {
           </a>
         </div>
       </div>
-      ))}
       
     </div>
   )

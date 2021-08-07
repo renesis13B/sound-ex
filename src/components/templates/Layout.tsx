@@ -16,7 +16,7 @@ const Layout = ({ children, title }:ComponentProps) => {
       </Head>
       <Header />
       <main className='bg-gray-100'>
-        <div className='max-w-screen-md  m-auto'>
+        <div className='max-w-screen-md  m-auto pt-8 pb-8'>
           {children}
         </div>
       </main>
