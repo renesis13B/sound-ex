@@ -4,6 +4,12 @@ import { Buffer } from 'buffer'
 import Cookie from 'universal-cookie'
 
 const cookie = new Cookie()
+let d = new Date();
+d.setTime(d.getTime() + (60*1000));
+const options = {
+  path: "/",
+  expires: d
+};
 
 const spotifyAuthorization = axios.create({
   baseURL: 'https://accounts.spotify.com'
@@ -27,9 +33,23 @@ const getAcsessToken = async (): Promise<AxiosResponse<AcsessToken>> => {
 }
 
 export const authApi = () => ({
-  setAccessToken() {
-    if (!cookie.get('access_token')) {
-      getAcsessToken().then(acsessToken => cookie.set('access_token', acsessToken.data.access_token))
+  getToken() {
+    if (cookie.get('access_token')) {
+      return cookie.get('access_token')
+    } else {
+      getAcsessToken().then(token => {
+        cookie.set('access_token', token.data.access_token, options)
+        return token.data.access_token
+      })
     }
   },
+  checkToken() {
+    if (cookie.get('access_token')) {
+      console.log('Tokenがcookieにある')
+      console.log(cookie.get('access_token'))
+    } else {
+      console.log('Tokenがcookieにない')
+      console.log(cookie.get('access_token'))
+    }
+  }
 })

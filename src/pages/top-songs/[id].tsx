@@ -3,11 +3,14 @@ import Link from 'next/link'
 import { topSongsApi } from '../../api/top-songs'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
+import { authApi } from '../../api/auth'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 const TopSong = ({ topSong }: Props) => {
   const router = useRouter()
+  const { checkToken } = authApi()
+  checkToken()
   if (router.isFallback || !topSong) {
     return <div>Loading...</div>
   }
