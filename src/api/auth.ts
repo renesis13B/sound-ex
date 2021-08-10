@@ -4,8 +4,8 @@ import { Buffer } from 'buffer'
 import Cookie from 'universal-cookie'
 
 const cookie = new Cookie()
-let d = new Date();
-d.setTime(d.getTime() + (60*1000));
+const d = new Date();
+d.setTime(d.getTime() + (60*60*1000));
 const options = {
   path: "/",
   expires: d

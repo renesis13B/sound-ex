@@ -1,16 +1,22 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import { Context } from '../../Context/Context'
 
 const Header = ():JSX.Element => {
   const [term, setTerm] = useState('')
+  const { globalState, setGlobalState } = useContext(Context)
   const router = useRouter()
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    setGlobalState(term)
     router.push({
       pathname: '/searches',
-      query: { query: `${term}` }
+      query: { term: `${term}` }
     })
   }
+  useEffect(() => {
+    setTerm(globalState.term)
+  }, [])
   return (
     <div className="bg-deep-purple-accent-700">
       <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">

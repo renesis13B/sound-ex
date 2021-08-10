@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { $api } from '../../api/api'
 import { searchApi } from '../../api/search'
+import Layout from '../../components/templates/Layout'
+import { useRouter } from 'next/router'
 
-const Index = () => {
+const SearchesIndex = () => {
   useEffect(() => {
     const x = async () => {
       const { getTrackSearchResult } = searchApi()
@@ -11,10 +13,16 @@ const Index = () => {
     }
     x()
   }, [])
+
+  const router = useRouter()
+  const { term } = router.query
+  console.log(term)
   
   return (
-    <p>Searches index</p>
+    <Layout title='テスト'>
+      <p>検索結果</p>
+    </Layout>
   )
 }
 
-export default Index
+export default SearchesIndex
