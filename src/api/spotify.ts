@@ -1,5 +1,7 @@
 import axios, { AxiosResponse } from 'axios'
 import { AcsessTokenId } from '../models/accessToken'
+import { authApi } from './auth'
+import { BaseRouter } from 'next/dist/next-server/lib/router/router'
 
 type Playlist = {
   track: {
@@ -12,16 +14,14 @@ type Playlist = {
     }
   }
 }
-
 type GetPlaylistsResponse = {
   items: Playlist[]
 }
-
 type GetAudioFeaturesResponse = SpotifyApi.MultipleAudioFeaturesResponse
-
 type GetAudioFeatureResponse = SpotifyApi.MultipleAudioFeaturesResponse
-
 type GetTrackResponse = SpotifyApi.SingleTrackResponse
+type SearchItemResponse = SpotifyApi.TrackSearchResponse
+
 
 export type SpotifyId = SpotifyApi.TrackObjectSimplified['id']
 
@@ -49,9 +49,11 @@ export const getPlaylists = async (accessToken: AcsessTokenId): Promise<AxiosRes
  *
  * https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-several-audio-features
  */
-export const getAudioFeatures = async (accessToken: AcsessTokenId, ids: string): Promise<AxiosResponse<GetAudioFeaturesResponse>> => {
+export const getAudioFeatures = async (ids: string, accessToken?: AcsessTokenId): Promise<AxiosResponse<GetAudioFeaturesResponse>> => {
+  const { getToken } = authApi()
+  const token = accessToken ? accessToken : getToken()
   const headers = {
-    'Authorization': "Bearer " + accessToken
+    'Authorization': "Bearer " + token
   }
   return await spotifyApi.get(`/audio-features?ids=${ids}`, { headers })
 }
@@ -78,4 +80,18 @@ export const getTrack = async (accessToken: AcsessTokenId, spotifyId: SpotifyId)
     'Authorization': "Bearer " + accessToken
   }
   return await spotifyApi.get(`/tracks/${spotifyId}?market=JP`, { headers })
+}
+
+/**
+ * Search for an Item
+ *
+ * https://developer.spotify.com/documentation/web-api/reference/#endpoint-search
+ */
+export const searchItem = async (searchValue: any): Promise<AxiosResponse<SearchItemResponse>> => {
+  const { getToken } = authApi()
+  const token = getToken()
+  const headers = {
+    'Authorization': "Bearer " + token
+  }
+  return spotifyApi.get(`/search?q=${searchValue}&type=track&market=JP&limit=5`, { headers })
 }

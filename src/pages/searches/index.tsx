@@ -1,26 +1,39 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react'
 import { $api } from '../../api/api'
 import { searchApi } from '../../api/search'
 import Layout from '../../components/templates/Layout'
 import { useRouter } from 'next/router'
+import { Context } from '../../Context/Context'
+import CardIndex from '../../components/organisms/CardIndex'
 
 const SearchesIndex = () => {
-  useEffect(() => {
-    const x = async () => {
-      const { getTrackSearchResult } = searchApi()
-      const topPlayLists = await getTrackSearchResult('ホロライブ')
-      console.log(topPlayLists.data)
-    }
-    x()
-  }, [])
-
+  const { globalState, setGlobalSearch } = useContext(Context)
   const router = useRouter()
-  const { term } = router.query
-  console.log(term)
+  const setSearchResult = async () => {
+    console.log('setSearchResult')
+    const { term } = router.query
+    if ( term ) {
+      const { getTracks } = searchApi()
+      await getTracks(term).then((res) => {
+        setGlobalSearch(res)
+      })
+    }
+  }
+
+
+  useEffect(() => {
+    setSearchResult()
+  }, [router.query])
+
+
   
   return (
     <Layout title='テスト'>
       <p>検索結果</p>
+      { globalState.searched
+        ? globalState.searched.map((item: any) => <CardIndex key={item.id} song={item} />)
+        : <span>no data</span>
+      }
     </Layout>
   )
 }

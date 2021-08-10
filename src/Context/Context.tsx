@@ -1,8 +1,10 @@
 import { createContext, useReducer } from 'react'
+import { NextRouter } from 'next/router'
+import { BaseRouter } from 'next/dist/next-server/lib/router/router'
 
 type State = {
-  searched: Array
-  term: string
+  searched: any
+  term: any
 }
 
 // type Action = {
@@ -20,7 +22,7 @@ const reducer = (state: State, action: any) => {
     case 'SET_TERM':
       return { ...state, term: action.payload.term }
     case 'SET_SEARCHED':
-      return { ...state, searched: action.payload }
+      return { ...state, searched: action.payload.searched }
     default:
       return state
   }
@@ -28,7 +30,8 @@ const reducer = (state: State, action: any) => {
 
 export const Context = createContext({
   globalState: initialState,
-  setGlobalState: (term: any) => {}
+  setGlobalState: (term: any) => {},
+  setGlobalSearch: (searched: any) => {}
 })
 
 export const ContextProvider = ({children}: any) => {
@@ -41,7 +44,19 @@ export const ContextProvider = ({children}: any) => {
       }
     })
   }
+  const setGlobalSearch = (searched: any) => {
+    dispatch({
+      type: 'SET_SEARCHED',
+      payload: {
+        searched
+      }
+    })
+  }
   return (
-    <Context.Provider value={{ globalState, setGlobalState }}>{children}</Context.Provider>
+    <Context.Provider
+      value={{ globalState, setGlobalState, setGlobalSearch }}
+    >
+      {children}
+    </Context.Provider>
   )
 }

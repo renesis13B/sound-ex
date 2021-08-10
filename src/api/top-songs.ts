@@ -5,7 +5,7 @@ export const topSongsApi = () => ({
   async getTopSongsIndex (accessToken: AcsessTokenId) {
     const playLists = await getPlaylists(accessToken)
     const ids = playLists.data.items.map(playList => playList.track.id).join('%2C')
-    const audioFeatures = await getAudioFeatures(accessToken, ids)
+    const audioFeatures = await getAudioFeatures(ids, accessToken)
     return playLists.data.items.map((item, index) => {
       const sec = item.track.duration_ms / 1000
       return {
