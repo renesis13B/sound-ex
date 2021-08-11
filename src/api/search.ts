@@ -25,7 +25,7 @@ export const searchApi = () => ({
       }
     })
   },
-  async getTrackData(spotifyId: SpotifyId) {
+  async getTrackData(spotifyId: any) {
     const audioFeature = await getAudioFeature(spotifyId)
     const track = await getTrack(spotifyId)
     const sec = audioFeature.data.audio_features[0].duration_ms / 1000

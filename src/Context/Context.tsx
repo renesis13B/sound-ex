@@ -14,9 +14,9 @@ type State = {
 
 const initialState = {
   // as ~を使う
-  searched: [],
-  selected: {},
-  term: ''
+  searched: [] as any,
+  selected: {} as any,
+  term: '' as any
 }
 
 const reducer = (state: State, action: any) => {
