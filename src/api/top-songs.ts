@@ -30,8 +30,8 @@ export const topSongsApi = () => ({
     })
   },
   async getTopSongData(accessToken: AcsessTokenId, spotifyId: SpotifyId) {
-    const audioFeature = await getAudioFeature(accessToken, spotifyId)
-    const track = await getTrack(accessToken, spotifyId)
+    const audioFeature = await getAudioFeature(spotifyId, accessToken)
+    const track = await getTrack(spotifyId, accessToken)
     const sec = audioFeature.data.audio_features[0].duration_ms / 1000
     return {
       id: track.data.id,

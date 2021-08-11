@@ -9,8 +9,6 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 const TopSong = ({ topSong }: Props) => {
   const router = useRouter()
-  const { checkToken } = authApi()
-  checkToken()
   if (router.isFallback || !topSong) {
     return <div>Loading...</div>
   }

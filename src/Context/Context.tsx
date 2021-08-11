@@ -4,6 +4,7 @@ import { BaseRouter } from 'next/dist/next-server/lib/router/router'
 
 type State = {
   searched: any
+  selected: any
   term: any
 }
 
@@ -14,6 +15,7 @@ type State = {
 const initialState = {
   // as ~を使う
   searched: [],
+  selected: {},
   term: ''
 }
 
@@ -23,6 +25,8 @@ const reducer = (state: State, action: any) => {
       return { ...state, term: action.payload.term }
     case 'SET_SEARCHED':
       return { ...state, searched: action.payload.searched }
+    case 'SET_SELECTED':
+      return { ...state, selected: action.payload.selected }
     default:
       return state
   }
@@ -31,7 +35,8 @@ const reducer = (state: State, action: any) => {
 export const Context = createContext({
   globalState: initialState,
   setGlobalState: (term: any) => {},
-  setGlobalSearch: (searched: any) => {}
+  setGlobalSearch: (searched: any) => {},
+  setGlobalSelected: (selected: any) => {}
 })
 
 export const ContextProvider = ({children}: any) => {
@@ -52,9 +57,17 @@ export const ContextProvider = ({children}: any) => {
       }
     })
   }
+  const setGlobalSelected = (selected: any) => {
+    dispatch({
+      type: 'SET_SELECTED',
+      payload: {
+        selected
+      }
+    })
+  }
   return (
     <Context.Provider
-      value={{ globalState, setGlobalState, setGlobalSearch }}
+      value={{ globalState, setGlobalState, setGlobalSearch, setGlobalSelected }}
     >
       {children}
     </Context.Provider>

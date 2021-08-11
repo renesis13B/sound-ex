@@ -10,7 +10,6 @@ const SearchesIndex = () => {
   const { globalState, setGlobalSearch } = useContext(Context)
   const router = useRouter()
   const setSearchResult = async () => {
-    console.log('setSearchResult')
     const { term } = router.query
     if ( term ) {
       const { getTracks } = searchApi()
@@ -25,7 +24,7 @@ const SearchesIndex = () => {
     setSearchResult()
   }, [router.query])
 
-
+  const link = ''
   
   return (
     <Layout title='テスト'>

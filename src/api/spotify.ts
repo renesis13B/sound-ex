@@ -63,9 +63,11 @@ export const getAudioFeatures = async (ids: string, accessToken?: AcsessTokenId)
  *
  * https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-audio-features
  */
-export const getAudioFeature = async (accessToken: AcsessTokenId, spotifyId: SpotifyId): Promise<AxiosResponse<GetAudioFeatureResponse>> => {
+export const getAudioFeature = async (spotifyId: SpotifyId, accessToken?: AcsessTokenId, ): Promise<AxiosResponse<GetAudioFeatureResponse>> => {
+  const { getToken } = authApi()
+  const token = accessToken ? accessToken : getToken()
   const headers = {
-    'Authorization': "Bearer " + accessToken
+    'Authorization': "Bearer " + token
   }
   return await spotifyApi.get(`/audio-features?ids=${spotifyId}`, { headers })
 }
@@ -75,9 +77,11 @@ export const getAudioFeature = async (accessToken: AcsessTokenId, spotifyId: Spo
  *
  * https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-track
  */
-export const getTrack = async (accessToken: AcsessTokenId, spotifyId: SpotifyId): Promise<AxiosResponse<GetTrackResponse>> => {
+export const getTrack = async (spotifyId: SpotifyId, accessToken?: AcsessTokenId): Promise<AxiosResponse<GetTrackResponse>> => {
+  const { getToken } = authApi()
+  const token = accessToken ? accessToken : getToken()
   const headers = {
-    'Authorization': "Bearer " + accessToken
+    'Authorization': "Bearer " + token
   }
   return await spotifyApi.get(`/tracks/${spotifyId}?market=JP`, { headers })
 }

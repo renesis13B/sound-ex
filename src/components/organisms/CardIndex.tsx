@@ -14,7 +14,7 @@ const CardIndex = ({ song }: any) => {
   return (
     <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
       <div className="flex flex-col shadow-lg" key={song.id}>
-        <Link href={`/top-songs/${song.id}`}>
+        <Link href={`/searches/${song.id}`}>
           <div className="flex flex-row justify-start p-3 sm:p-6 hover:bg-gray-100">
             <div className="block mr-4">
               <figure className="w-16 h-16 bg-center bg-cover border-gray-200">
