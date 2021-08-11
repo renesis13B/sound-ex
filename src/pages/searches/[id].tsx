@@ -24,7 +24,7 @@ const Search = () => {
   }, [router.query])
   return (
     <div>
-      <Layout title="テスト">
+      <Layout title="テス">
         <div className='flex flex-col items-center sm:flex-row'>
           <figure
             className='w-80 h-80 bg-center bg-cover rounded-xl sm:mr-5'
