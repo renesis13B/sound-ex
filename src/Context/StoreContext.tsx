@@ -1,11 +1,9 @@
 import { createContext, useReducer } from 'react'
-import { NextRouter } from 'next/router'
-import { BaseRouter } from 'next/dist/next-server/lib/router/router'
 
 type State = {
-  tracks: any
-  track: any
   search: any
+  track: any
+  tracks: any
 }
 
 // type Action = {
@@ -14,19 +12,19 @@ type State = {
 
 const initialState = {
   // as ~を使う
-  tracks: [] as any,
+  search: '' as any,
   track: {} as any,
-  search: '' as any
+  tracks: [] as any
 }
 
 const reducer = (state: State, action: any) => {
   switch (action.type) {
-    case 'SET_SEARCH':
-      return { ...state, search: action.payload.search }
-    case 'SET_TRACKS':
-      return { ...state, tracks: action.payload.tracks }
     case 'SET_TRACK':
       return { ...state, track: action.payload.track }
+    case 'SET_TRACKS':
+      return { ...state, tracks: action.payload.tracks }
+    case 'SET_SEARCH':
+      return { ...state, search: action.payload.search }
     default:
       return state
   }
@@ -34,18 +32,18 @@ const reducer = (state: State, action: any) => {
 
 export const StoreContext = createContext({
   globalState: initialState,
-  setSearch: (search: any) => {},
+  setTrack: (track: any) => {},
   setTracks: (tracks: any) => {},
-  setTrack: (track: any) => {}
+  setSearch: (search: any) => {},
 })
 
 export const StoreContextProvider = ({children}: any) => {
   const [globalState, dispatch] = useReducer(reducer, initialState)
-  const setSearch = (search: any) => {
+  const setTrack = (track: any) => {
     dispatch({
-      type: 'SET_SEARCH',
+      type: 'SET_TRACK',
       payload: {
-        search
+        track
       }
     })
   }
@@ -57,18 +55,18 @@ export const StoreContextProvider = ({children}: any) => {
       }
     })
   }
-  const setTrack = (track: any) => {
+  const setSearch = (search: any) => {
     dispatch({
-      type: 'SET_TRACK',
+      type: 'SET_SEARCH',
       payload: {
-        track
+        search
       }
     })
   }
+
+  const value = { globalState, setTrack, setTracks, setSearch}
   return (
-    <StoreContext.Provider
-      value={{ globalState, setSearch, setTracks, setTrack }}
-    >
+    <StoreContext.Provider value={ value }>
       {children}
     </StoreContext.Provider>
   )
