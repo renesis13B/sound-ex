@@ -34,14 +34,14 @@ const reducer = (state: State, action: any) => {
 
 export const StoreContext = createContext({
   globalState: initialState,
-  setGlobalState: (search: any) => {},
-  setGlobalSearch: (tracks: any) => {},
-  setGlobalSelected: (track: any) => {}
+  setSearch: (search: any) => {},
+  setTracks: (tracks: any) => {},
+  setTrack: (track: any) => {}
 })
 
 export const StoreContextProvider = ({children}: any) => {
   const [globalState, dispatch] = useReducer(reducer, initialState)
-  const setGlobalState = (search: any) => {
+  const setSearch = (search: any) => {
     dispatch({
       type: 'SET_SEARCH',
       payload: {
@@ -49,7 +49,7 @@ export const StoreContextProvider = ({children}: any) => {
       }
     })
   }
-  const setGlobalSearch = (tracks: any) => {
+  const setTracks = (tracks: any) => {
     dispatch({
       type: 'SET_TRACKS',
       payload: {
@@ -57,7 +57,7 @@ export const StoreContextProvider = ({children}: any) => {
       }
     })
   }
-  const setGlobalSelected = (track: any) => {
+  const setTrack = (track: any) => {
     dispatch({
       type: 'SET_TRACK',
       payload: {
@@ -67,7 +67,7 @@ export const StoreContextProvider = ({children}: any) => {
   }
   return (
     <StoreContext.Provider
-      value={{ globalState, setGlobalState, setGlobalSearch, setGlobalSelected }}
+      value={{ globalState, setSearch, setTracks, setTrack }}
     >
       {children}
     </StoreContext.Provider>

@@ -7,14 +7,14 @@ import { StoreContext } from '../../Context/StoreContext'
 import CardIndex from '../../components/organisms/CardIndex'
 
 const SearchesIndex = () => {
-  const { globalState, setGlobalSearch } = useContext(StoreContext)
+  const { globalState, setTracks } = useContext(StoreContext)
   const router = useRouter()
   const setSearchResult = async () => {
     const { search } = router.query
     if ( search ) {
       const { getTracks } = searchApi()
       await getTracks(search).then((res) => {
-        setGlobalSearch(res)
+        setTracks(res)
       })
     }
   }

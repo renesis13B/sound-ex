@@ -6,21 +6,21 @@ import { searchApi } from '../../api/search'
 import Link from 'next/link'
 
 const Search = () => {
-  const { globalState, setGlobalSelected } = useContext(StoreContext)
+  const { globalState, setTrack } = useContext(StoreContext)
   const router = useRouter()
-  const setTrack = async () => {
+  const setResponse = async () => {
     const { id } = router.query
     if ( id ) {
       const { getTrackData } = searchApi()
       await getTrackData(id).then((res) => {
-        setGlobalSelected(res)
+        setTrack(res)
       })
     }
   }
 
   useEffect(() => {
     // 上で記述したsetTrackを呼び出す
-    setTrack()
+    setResponse()
   }, [router.query])
   return (
     <div>
