@@ -10,6 +10,7 @@ type State = {
 //   type: 'SET_TERM'
 // }
 
+// TODO: 初期値をどうするか考える
 const initialState = {
   // as ~を使う
   search: '' as any,

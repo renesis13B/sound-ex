@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { StoreContext } from '../../Context/StoreContext'
+import { StoreContext } from '../../contexts/StoreContext'
 import Layout from '../../components/templates/Layout'
 import { searchApi } from '../../api/search'
 import Link from 'next/link'

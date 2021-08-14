@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { StoreContext } from '../../Context/StoreContext'
+import { StoreContext } from '../../contexts/StoreContext'
 
 const Header = ():JSX.Element => {
   const [inputValue, setInputValue] = useState('')
