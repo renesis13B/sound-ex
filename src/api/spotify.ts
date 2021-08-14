@@ -40,7 +40,7 @@ export const getPlaylists = async (accessToken: AcsessTokenId): Promise<AxiosRes
     'Accept-Language': 'ja;q=1'
   }
   const fields = 'items(track(id,name,duration_ms,album(images,artists(name))))'
-  const limit = 'limit=5'
+  const limit = 'limit=10'
   return await spotifyApi.get(`/playlists/${process.env.NEXT_PUBLIC_SPOTIFY_TOP50_PLAYLIST_ID}/tracks/?fields=${fields}&${limit}`, { headers })
 }
 
