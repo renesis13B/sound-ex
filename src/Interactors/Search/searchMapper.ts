@@ -1,5 +1,5 @@
-import { GetAudioFeaturesResponse, SearchItemResponse } from '../baseInteractor'
 import { Track } from '../../models/track'
+import { GetAudioFeaturesResponse, SearchItemResponse } from '../baseInteractor'
 
 const searchMapper = (tracks: SearchItemResponse, audioFeatures: GetAudioFeaturesResponse): Track[] => {
   return tracks.data.tracks.items.map((item, index) => {
