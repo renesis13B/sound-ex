@@ -1,8 +1,8 @@
 import { getAudioFeatures, searchItem } from '../baseInteractor'
-import searchMapper from './searchMapper'
 import { useEffect, useState } from 'react'
 import { Track } from '../../models/track'
 import { useRouter } from 'next/router'
+import searchMapper from './searchMapper'
 
 
 const useSearchInteractor = () => {
