@@ -1,6 +1,6 @@
 import Layout from '../../components/templates/Layout'
 import CardIndex from '../../components/organisms/CardIndex'
-import useSearchInteractor from '../../interactors/search/useSearchInteractor'
+import useSearchInteractor from '../../Interactors/search/useSearchInteractor'
 
 const SearchesIndex = () => {
   const [response, error] = useSearchInteractor()
