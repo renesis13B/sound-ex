@@ -4,7 +4,6 @@ import { Track } from '../../models/track'
 import { useRouter } from 'next/router'
 import searchMapper from './searchMapper'
 
-
 const useSearchInteractor = () => {
   const [response, setResponse] = useState<Track[]>([])
   const [error, setError] = useState(null)
@@ -15,7 +14,7 @@ const useSearchInteractor = () => {
       const tracks = await searchItem(search)
       const trackIds = tracks.data.tracks.items.map(track => track.id).join('%2C')
       const audioFeatures = await getAudioFeatures(trackIds)
-      setResponse(searchMapper(tracks, audioFeatures))
+      setResponse(searchMapper(tracks.data.tracks.items, audioFeatures))
     } catch (error) {
       setError(error)
     }

@@ -1,8 +1,15 @@
 import { Track } from '../../models/track'
-import { GetAudioFeaturesResponse, SearchItemResponse } from '../baseInteractor'
+import { GetAudioFeaturesResponse, GetPlaylistsResponse, SearchItemResponse } from '../baseInteractor'
+import Playlist from '../../models/playlist'
 
-const searchMapper = (tracks: SearchItemResponse, audioFeatures: GetAudioFeaturesResponse): Track[] => {
-  return tracks.data.tracks.items.map((item, index) => {
+type Items = SpotifyApi.TrackObjectFull[] | Playlist['track'][]
+type Item = SpotifyApi.TrackObjectFull | Playlist['track']
+
+const searchMapper = (
+  items:  Items,
+  audioFeatures: GetAudioFeaturesResponse
+): Track[] => {
+  return items.map((item: Item, index: number) => {
     const sec = item.duration_ms / 1000
     return {
       id: item.id,

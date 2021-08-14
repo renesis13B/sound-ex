@@ -3,16 +3,21 @@ import { topSongsApi } from '../api/top-songs'
 import { InferGetStaticPropsType } from 'next';
 import CardIndex from '../components/organisms/CardIndex'
 import { authApi } from '../api/auth'
+import playlistInteractor from '../interactors/Search/playlistInteractor'
 import { $api } from '../api/api'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
-const Index = ({ topSongs }: Props) => {
-  const { getToken } = authApi()
-  getToken()
+const Index = ({ playlistTracks }: Props) => {
   return (
     <Layout title="SOUND EX">
-      { topSongs && topSongs.map((song) => <CardIndex key={song.id} song={song}/>)}
+      <h2>
+        Top 10 Japan
+        <span>日本で今一番再生回数が多い曲</span>
+      </h2>
+      {
+        playlistTracks && playlistTracks.map((track) => <CardIndex key={track.id} song={track}/>)
+      }
     </Layout>
   )
 }
@@ -20,12 +25,10 @@ const Index = ({ topSongs }: Props) => {
 export default Index
 
 export async function getStaticProps() {
-  const acsessToken = await $api.getAcsessToken()
-  console.log(acsessToken.data.access_token)
-  const token = `${process.env.NEXT_PUBLIC_SPOTIFY_TOKEN_ID}`
-  const { getTopSongsIndex } = topSongsApi()
-  const topSongs = await getTopSongsIndex(token)
+  const token = await $api.getAcsessToken()
+  console.log(token.data.access_token)
+  const playlistTracks = await playlistInteractor.get()
   return {
-    props: { topSongs }
+    props: { playlistTracks }
   }
 }
