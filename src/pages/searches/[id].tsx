@@ -1,26 +1,26 @@
 import React, { useContext, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { Context } from '../../Context/Context'
+import { StoreContext } from '../../contexts/StoreContext'
 import Layout from '../../components/templates/Layout'
 import { searchApi } from '../../api/search'
 import Link from 'next/link'
 
 const Search = () => {
-  const { globalState, setGlobalSelected } = useContext(Context)
+  const { globalState, setTrack } = useContext(StoreContext)
   const router = useRouter()
-  const setTrack = async () => {
+  const setResponse = async () => {
     const { id } = router.query
     if ( id ) {
       const { getTrackData } = searchApi()
       await getTrackData(id).then((res) => {
-        setGlobalSelected(res)
+        setTrack(res)
       })
     }
   }
 
   useEffect(() => {
     // 上で記述したsetTrackを呼び出す
-    setTrack()
+    setResponse()
   }, [router.query])
   return (
     <div>
@@ -28,11 +28,11 @@ const Search = () => {
         <div className='flex flex-col items-center sm:flex-row'>
           <figure
             className='w-80 h-80 bg-center bg-cover rounded-xl sm:mr-5'
-            style={{backgroundImage: `url("${globalState.selected.albumImage}")`}}
+            style={{backgroundImage: `url("${globalState.track.albumImage}")`}}
           />
           <div>
-            <h2 className='text-2xl'>{globalState.selected.artistsName}</h2>
-            <h1 className='text-4xl font-bold'>{globalState.selected.trackName}</h1>
+            <h2 className='text-2xl'>{globalState.track.artistsName}</h2>
+            <h1 className='text-4xl font-bold'>{globalState.track.trackName}</h1>
             <ul>
               <li className='mb-5'>
                 <dl className='flex items-center bg-white w-full max-w-md'>
@@ -46,7 +46,7 @@ const Search = () => {
                       <path fillRule='evenodd' fill='rgb(0, 0, 0)' d='M-0.000,43.000 L44.000,43.000 L-0.000,0.000 L-0.000,-0.000 L-0.000,43.000 Z'/>
                     </svg>
                   </dt>
-                  <dd className='px-5 py-3'>{ globalState.selected.releaseDate }</dd>
+                  <dd className='px-5 py-3'>{ globalState.track.releaseDate }</dd>
                 </dl>
               </li>
               <li className='mb-5'>
@@ -61,7 +61,7 @@ const Search = () => {
                       <path fillRule='evenodd' fill='rgb(0, 0, 0)' d='M-0.000,43.000 L44.000,43.000 L-0.000,0.000 L-0.000,-0.000 L-0.000,43.000 Z'/>
                     </svg>
                   </dt>
-                  <dd className='px-5 py-3'>{ globalState.selected.bpm }</dd>
+                  <dd className='px-5 py-3'>{ globalState.track.bpm }</dd>
                 </dl>
               </li>
               <li className='mb-5'>
@@ -76,7 +76,7 @@ const Search = () => {
                       <path fillRule='evenodd' fill='rgb(0, 0, 0)' d='M-0.000,43.000 L44.000,43.000 L-0.000,0.000 L-0.000,-0.000 L-0.000,43.000 Z'/>
                     </svg>
                   </dt>
-                  <dd className='px-5 py-3'>{ globalState.selected.key }</dd>
+                  <dd className='px-5 py-3'>{ globalState.track.key }</dd>
                 </dl>
               </li>
             </ul>

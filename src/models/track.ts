@@ -1,8 +1,10 @@
-export type TrackId = string
-
 export type Track = Readonly<{
-  album: {}
-  duration_ms: number
-  id: TrackId
-  name: string
+  id: SpotifyApi.TrackObjectSimplified['id']
+  trackName: SpotifyApi.TrackObjectSimplified['name']
+  albumImage: SpotifyApi.ImageObject['url']
+  artistsName: SpotifyApi.ArtistObjectSimplified['name']
+  bpm: SpotifyApi.AudioFeaturesObject['tempo']
+  key: SpotifyApi.AudioFeaturesObject['key']
+  duration: string
 }>
+

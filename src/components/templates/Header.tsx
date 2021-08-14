@@ -1,21 +1,21 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { Context } from '../../Context/Context'
+import { StoreContext } from '../../contexts/StoreContext'
 
 const Header = ():JSX.Element => {
-  const [term, setTerm] = useState('')
-  const { globalState, setGlobalState } = useContext(Context)
+  const [inputValue, setInputValue] = useState('')
+  const { globalState, setSearch } = useContext(StoreContext)
   const router = useRouter()
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    setGlobalState(term)
+    setSearch(inputValue)
     router.push({
       pathname: '/searches',
-      query: { term: `${term}` }
+      query: { search: `${inputValue}` }
     })
   }
   useEffect(() => {
-    setTerm(globalState.term)
+    setInputValue(globalState.search)
   }, [])
   return (
     <div className="bg-deep-purple-accent-700">
@@ -78,8 +78,8 @@ const Header = ():JSX.Element => {
                 <input
                   type="text"
                   placeholder="検索"
-                  onChange={ e => setTerm(e.target.value) }
-                  value={ term }
+                  onChange={ e => setInputValue(e.target.value) }
+                  value={ inputValue }
                 />
                 <button>検索ボタン</button>
               </form>

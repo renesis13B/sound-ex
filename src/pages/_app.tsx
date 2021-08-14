@@ -1,10 +1,10 @@
 import '../../styles/globals.css'
 import 'tailwindcss/tailwind.css'
 import {AppProps} from 'next/app'
-import { ContextProvider } from '../Context/Context'
+import { StoreContextProvider } from '../contexts/StoreContext'
 
 const App = ({ Component, pageProps }: AppProps) => {
-  return <ContextProvider><Component {...pageProps} /></ContextProvider>
+  return <StoreContextProvider><Component {...pageProps} /></StoreContextProvider>
 }
 
 export default App
