@@ -1,11 +1,11 @@
 import { getAudioFeatures, searchItem } from '../baseInteractor'
 import { useEffect, useState } from 'react'
-import { Track } from '../../models/track'
+import { TrackSimplified } from '../../models/track'
 import { useRouter } from 'next/router'
 import searchMapper from './searchMapper'
 
 const useSearchInteractor = () => {
-  const [response, setResponse] = useState<Track[]>([])
+  const [response, setResponse] = useState<TrackSimplified[]>([])
   const [error, setError] = useState(null)
   const router = useRouter()
   const { search } = router.query

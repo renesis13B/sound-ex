@@ -1,27 +1,27 @@
 import Layout from '../../components/templates/Layout'
-import Link from 'next/link'
-import { topSongsApi } from '../../api/top-songs'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
+import playlistInteractor from '../../interactors/Search/playlistInteractor'
+import trackInteractor from '../../interactors/api/trackInteractor'
 import { useRouter } from 'next/router'
-import { authApi } from '../../api/auth'
+import Link from 'next/link'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
-const TopSong = ({ topSong }: Props) => {
+const Track = ({ track }: Props) => {
   const router = useRouter()
-  if (router.isFallback || !topSong) {
+  if (router.isFallback || !track) {
     return <div>Loading...</div>
   }
   return (
-    <Layout title={`SOUND EX - ${topSong.trackName} ${topSong.artistsName}`}>
+    <Layout title={`SOUND EX - ${track.trackName} ${track.artistsName}`}>
       <div className='flex flex-col items-center sm:flex-row'>
         <figure
           className='w-80 h-80 bg-center bg-cover rounded-xl sm:mr-5'
-          style={{backgroundImage: `url("${topSong?.albumImage}")`}}
+          style={{backgroundImage: `url("${track?.albumImage}")`}}
         />
         <div>
-          <h2 className='text-2xl'>{topSong.artistsName}</h2>
-          <h1 className='text-4xl font-bold'>{topSong.trackName}</h1>
+          <h2 className='text-2xl'>{track.artistsName}</h2>
+          <h1 className='text-4xl font-bold'>{track.trackName}</h1>
           <ul>
             <li className='mb-5'>
               <dl className='flex items-center bg-white w-full max-w-md'>
@@ -32,10 +32,10 @@ const TopSong = ({ topSong }: Props) => {
                     viewBox="0 0 44 43"
                     preserveAspectRatio="none"
                   >
-										<path fillRule='evenodd' fill='rgb(0, 0, 0)' d='M-0.000,43.000 L44.000,43.000 L-0.000,0.000 L-0.000,-0.000 L-0.000,43.000 Z'/>
-									</svg>
-                  </dt>
-                <dd className='px-5 py-3'>{ topSong.releaseDate }</dd>
+                    <path fillRule='evenodd' fill='rgb(0, 0, 0)' d='M-0.000,43.000 L44.000,43.000 L-0.000,0.000 L-0.000,-0.000 L-0.000,43.000 Z'/>
+                  </svg>
+                </dt>
+                <dd className='px-5 py-3'>{ track.releaseDate }</dd>
               </dl>
             </li>
             <li className='mb-5'>
@@ -47,10 +47,10 @@ const TopSong = ({ topSong }: Props) => {
                     viewBox="0 0 44 43"
                     preserveAspectRatio="none"
                   >
-										<path fillRule='evenodd' fill='rgb(0, 0, 0)' d='M-0.000,43.000 L44.000,43.000 L-0.000,0.000 L-0.000,-0.000 L-0.000,43.000 Z'/>
-									</svg>
-                  </dt>
-                <dd className='px-5 py-3'>{ topSong.bpm }</dd>
+                    <path fillRule='evenodd' fill='rgb(0, 0, 0)' d='M-0.000,43.000 L44.000,43.000 L-0.000,0.000 L-0.000,-0.000 L-0.000,43.000 Z'/>
+                  </svg>
+                </dt>
+                <dd className='px-5 py-3'>{ track.bpm }</dd>
               </dl>
             </li>
             <li className='mb-5'>
@@ -62,10 +62,10 @@ const TopSong = ({ topSong }: Props) => {
                     viewBox="0 0 44 43"
                     preserveAspectRatio="none"
                   >
-										<path fillRule='evenodd' fill='rgb(0, 0, 0)' d='M-0.000,43.000 L44.000,43.000 L-0.000,0.000 L-0.000,-0.000 L-0.000,43.000 Z'/>
-									</svg>
-                  </dt>
-                <dd className='px-5 py-3'>{ topSong.key }</dd>
+                    <path fillRule='evenodd' fill='rgb(0, 0, 0)' d='M-0.000,43.000 L44.000,43.000 L-0.000,0.000 L-0.000,-0.000 L-0.000,43.000 Z'/>
+                  </svg>
+                </dt>
+                <dd className='px-5 py-3'>{ track.key }</dd>
               </dl>
             </li>
           </ul>
@@ -92,12 +92,10 @@ const TopSong = ({ topSong }: Props) => {
   )
 }
 
-export default TopSong
+export default Track
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const token = `${process.env.NEXT_PUBLIC_SPOTIFY_TOKEN_ID}`
-  const { getTopSongsIds } = topSongsApi()
-  const paths = await getTopSongsIds(token)
+  const paths = await playlistInteractor.getPlaylistIds()
   return {
     paths,
     fallback: true
@@ -105,12 +103,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const token = `${process.env.NEXT_PUBLIC_SPOTIFY_TOKEN_ID}`
-  const { getTopSongData } = topSongsApi()
-  const topSong = await getTopSongData(token, params?.id as string)
+  const track = await trackInteractor.getTrack(params?.id as string)
   return {
     props: {
-      topSong
+      track
     }
   }
 }

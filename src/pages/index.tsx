@@ -27,7 +27,7 @@ export default Index
 export async function getStaticProps() {
   const token = await $api.getAcsessToken()
   console.log(token.data.access_token)
-  const playlistTracks = await playlistInteractor.get()
+  const playlistTracks = await playlistInteractor.getPlaylistTracks()
   return {
     props: { playlistTracks }
   }

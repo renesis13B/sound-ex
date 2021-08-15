@@ -1,4 +1,4 @@
-type Playlist = Readonly<{
+export type Playlist = Readonly<{
   track: {
     id: string,
     name: string,
@@ -9,5 +9,3 @@ type Playlist = Readonly<{
     }
   }
 }>
-
-export default Playlist

@@ -1,0 +1,2 @@
+export type SingleTrackResponse = SpotifyApi.SingleTrackResponse
+export type MultipleAudioFeaturesResponse = SpotifyApi.MultipleAudioFeaturesResponse
