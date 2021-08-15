@@ -4,7 +4,6 @@ import { getAudioFeature, getAudioFeatures, getPlaylists, getTrack, SpotifyId } 
 export const topSongsApi = () => ({
   async getTopSongsIndex (accessToken: AcsessTokenId) {
     const playLists = await getPlaylists(accessToken)
-    console.log(playLists.data)
     const ids = playLists.data.items.map(playList => playList.track.id).join('%2C')
     const audioFeatures = await getAudioFeatures(ids, accessToken)
     return playLists.data.items.map((item, index) => {
