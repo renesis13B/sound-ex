@@ -1,5 +1,5 @@
 import { $api } from '../../api/api'
-import { SpotifyId } from './baseInteractor'
+import { SpotifyId } from './spotifyInteractor'
 import { getAudioFeature, getTrack } from '../../api/spotify'
 import trackMapper from '../mapper/trackMapper'
 

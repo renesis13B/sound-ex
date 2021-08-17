@@ -1,4 +1,4 @@
-import { getAudioFeatures, searchItem } from './baseInteractor'
+import { getAudioFeatures, searchItem } from './spotifyInteractor'
 import { useEffect, useState } from 'react'
 import { TrackSimplified } from '../../models/track'
 import { useRouter } from 'next/router'
