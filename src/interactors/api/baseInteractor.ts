@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios'
-import { AcsessTokenId } from '../models/accessToken'
-import { authApi } from '../api/auth'
-import { Playlist } from '../models/playlist'
+import { AcsessTokenId } from '../../models/accessToken'
+import { authApi } from '../../api/auth'
+import { Playlist } from '../../models/playlist'
 
 export type GetPlaylistsResponse = AxiosResponse<{ items: Playlist[] }>
 export type GetAudioFeaturesResponse = AxiosResponse<SpotifyApi.MultipleAudioFeaturesResponse>

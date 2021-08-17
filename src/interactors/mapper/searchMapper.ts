@@ -1,5 +1,5 @@
 import { TrackSimplified } from '../../models/track'
-import { GetAudioFeaturesResponse, GetPlaylistsResponse, SearchItemResponse } from '../baseInteractor'
+import { GetAudioFeaturesResponse, GetPlaylistsResponse, SearchItemResponse } from '../api/baseInteractor'
 import { Playlist } from '../../models/playlist'
 import moment from 'moment'
 
