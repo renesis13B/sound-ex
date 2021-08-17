@@ -1,74 +1,49 @@
-import { createContext, useReducer } from 'react'
+import { createContext, Dispatch, ReactNode, useReducer } from 'react'
+import { Track, TrackSimplified } from '../models/track'
 
-type State = {
-  search: any
-  track: any
-  tracks: any
+type StoreState = {
+  search: string
+  track: Track
+  tracks: TrackSimplified[]
 }
 
-// type Action = {
-//   type: 'SET_TERM'
-// }
+type StoreAction =
+  | { type: 'SET_TRACK', payload: Track }
+  | { type: 'SET_TRACKS', payload: TrackSimplified[] }
+  | { type: 'SET_SEARCH', payload: string }
 
-// TODO: 初期値をどうするか考える
-const initialState = {
-  // as ~を使う
-  search: '' as any,
-  track: {} as any,
-  tracks: [] as any
-}
+type StoreContextType = StoreState & {dispatch: Dispatch<StoreAction>}
 
-const reducer = (state: State, action: any) => {
+const reducer = (state: StoreState, action: StoreAction) => {
   switch (action.type) {
     case 'SET_TRACK':
-      return { ...state, track: action.payload.track }
+      return { ...state, track: action.payload }
     case 'SET_TRACKS':
-      return { ...state, tracks: action.payload.tracks }
+      return { ...state, tracks: action.payload }
     case 'SET_SEARCH':
-      return { ...state, search: action.payload.search }
+      return { ...state, search: action.payload }
     default:
       return state
   }
 }
+// TODO: 初期値見直し必要かも。。
+const initialState: StoreState = {
+  search: '',
+  track: {} as Track,
+  tracks: [] as TrackSimplified[]
+}
 
-export const StoreContext = createContext({
-  globalState: initialState,
-  setTrack: (track: any) => {},
-  setTracks: (tracks: any) => {},
-  setSearch: (search: any) => {},
-})
+export const StoreContext = createContext<StoreContextType>(
+  initialState as StoreContextType
+)
 
-export const StoreContextProvider = ({children}: any) => {
-  const [globalState, dispatch] = useReducer(reducer, initialState)
-  const setTrack = (track: any) => {
-    dispatch({
-      type: 'SET_TRACK',
-      payload: {
-        track
-      }
-    })
-  }
-  const setTracks = (tracks: any) => {
-    dispatch({
-      type: 'SET_TRACKS',
-      payload: {
-        tracks
-      }
-    })
-  }
-  const setSearch = (search: any) => {
-    dispatch({
-      type: 'SET_SEARCH',
-      payload: {
-        search
-      }
-    })
-  }
+export const StoreContextProvider = ({children}: { children: ReactNode }) => {
+  const [storeState, dispatch] = useReducer(reducer, initialState)
 
-  const value = { globalState, setTrack, setTracks, setSearch}
   return (
-    <StoreContext.Provider value={ value }>
+    <StoreContext.Provider value={{...storeState, dispatch}}>
       {children}
     </StoreContext.Provider>
   )
 }
+

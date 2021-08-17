@@ -2,20 +2,20 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { StoreContext } from '../../contexts/StoreContext'
 
-const Header = ():JSX.Element => {
+const Header = () => {
   const [inputValue, setInputValue] = useState('')
-  const { globalState, setSearch } = useContext(StoreContext)
+  const { search, dispatch } = useContext(StoreContext)
   const router = useRouter()
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    setSearch(inputValue)
+    dispatch({ type: 'SET_SEARCH', payload: inputValue })
     router.push({
       pathname: '/searches',
       query: { search: `${inputValue}` }
     })
   }
   useEffect(() => {
-    setInputValue(globalState.search)
+    setInputValue(search)
   }, [])
   return (
     <div className="bg-deep-purple-accent-700">
