@@ -14,7 +14,7 @@ const useSearchInteractor = () => {
       const tracks = await searchItem(search)
       const trackIds = tracks.data.tracks.items.map(track => track.id).join('%2C')
       const audioFeatures = await getAudioFeatures(trackIds)
-      setResponse(searchMapper(tracks.data.tracks.items, audioFeatures))
+      setResponse(searchMapper(tracks.data.tracks.items, audioFeatures.data))
     } catch (error) {
       setError(error)
     }
