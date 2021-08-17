@@ -54,7 +54,7 @@ const CardIndex = ({ song }: any) => {
           </div>
         </Link>
         <div className="flex flex-row border-t border-gray-200">
-          <a href={song.spotify_url}
+          <a target='_blank' rel='noopener noreferrer' href={song.spotify_url}
              className='flex-1 p-3 font-light text-center transition-colors duration-200 ease-in-out'>
             <span className='hidden pr-2 sm:inline'>
               Listen on
