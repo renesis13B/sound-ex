@@ -1,6 +1,6 @@
 import { getAudioFeatures, getPlaylists } from '../../api/spotify'
 import { AcsessTokenId } from '../../models/accessToken'
-import searchMapper from './searchMapper'
+import searchMapper from '../mapper/searchMapper'
 import { $api } from '../../api/api'
 
 const playlistInteractor = {

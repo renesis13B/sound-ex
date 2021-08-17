@@ -3,8 +3,9 @@ import { topSongsApi } from '../api/top-songs'
 import { InferGetStaticPropsType } from 'next';
 import CardIndex from '../components/organisms/CardIndex'
 import { authApi } from '../api/auth'
-import playlistInteractor from '../interactors/Search/playlistInteractor'
+import playlistInteractor from '../interactors/api/playlistInteractor'
 import { $api } from '../api/api'
+
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
