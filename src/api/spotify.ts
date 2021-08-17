@@ -1,7 +1,6 @@
 import axios, { AxiosResponse } from 'axios'
 import { AcsessTokenId } from '../models/accessToken'
 import { authApi } from './auth'
-import { BaseRouter } from 'next/dist/next-server/lib/router/router'
 
 type Playlist = {
   track: {
@@ -36,10 +35,10 @@ const spotifyApi = axios.create({
  */
 export const getPlaylists = async (accessToken: AcsessTokenId): Promise<AxiosResponse<GetPlaylistsResponse>> => {
   const headers = {
-    'Authorization': "Bearer " + accessToken,
-    'Accept-Language': 'ja;q=1'
+    'Authorization': 'Bearer ' + accessToken,
+    'Accept-Language': 'ja;q=1',
   }
-  const fields = 'items(track(id,name,duration_ms,album(images,artists(name))))'
+  const fields = 'items(track(id,name,duration_ms,uri,album(images,artists(name))))'
   const limit = 'limit=10'
   return await spotifyApi.get(`/playlists/${process.env.NEXT_PUBLIC_SPOTIFY_TOP50_PLAYLIST_ID}/tracks/?fields=${fields}&${limit}`, { headers })
 }

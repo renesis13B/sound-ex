@@ -6,6 +6,7 @@ export type TrackSimplified = Readonly<{
   bpm: SpotifyApi.AudioFeaturesObject['tempo']
   key: SpotifyApi.AudioFeaturesObject['key']
   duration: string
+  spotify_url: SpotifyApi.TrackObjectSimplified['external_urls']['spotify']
 }>
 
 export type Track = TrackSimplified & Readonly<{

@@ -1,7 +1,6 @@
-import { getAudioFeatures, getPlaylists } from '../../api/spotify'
-import { AcsessTokenId } from '../../models/accessToken'
 import searchMapper from '../mapper/searchMapper'
 import { $api } from '../../api/api'
+import { getAudioFeatures, getPlaylists } from './spotifyInteractor'
 
 const playlistInteractor = {
   async getPlaylistTracks() {
@@ -9,7 +8,7 @@ const playlistInteractor = {
     const playLists = await getPlaylists(token.data.access_token)
     const ids = playLists.data.items.map(playList => playList.track.id).join('%2C')
     const audioFeatures = await getAudioFeatures(ids, token.data.access_token)
-    return searchMapper(playLists.data.items.map(item => item.track), audioFeatures)
+    return searchMapper(playLists.data.items.map(item => item.track), audioFeatures.data)
   },
   async getPlaylistIds() {
     const token = await $api.getAcsessToken()

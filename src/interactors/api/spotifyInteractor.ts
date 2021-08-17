@@ -23,10 +23,10 @@ const spotifyApi = axios.create({
  */
 export const getPlaylists = async (accessToken: AcsessTokenId): Promise<GetPlaylistsResponse> => {
   const headers = {
-    'Authorization': "Bearer " + accessToken,
-    'Accept-Language': 'ja;q=1'
+    'Authorization': 'Bearer ' + accessToken,
+    'Accept-Language': 'ja;q=1',
   }
-  const fields = 'items(track(id,name,duration_ms,album(images,artists(name))))'
+  const fields = 'items(track(id,name,duration_ms,external_urls(spotify),album(images,artists(name))))'
   const limit = 'limit=5'
   return await spotifyApi.get(`/playlists/${process.env.NEXT_PUBLIC_SPOTIFY_TOP50_PLAYLIST_ID}/tracks/?fields=${fields}&${limit}`, { headers })
 }
