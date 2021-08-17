@@ -1,11 +1,11 @@
 import { MultipleAudioFeaturesResponse, SingleTrackResponse } from '../../models/spotify'
 import { Track } from '../../models/track'
+import moment from 'moment';
 
 const trackMapper = (
   track: SingleTrackResponse,
   audioFeatures: MultipleAudioFeaturesResponse
 ): Track => {
-  const sec = audioFeatures.audio_features[0].duration_ms / 1000
   return {
     id: track.id,
     trackName: track.name,
@@ -14,7 +14,8 @@ const trackMapper = (
     releaseDate: track.album.release_date,
     danceability: audioFeatures.audio_features[0].danceability,
     energy: audioFeatures.audio_features[0].energy,
-    duration: `${Math.floor(sec / 60)}:${Math.floor(sec % 60)}`,
+    duration: moment(`${audioFeatures.audio_features[0].duration_ms}`, 'x')
+      .format('m:ss'),
     time_signature: audioFeatures.audio_features[0].time_signature,
     key: audioFeatures.audio_features[0].key,
     bpm: Math.round(audioFeatures.audio_features[0].tempo)

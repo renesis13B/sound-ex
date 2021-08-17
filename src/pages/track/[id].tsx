@@ -1,6 +1,6 @@
 import Layout from '../../components/templates/Layout'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
-import playlistInteractor from '../../interactors/Search/playlistInteractor'
+import playlistInteractor from '../../interactors/api/playlistInteractor'
 import trackInteractor from '../../interactors/api/trackInteractor'
 import { useRouter } from 'next/router'
 import Link from 'next/link'

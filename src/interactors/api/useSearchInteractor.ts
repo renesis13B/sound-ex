@@ -1,8 +1,8 @@
-import { getAudioFeatures, searchItem } from '../baseInteractor'
+import { getAudioFeatures, searchItem } from './spotifyInteractor'
 import { useEffect, useState } from 'react'
 import { TrackSimplified } from '../../models/track'
 import { useRouter } from 'next/router'
-import searchMapper from './searchMapper'
+import searchMapper from '../mapper/searchMapper'
 
 const useSearchInteractor = () => {
   const [response, setResponse] = useState<TrackSimplified[]>([])
