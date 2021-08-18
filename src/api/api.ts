@@ -1,16 +1,16 @@
-import axios, { AxiosResponse } from "axios"
-import { Buffer } from 'buffer';
-import { AcsessToken, AcsessTokenId } from '../models/accessToken'
+import axios, { AxiosResponse } from 'axios'
+import { Buffer } from 'buffer'
+import { AcsessToken } from '../models/accessToken'
 import Cookie from 'universal-cookie'
 
 const cookie = new Cookie()
 
 const spotifyAuthorization = axios.create({
-  baseURL: 'https://accounts.spotify.com'
-});
+  baseURL: 'https://accounts.spotify.com',
+})
 
 const spotifyApi = axios.create({
-  baseURL: 'https://api.spotify.com/v1'
+  baseURL: 'https://api.spotify.com/v1',
 });
 
 const urlencoded = new URLSearchParams();
@@ -35,15 +35,6 @@ export const $api = {
       } else {
         console.log('finished')
       }
-    },
-    getTopPlayLists(accessToken: AcsessTokenId) {
-      const headers = {
-        'Authorization': "Bearer " + accessToken,
-        'Accept-Language': 'ja;q=1'
-      }
-      const query = '?fields=items(track(id,name,duration_ms,album(images,artists(name))))'
-      const limit = 'limit=5'
-      return spotifyApi.get(`/playlists/${process.env.NEXT_PUBLIC_SPOTIFY_TOP50_PLAYLIST_ID}/tracks/${query}&${limit}`, { headers })
     },
     getAudioFeaturesForTrack(accessToken: string, query: string) {
       const headers = {
