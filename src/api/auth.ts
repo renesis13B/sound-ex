@@ -12,7 +12,7 @@ const options = {
 };
 
 const spotifyAuthorization = axios.create({
-  baseURL: 'https://accounts.spotify.com'
+  baseURL: `${process.env.NEXT_PUBLIC_SPOTIFY_ACCOUNTS_END_POINT_URL}`,
 });
 
 const urlencoded = new URLSearchParams();

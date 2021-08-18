@@ -10,14 +10,17 @@ const useSearchInteractor = () => {
   const router = useRouter()
   const { search } = router.query
   const fetch = async () => {
-    try {
-      const tracks = await searchItem(search)
-      const trackIds = tracks.data.tracks.items.map(track => track.id).join('%2C')
-      const audioFeatures = await getAudioFeatures(trackIds)
-      setResponse(searchMapper(tracks.data.tracks.items, audioFeatures.data))
-    } catch (error) {
-      setError(error)
+    if (typeof search === 'string') {
+      try {
+        const tracks = await searchItem(search, true)
+        const trackIds = tracks.data.tracks.items.map(track => track.id).join('%2C')
+        const audioFeatures = await getAudioFeatures(trackIds, true)
+        setResponse(searchMapper(tracks.data.tracks.items, audioFeatures.data))
+      } catch (error) {
+        setError(error)
+      }
     }
+
   }
   useEffect(() => {
     fetch()

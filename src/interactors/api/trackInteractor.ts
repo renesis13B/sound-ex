@@ -1,15 +1,13 @@
-import { $api } from '../../api/api'
-import { SpotifyId } from './spotifyInteractor'
-import { getAudioFeature, getTrack } from '../../api/spotify'
+import { SpotifyId } from '../../models/spotify'
+import { getAudioFeature, getTrack } from './spotifyInteractor'
 import trackMapper from '../mapper/trackMapper'
 
 const trackInteractor = {
   async getTrack(spotifyId: SpotifyId) {
-    const token = await $api.getAcsessToken()
-    const track = await getTrack(spotifyId, token.data.access_token)
-    const audioFeature = await getAudioFeature(spotifyId, token.data.access_token)
+    const track = await getTrack(spotifyId)
+    const audioFeature = await getAudioFeature(spotifyId)
     return trackMapper(track.data, audioFeature.data)
-  }
+  },
 }
 
 export default trackInteractor
