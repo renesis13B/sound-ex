@@ -30,7 +30,7 @@ const SearchForm = () => {
         autoFocus
         required
         placeholder='type a song, get a bpm'
-        className='w-full p-3 pr-20 rounded shadow outline-none'
+        className='w-full p-3 pr-20 rounded shadow outline-none search-caret'
       />
       <button
         type='submit'

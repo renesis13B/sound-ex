@@ -55,7 +55,7 @@ const TrackSimplifiedCard = ({ trackSimplifiedCard }: Props) => {
       </Link>
       <div className='flex flex-row border-t border-gray-200'>
         <a target='_blank' rel='noopener noreferrer' href={trackSimplifiedCard.spotify_url}
-           className='flex-1 p-3 font-light cursor-pointer text-center transition-colors duration-200 ease-in-out'>
+           className='flex-1 p-3 font-light cursor-pointer text-center transition-colors duration-500 ease-in-out hover:bg-green-accent-spotify'>
           <Icons icon={'SPOTIFY'} />
           Spotifyで開く
         </a>
