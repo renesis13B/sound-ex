@@ -5,7 +5,7 @@ import SearchForm from '../molecules/SearchForm'
 const HeaderContents = () => {
   return (
     <div>
-      <h1 className='flex justify-center text-white font-bold leading-none text-5xl tracking-widest'>
+      <h1 className='flex justify-center text-gray-100 font-bold leading-none text-5xl tracking-widest'>
         <Link href='/'>
         <span className='cursor-pointer flex items-center'>
           SOUND
@@ -29,7 +29,7 @@ const HeaderContents = () => {
         </Link>
       </h1>
       <SearchForm />
-      <p className='text-white text-sm sm:text-black'>
+      <p className='text-sm text-gray-100'>
         好きな曲を検索してみよう
       </p>
     </div>
