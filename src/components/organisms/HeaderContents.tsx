@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import SearchForm from '../molecules/SearchForm'
+import SearchForm from './SearchForm'
 
 const HeaderContents = () => {
   return (

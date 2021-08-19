@@ -1,24 +1,23 @@
 import Layout from '../../components/templates/Layout'
-import CardIndex from '../../components/organisms/CardIndex'
 import useSearchInteractor from '../../interactors/api/useSearchInteractor'
+import IndexContents from '../../components/organisms/IndexContents'
+import { useContext } from 'react'
+import { StoreContext } from '../../contexts/StoreContext'
 
 
 const SearchesIndex = () => {
   const [response, error] = useSearchInteractor()
+  const { search } = useContext(StoreContext)
+  const title = {
+    main: 'Search',
+    sub: `検索結果： ${search}`,
+  }
 
-  console.log(response)
-  console.log(error)
-
-  const link = ''
-  
   return (
-    <Layout title='テスト'>
-      <p>検索結果</p>
-      {
-        response !== null
-          ? response.map(track => <CardIndex key={track.id} song={track} />)
-          : <p>{}</p>
-      }
+    <Layout title={`SOUND EX - Search 検索結果： ${search}`}>
+      <section>
+        {response && <IndexContents tracks={response} title={title} />}
+      </section>
     </Layout>
   )
 }

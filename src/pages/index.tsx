@@ -1,21 +1,21 @@
 import Layout from '../components/templates/Layout'
 import { InferGetStaticPropsType } from 'next'
-import CardIndex from '../components/organisms/CardIndex'
 import playlistInteractor from '../interactors/api/playlistInteractor'
+import IndexContents from '../components/organisms/IndexContents'
 
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
-const Index = ({ playlistTracks }: Props) => {
+const Index = ({ tracks }: Props) => {
+  const title = {
+    main: 'Top 20 Japan',
+    sub: '日本で今一番再生回数が多い曲',
+  }
   return (
     <Layout title='SOUND EX'>
-      <h2>
-        Top 10 Japan
-        <span>日本で今一番再生回数が多い曲</span>
-      </h2>
-      {
-        playlistTracks && playlistTracks.map((track) => <CardIndex key={track.id} song={track} />)
-      }
+      <section>
+        {tracks && <IndexContents tracks={tracks} title={title} />}
+      </section>
     </Layout>
   )
 }
@@ -23,11 +23,8 @@ const Index = ({ playlistTracks }: Props) => {
 export default Index
 
 export async function getStaticProps() {
-  // const token = await $api.getAcsessToken()
-  // console.log(token.data)
-  const playlistTracks = await playlistInteractor.getPlaylistTracks()
-  console.log(playlistTracks)
+  const tracks = await playlistInteractor.getPlaylistTracks()
   return {
-    props: { playlistTracks },
+    props: { tracks },
   }
 }
