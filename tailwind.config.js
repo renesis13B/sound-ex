@@ -1,5 +1,12 @@
 module.exports = {
-  purge: ['./src/pages/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
+  purge: [
+    './src/pages/**/*.{js,ts,jsx,tsx}',
+    './src/components/**/*.{js,ts,jsx,tsx}',
+    './src/components/atoms/*.{js,ts,jsx,tsx}',
+    './src/components/organisms/*.{js,ts,jsx,tsx}',
+    './src/components/molecules/*.{js,ts,jsx,tsx}',
+    './src/components/templates/*.{js,ts,jsx,tsx}',
+  ],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
