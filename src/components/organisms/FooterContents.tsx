@@ -2,7 +2,7 @@ import React from 'react'
 
 const FooterContents = () => {
   return (
-    <div data-FooterContents className='px-4 pt-6 sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24'>
+    <div className='px-4 pt-6 sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24'>
       <div className='flex items-center mb-4'>
         <div className='flex items-center justify-center w-6 h-6 rounded-full bg-teal-accent-400'>
           <svg
