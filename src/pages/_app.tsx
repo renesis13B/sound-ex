@@ -1,6 +1,6 @@
-import '../../styles/globals.css'
-import 'tailwindcss/tailwind.css'
-import {AppProps} from 'next/app'
+import '../../styles/tailwind.css'
+import '../../styles/tailwind-util.css'
+import { AppProps } from 'next/app'
 import { StoreContextProvider } from '../contexts/StoreContext'
 
 const App = ({ Component, pageProps }: AppProps) => {

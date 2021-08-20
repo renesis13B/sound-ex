@@ -13,7 +13,7 @@ const Index = ({ tracks }: Props) => {
   }
   return (
     <Layout title='SOUND EX'>
-      <section>
+      <section className='px-4 py-8'>
         {tracks && <IndexContents tracks={tracks} title={title} />}
       </section>
     </Layout>
