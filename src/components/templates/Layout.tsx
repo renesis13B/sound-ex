@@ -10,7 +10,7 @@ type ComponentProps = {
 
 const Layout = ({ children, title }:ComponentProps) => {
   return (
-    <div className='flex flex-col min-h-screen'>
+    <div className='flex flex-col min-h-screen break-words'>
       <Head>
         <title>{title}</title>
       </Head>
