@@ -27,7 +27,6 @@ const SearchForm = () => {
         type='text'
         onChange={e => setInputValue(e.target.value)}
         value={inputValue}
-        autoFocus
         required
         placeholder='type a song, get a bpm'
         className='w-full p-3 pr-20 rounded shadow outline-none search-caret'

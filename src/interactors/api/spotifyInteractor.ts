@@ -114,7 +114,6 @@ export const getTrack = async (spotifyId: SpotifyId): Promise<GetTrackResponse> 
 export const searchItem = async (searchValue: string, useClientSide?: boolean): Promise<SearchItemResponse> => {
   // NOTE: 現状、サーバー or クライアントでtokenの取得方法が異なるので第２引数の有無で分ける
   const token = useClientSide ? await authInteractor.getTokenFromCookie() : await getTokenFromSpotify()
-  console.log(token)
   const headers = {
     'Authorization': 'Bearer ' + token,
   }
