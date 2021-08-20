@@ -194,6 +194,8 @@ module.exports = {
           'accent-200': '#69f0ae',
           'accent-400': '#00e676',
           'accent-700': '#00c853',
+          'accent-800': '#53E0B0',
+          'accent-spotify': '#1AB26B',
         },
         'light-green': {
           50: '#f1f8e9',
@@ -328,5 +330,14 @@ module.exports = {
     opacity: ['responsive', 'hover', 'focus', 'group-hover'],
     backgroundColor: ['responsive', 'hover', 'focus', 'group-hover'],
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }) {
+      const newUtilities = {
+        '.search-caret': {
+          caretColor: '#1AB26B',
+        },
+      }
+      addUtilities(newUtilities)
+    },
+  ],
 }
