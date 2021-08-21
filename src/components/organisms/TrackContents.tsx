@@ -24,11 +24,11 @@ const TrackContents = ({ track }: Props) => {
         />
       </div>
       <figure className='sm:flex sm:justify-center sm:items-center'>
-        <img
-          className='sm:w-96 sm:h-96'
-          src={`${track.albumImage}`}
-          alt={`${track.artistsName} | ${track.trackName}`}
-        />
+        {/*<img*/}
+        {/*  className='sm:w-96 sm:h-96'*/}
+        {/*  src={`${track.albumImage}`}*/}
+        {/*  alt={`${track.artistsName} | ${track.trackName}`}*/}
+        {/*/>*/}
         <figcaption className='px-4 py-8 sm:p-0 sm:ml-8 min-w-0 sm:flex-grow'>
           <h2 className='text-2xl'>
             {track.artistsName}
