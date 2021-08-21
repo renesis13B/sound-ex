@@ -12,7 +12,6 @@ const Track = ({ track }: Props) => {
   if (router.isFallback || !track) {
     return <div>Loading...</div>
   }
-  console.log(track)
   return (
     <Layout title={`SOUND EX - ${track.trackName} ${track.artistsName}`}>
       <article>
