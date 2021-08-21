@@ -326,18 +326,12 @@ module.exports = {
   },
   variants: {
     scale: ['responsive', 'hover', 'focus', 'group-hover'],
-    textColor: ['responsive', 'hover', 'focus', 'group-hover'],
+    textColor: ['responsive', 'hover', 'focus', 'group-hover', 'before'],
     opacity: ['responsive', 'hover', 'focus', 'group-hover'],
     backgroundColor: ['responsive', 'hover', 'focus', 'group-hover'],
   },
   plugins: [
-    function({ addUtilities }) {
-      const newUtilities = {
-        '.search-caret': {
-          caretColor: '#1AB26B',
-        },
-      }
-      addUtilities(newUtilities)
-    },
+    require('tailwindcss-pseudo-elements'),
+    require('@tailwindcss/aspect-ratio'),
   ],
 }
