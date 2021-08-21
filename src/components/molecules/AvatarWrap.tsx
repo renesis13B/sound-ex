@@ -6,7 +6,7 @@ type Avatar = {
 
 const AvatarWrap = ({ avatar }: Avatar) => {
   return (
-    <figure className='w-6/12 p-2 sm:w-2/12'>
+    <figure className='w-6/12 sm:w-2/12 text-center'>
       <img className='rounded-full' src={avatar.image} alt='' />
       <figcaption className='text-center'>
         {avatar.name}
