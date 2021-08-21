@@ -71,10 +71,10 @@ const TrackContents = ({ track }: Props) => {
       </div>
 
       <div className='shadow-lg bg-white mx-4 sm:mx-0 text-gray-800 mt-4'>
-        <h2 className='text-4xl font-bold w-6/12'>
+        <h2 className='text-4xl font-bold'>
           ファンの間で人気
         </h2>
-        <div className='flex flex-row justify-center p-2 flex-wrap '>
+        <div className='flex flex-row justify-center p-2 flex-wrap'>
           {
             track.related_artists.map(artists => <AvatarWrap key={artists.id} avatar={artists} />)
           }
