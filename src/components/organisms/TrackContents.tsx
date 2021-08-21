@@ -32,6 +32,14 @@ const TrackContents = ({ track }: Props) => {
           </ul>
         </figcaption>
       </figure>
+      <iframe
+        src={`https://open.spotify.com/embed/track/${track.id}`}
+        width='300'
+        height='380'
+        frameBorder='0'
+        allowTransparency='true'
+        allow='encrypted-media'
+      />
       <div className='shadow-lg bg-white mx-4 p-4 sm:mx-0 text-gray-800 mt-4'>
         <h2 className='text-4xl font-bold'>{track.trackName}</h2>
         <p className='text-xl mt-4'>
