@@ -13,6 +13,16 @@ const TrackContents = ({ track }: Props) => {
   const { search } = useContext(StoreContext)
   return (
     <div className='sm:px-4 sm:py-8 max-w-screen-md m-auto'>
+      <div className='aspect-w-1 aspect-h-1'>
+        <iframe
+          src={`https://open.spotify.com/embed/track/${track.id}`}
+          width='300'
+          height='380'
+          frameBorder='0'
+          allowTransparency
+          allow='encrypted-media'
+        />
+      </div>
       <figure className='sm:flex sm:justify-center sm:items-center'>
         <img
           className='sm:w-96 sm:h-96'
@@ -32,14 +42,7 @@ const TrackContents = ({ track }: Props) => {
           </ul>
         </figcaption>
       </figure>
-      <iframe
-        src={`https://open.spotify.com/embed/track/${track.id}`}
-        width='300'
-        height='380'
-        frameBorder='0'
-        allowTransparency
-        allow='encrypted-media'
-      />
+
       <div className='shadow-lg bg-white mx-4 p-4 sm:mx-0 text-gray-800 mt-4'>
         <h2 className='text-4xl font-bold'>{track.trackName}</h2>
         <p className='text-xl mt-4'>
