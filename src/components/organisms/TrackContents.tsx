@@ -37,7 +37,7 @@ const TrackContents = ({ track }: Props) => {
         width='300'
         height='380'
         frameBorder='0'
-        allowTransparency='true'
+        allowTransparency
         allow='encrypted-media'
       />
       <div className='shadow-lg bg-white mx-4 p-4 sm:mx-0 text-gray-800 mt-4'>
