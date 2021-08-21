@@ -119,3 +119,16 @@ export const searchItem = async (searchValue: string, useClientSide?: boolean): 
   }
   return spotifyApi.get(`/search?q=${searchValue}&type=track&market=JP&limit=5`, { headers })
 }
+
+/**
+ * Get an Artist's Related Artists
+ *
+ * https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-an-artists-related-artists
+ */
+export const getRelatedArtists = async (spotifyId: SpotifyId) => {
+  const token = await authInteractor.getTokenFromCookie()
+  const headers = {
+    'Authorization': 'Bearer ' + token,
+  }
+  return spotifyApi.get(`/artists/${spotifyId}/related-artists`, { headers })
+}

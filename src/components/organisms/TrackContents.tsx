@@ -11,6 +11,7 @@ type Props = {
 
 const TrackContents = ({ track }: Props) => {
   const { search } = useContext(StoreContext)
+  console.log(track)
   return (
     <div className='sm:px-4 sm:py-8 max-w-screen-md m-auto'>
       <figure className='sm:flex sm:justify-center sm:items-center'>
@@ -25,7 +26,6 @@ const TrackContents = ({ track }: Props) => {
               src={`https://open.spotify.com/embed/track/${track.id}`}
               width='400'
               height='380'
-              allowTransparency
               allow='encrypted-media'
             />
           </div>
@@ -44,11 +44,11 @@ const TrackContents = ({ track }: Props) => {
         </figcaption>
       </figure>
 
-      <h2 className='text-4xl text-gray-800 font-bold border-b-2 border-gray-700 m-4'>
-        Track Info
-      </h2>
+
       <div className='shadow-lg bg-white mx-4 p-4 sm:mx-0 text-gray-800 mt-4'>
-        <h2 className='text-4xl font-bold'>{track.trackName}</h2>
+        <h2 className='text-4xl text-gray-800 font-bold'>
+          Track Info
+        </h2>
         <p className='text-xl mt-4'>
           <span className='font-bold'>{track.trackName}</span>は
           <span className='font-bold'>{track.releaseDate}</span>にリリースされた
@@ -69,6 +69,23 @@ const TrackContents = ({ track }: Props) => {
         </p>
       </div>
 
+      <div className='shadow-lg bg-white mx-4 sm:mx-0 text-gray-800 mt-4'>
+        <h2 className='text-4xl font-bold'>
+          ファンの間で人気
+        </h2>
+        <div className='flex flex-row justify-center p-2 flex-wrap '>
+          {
+            track.related_artists.map(artist => (
+              <figure className='w-6/12 p-2 sm:w-2/12'>
+                <img className='rounded-full' src={artist.image} alt='' />
+                <figcaption className='text-center'>
+                  {artist.name}
+                </figcaption>
+              </figure>
+            ))
+          }
+        </div>
+      </div>
       <Link href={search ? `/searches?search=${search}` : '/'}>
         <div className='flex cursor-pointer mt-8 justify-center items-center'>
           <Icons icon={'BACK'} />
