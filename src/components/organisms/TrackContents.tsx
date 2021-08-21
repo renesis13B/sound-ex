@@ -13,22 +13,23 @@ const TrackContents = ({ track }: Props) => {
   const { search } = useContext(StoreContext)
   return (
     <div className='sm:px-4 sm:py-8 max-w-screen-md m-auto'>
-      <div className='aspect-w-1 aspect-h-1'>
-        <iframe
-          src={`https://open.spotify.com/embed/track/${track.id}`}
-          width='300'
-          height='380'
-          frameBorder='0'
-          allowTransparency
-          allow='encrypted-media'
-        />
-      </div>
       <figure className='sm:flex sm:justify-center sm:items-center'>
-        {/*<img*/}
-        {/*  className='sm:w-96 sm:h-96'*/}
-        {/*  src={`${track.albumImage}`}*/}
-        {/*  alt={`${track.artistsName} | ${track.trackName}`}*/}
-        {/*/>*/}
+        <div>
+          <img
+            className='sm:w-96 sm:h-96'
+            src={`${track.albumImage}`}
+            alt={`${track.artistsName} | ${track.trackName}`}
+          />
+          <div className='aspect-w-4 aspect-h-1'>
+            <iframe
+              src={`https://open.spotify.com/embed/track/${track.id}`}
+              width='400'
+              height='380'
+              allowTransparency
+              allow='encrypted-media'
+            />
+          </div>
+        </div>
         <figcaption className='px-4 py-8 sm:p-0 sm:ml-8 min-w-0 sm:flex-grow'>
           <h2 className='text-2xl'>
             {track.artistsName}
@@ -43,6 +44,9 @@ const TrackContents = ({ track }: Props) => {
         </figcaption>
       </figure>
 
+      <h2 className='text-4xl text-gray-800 font-bold border-b-2 border-gray-700 m-4'>
+        Track Info
+      </h2>
       <div className='shadow-lg bg-white mx-4 p-4 sm:mx-0 text-gray-800 mt-4'>
         <h2 className='text-4xl font-bold'>{track.trackName}</h2>
         <p className='text-xl mt-4'>
