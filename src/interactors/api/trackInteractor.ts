@@ -1,12 +1,13 @@
 import { SpotifyId } from '../../models/spotify'
-import { getAudioFeature, getTrack } from './spotifyInteractor'
+import { getAudioFeature, getRelatedArtists, getTrack } from './spotifyInteractor'
 import trackMapper from '../mapper/trackMapper'
 
 const trackInteractor = {
   async getTrack(spotifyId: SpotifyId) {
     const track = await getTrack(spotifyId)
     const audioFeature = await getAudioFeature(spotifyId)
-    return trackMapper(track.data, audioFeature.data)
+    const artists = await getRelatedArtists(track.data.artists[0].id)
+    return trackMapper(track.data, audioFeature.data, artists.data)
   },
 }
 

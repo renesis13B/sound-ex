@@ -1,11 +1,13 @@
-import { MultipleAudioFeaturesResponse, SingleTrackResponse } from '../../models/spotify'
+import { ArtistsRelatedArtistsResponse, MultipleAudioFeaturesResponse, SingleTrackResponse } from '../../models/spotify'
 import { Track } from '../../models/track'
 import moment from 'moment'
+import artistsMapper from './artistsMapper'
 
 
 const trackMapper = (
   track: SingleTrackResponse,
   audioFeatures: MultipleAudioFeaturesResponse,
+  artists: ArtistsRelatedArtistsResponse,
 ): Track => ({
   id: track.id,
   trackName: track.name,
@@ -20,6 +22,7 @@ const trackMapper = (
   key: audioFeatures.audio_features[0].key,
   bpm: Math.round(audioFeatures.audio_features[0].tempo),
   spotify_url: track.external_urls.spotify,
+  related_artists: artistsMapper(artists),
 })
 
 export default trackMapper

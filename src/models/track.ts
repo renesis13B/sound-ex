@@ -1,3 +1,5 @@
+import { Artist } from './artist'
+
 export type TrackSimplified = Readonly<{
   // トラックのSpotifyID
   id: SpotifyApi.TrackObjectSimplified['id']
@@ -20,4 +22,6 @@ export type Track = TrackSimplified & Readonly<{
   energy: SpotifyApi.AudioFeaturesObject['energy']
   // トラックの推定全体的な拍子記号
   time_signature: SpotifyApi.AudioFeaturesObject['time_signature']
+  // artistsNameから取得した関連アーティストの集まり
+  related_artists: Artist[]
 }>
