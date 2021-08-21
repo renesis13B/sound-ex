@@ -12,7 +12,7 @@ type StoreAction =
   | { type: 'SET_TRACKS', payload: TrackSimplified[] }
   | { type: 'SET_SEARCH', payload: string }
 
-type StoreContextType = StoreState & {dispatch: Dispatch<StoreAction>}
+export type StoreContextType = StoreState & { dispatch: Dispatch<StoreAction> }
 
 const reducer = (state: StoreState, action: StoreAction) => {
   switch (action.type) {
