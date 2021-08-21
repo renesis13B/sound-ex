@@ -4,6 +4,7 @@ import { useContext } from 'react'
 import { StoreContext } from '../../contexts/StoreContext'
 import Link from 'next/link'
 import Icons from '../atoms/Icons'
+import AvatarWrap from '../molecules/AvatarWrap'
 
 type Props = {
   track: Track
@@ -75,14 +76,7 @@ const TrackContents = ({ track }: Props) => {
         </h2>
         <div className='flex flex-row justify-center p-2 flex-wrap '>
           {
-            track.related_artists.map(artist => (
-              <figure className='w-6/12 p-2 sm:w-2/12'>
-                <img className='rounded-full' src={artist.image} alt='' />
-                <figcaption className='text-center'>
-                  {artist.name}
-                </figcaption>
-              </figure>
-            ))
+            track.related_artists.map(artists => <AvatarWrap key={artists.id} avatar={artists} />)
           }
         </div>
       </div>
