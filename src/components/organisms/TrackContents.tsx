@@ -5,14 +5,22 @@ import { StoreContext } from '../../contexts/StoreContext'
 import Link from 'next/link'
 import Icons from '../atoms/Icons'
 import AvatarWrap from '../molecules/AvatarWrap'
+import { useRouter } from 'next/router'
 
 type Props = {
   track: Track
 }
 
 const TrackContents = ({ track }: Props) => {
-  const { search } = useContext(StoreContext)
-  console.log(track)
+  const { search, dispatch } = useContext(StoreContext)
+  const router = useRouter()
+  const pushArtistSearchIndex = () => {
+    dispatch({ type: 'SET_SEARCH', payload: track.artistsName })
+    router.push({
+      pathname: '/searches',
+      query: { search: `${track.artistsName}` },
+    })
+  }
   return (
     <div className='sm:px-4 sm:py-8 max-w-screen-md m-auto'>
       <figure className='sm:flex sm:justify-center sm:items-center'>
@@ -33,7 +41,7 @@ const TrackContents = ({ track }: Props) => {
         </div>
         <figcaption className='px-4 py-8 sm:p-0 sm:ml-8 min-w-0 sm:flex-grow'>
           <h2 className='text-2xl'>
-            {track.artistsName}
+            <span onClick={pushArtistSearchIndex} className='cursor-pointer'>{track.artistsName}</span>
             <span className='text-4xl font-bold block'>{track.trackName}</span>
           </h2>
           <ul>
@@ -53,7 +61,8 @@ const TrackContents = ({ track }: Props) => {
         <p className='text-xl mt-4'>
           <span className='font-bold'>{track.trackName}</span>は
           <span className='font-bold'>{track.releaseDate}</span>にリリースされた
-          <span className='font-bold'>{track.artistsName}</span>の楽曲です。<br />
+          <span onClick={pushArtistSearchIndex} className='font-bold cursor-pointer'>{track.artistsName}</span>
+          の楽曲です。<br />
           この楽曲のデータは以下の通りとなります。<br />
           キー：<span className='font-bold'>{track.key}</span>、
           再生時間：<span className='font-bold'>{track.duration}</span>、
