@@ -1,11 +1,12 @@
 import Layout from '../../components/templates/Layout'
+import { searchItem } from '../../interactors/api/spotifyInteractor'
 
 
 const TestIndex = () => {
-  // artistInteractor.getRelatedArtists('18Zr9CaElvS40S0AtizMWZ').then(r => console.log(r))
+  searchItem('BTS', true).then(r => console.log(r.data))
   return (
     <Layout title='sas'>
-      <p>sasa</p>
+      <p>sasaa</p>
     </Layout>
   )
 }
