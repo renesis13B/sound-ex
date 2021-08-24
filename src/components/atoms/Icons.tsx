@@ -1,7 +1,7 @@
 import React from 'react'
 
 type Props = {
-  icon: 'SEARCH' | 'SPOTIFY' | 'BACK'
+  icon: 'SEARCH' | 'SPOTIFY' | 'BACK' | 'LOGO'
 }
 
 const Icons = ({ icon }: Props) => {
@@ -43,6 +43,22 @@ const Icons = ({ icon }: Props) => {
             fillRule='evenodd'
             d='M15.707 15.707a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 010 1.414zm-6 0a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 011.414 1.414L5.414 10l4.293 4.293a1 1 0 010 1.414z'
             clipRule='evenodd'
+          />
+        </svg>
+      )
+    case 'LOGO':
+      return (
+        <svg
+          className='w-7 h-7 text-deep-purple-900'
+          stroke='currentColor'
+          viewBox='0 0 52 52'
+        >
+          <polygon
+            strokeWidth='3'
+            strokeLinecap='round'
+            strokeLinejoin='round'
+            fill='none'
+            points='29 13 14 29 25 29 23 39 38 23 27 23'
           />
         </svg>
       )

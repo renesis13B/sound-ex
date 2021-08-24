@@ -8,11 +8,11 @@ const useSearchInteractor = () => {
   const [response, setResponse] = useState<TrackSimplified[]>([])
   const [error, setError] = useState(null)
   const router = useRouter()
-  const { search } = router.query
+  const { search, type } = router.query
   const fetch = async () => {
-    if (typeof search === 'string') {
+    if (typeof search === 'string' && (type === 'track' || type === 'artist')) {
       try {
-        const tracks = await searchItem(search, true)
+        const tracks = await searchItem(search, type, true)
         const trackIds = tracks.data.tracks.items.map(track => track.id).join('%2C')
         const audioFeatures = await getAudioFeatures(trackIds, true)
         setResponse(searchMapper(tracks.data.tracks.items, audioFeatures.data))

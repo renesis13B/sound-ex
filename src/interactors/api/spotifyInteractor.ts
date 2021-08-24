@@ -15,6 +15,8 @@ export type GetAudioFeaturesResponse = AxiosResponse<MultipleAudioFeaturesRespon
 export type GetAudioFeatureResponse = AxiosResponse<MultipleAudioFeaturesResponse>
 export type GetTrackResponse = AxiosResponse<SingleTrackResponse>
 export type SearchItemResponse = AxiosResponse<TrackSearchResponse>
+export type SearchItemValue = string
+export type SearchItemType = 'track' | 'artist'
 
 // Axios Setting
 const spotifyAuthorization = axios.create({
@@ -58,7 +60,7 @@ export const getPlaylists = async (): Promise<GetPlaylistsResponse> => {
     'Accept-Language': 'ja;q=1',
   }
   const fields = 'items(track(id,name,duration_ms,external_urls(spotify),album(images,artists(name))))'
-  const limit = 'limit=5'
+  const limit = 'limit=20'
   return await spotifyApi.get(`/playlists/${process.env.NEXT_PUBLIC_SPOTIFY_PLAYLIST_ID}/tracks/?fields=${fields}&${limit}`, { headers })
 }
 
@@ -111,13 +113,14 @@ export const getTrack = async (spotifyId: SpotifyId): Promise<GetTrackResponse> 
  *
  * https://developer.spotify.com/documentation/web-api/reference/#endpoint-search
  */
-export const searchItem = async (searchValue: string, useClientSide?: boolean): Promise<SearchItemResponse> => {
+export const searchItem = async (searchValue: SearchItemValue, type: SearchItemType, useClientSide?: boolean): Promise<SearchItemResponse> => {
   // NOTE: 現状、サーバー or クライアントでtokenの取得方法が異なるので第２引数の有無で分ける
   const token = useClientSide ? await authInteractor.getTokenFromCookie() : await getTokenFromSpotify()
   const headers = {
     'Authorization': 'Bearer ' + token,
   }
-  return spotifyApi.get(`/search?q=${searchValue}&type=track&market=JP&limit=5`, { headers })
+  const limit = type === 'track' ? 10 : type === 'artist' ? 30 : 0
+  return spotifyApi.get(`/search?q=${searchValue}&type=track&market=JP&limit=${limit}`, { headers })
 }
 
 /**
