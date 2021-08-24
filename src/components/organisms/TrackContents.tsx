@@ -18,7 +18,7 @@ const TrackContents = ({ track }: Props) => {
     dispatch({ type: 'SET_SEARCH', payload: track.artistsName })
     router.push({
       pathname: '/searches',
-      query: { search: `${track.artistsName}` },
+      query: { search: `${track.artistsName}`, type: 'artist' },
     })
   }
   return (
