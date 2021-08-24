@@ -7,6 +7,7 @@ const trackInteractor = {
     const track = await getTrack(spotifyId)
     const audioFeature = await getAudioFeature(spotifyId)
     const artists = await getRelatedArtists(track.data.artists[0].id)
+    console.log(artists.data.artists[2])
     return trackMapper(track.data, audioFeature.data, artists.data)
   },
 }

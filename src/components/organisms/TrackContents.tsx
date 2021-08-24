@@ -4,8 +4,8 @@ import { useContext } from 'react'
 import { StoreContext } from '../../contexts/StoreContext'
 import Link from 'next/link'
 import Icons from '../atoms/Icons'
-import AvatarWrap from '../molecules/AvatarWrap'
 import { useRouter } from 'next/router'
+import AvatarWrap from '../molecules/AvatarWrap'
 
 type Props = {
   track: Track
@@ -83,7 +83,7 @@ const TrackContents = ({ track }: Props) => {
         <h2 className='text-4xl font-bold'>
           ファンの間で人気
         </h2>
-        <div className='flex flex-row justify-center p-2 flex-wrap'>
+        <div className='flex flex-row justify-between p-2 flex-wrap'>
           {
             track.related_artists.map(artists => <AvatarWrap key={artists.id} avatar={artists} />)
           }
