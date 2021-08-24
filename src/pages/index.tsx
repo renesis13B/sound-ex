@@ -12,7 +12,8 @@ const Index = ({ tracks }: Props) => {
   const { dispatch } = useContext(StoreContext)
   useEffect(() => {
     dispatch({ type: 'SET_SEARCH', payload: '' })
-  }, [])
+    // TODO: 調べて修正する
+  }, [])// eslint-disable-line react-hooks/exhaustive-deps
 
   const title = {
     main: 'Top 20 Japan',

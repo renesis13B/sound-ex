@@ -14,7 +14,7 @@ const AvatarWrap = ({ avatar }: Avatar) => {
     dispatch({ type: 'SET_SEARCH', payload: avatar.name })
     router.push({
       pathname: '/searches',
-      query: { search: `${avatar.name}` },
+      query: { search: `${avatar.name}`, type: 'artist' },
     })
   }
   return (
