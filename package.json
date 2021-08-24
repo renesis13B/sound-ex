@@ -14,7 +14,7 @@
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "axios": "^0.21.1",
     "moment": "^2.29.1",
-    "next": "10.2.0",
+    "next": "^11.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "tailwindcss-pseudo-elements": "^2.0.0",
@@ -24,18 +24,18 @@
     "@types/node": "^15.0.3",
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.5",
-    "@types/spotify-api": "^0.0.8",
-    "@typescript-eslint/eslint-plugin": "^4.23.0",
-    "@typescript-eslint/parser": "^4.23.0",
+    "@types/spotify-api": "^0.0.11",
+    "@typescript-eslint/eslint-plugin": "^4.29.3",
+    "@typescript-eslint/parser": "^4.29.3",
     "autoprefixer": "^10.2.5",
-    "eslint": "^7.26.0",
+    "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "postcss": "^8.3.6",
     "prettier": "^2.3.0",
     "tailwindcss": "^2.2.7",
-    "typescript": "^4.2.4"
+    "typescript": "^4.3.5"
   }
 }
