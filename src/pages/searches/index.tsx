@@ -6,7 +6,7 @@ import { StoreContext } from '../../contexts/StoreContext'
 
 
 const SearchesIndex = () => {
-  const [response, error] = useSearchInteractor()
+  const [response] = useSearchInteractor()
   const { search } = useContext(StoreContext)
   const title = {
     main: 'Search',
