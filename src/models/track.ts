@@ -1,4 +1,5 @@
 import { Artist } from './artist'
+import { ConvertPitchIntoSymbol } from '../utils/convertPitchIntoSymbol'
 
 export type TrackSimplified = Readonly<{
   // トラックのSpotifyID
@@ -7,7 +8,7 @@ export type TrackSimplified = Readonly<{
   albumImage: SpotifyApi.ImageObject['url']
   artistsName: SpotifyApi.ArtistObjectSimplified['name']
   bpm: SpotifyApi.AudioFeaturesObject['tempo']
-  key: SpotifyApi.AudioFeaturesObject['key']
+  key: ConvertPitchIntoSymbol
   duration: string
   // トラックのSpotifyリンクURL
   spotify_url: SpotifyApi.TrackObjectSimplified['external_urls']['spotify']

@@ -9,3 +9,4 @@ export type ArtistsRelatedArtistsResponse = SpotifyApi.ArtistsRelatedArtistsResp
 
 // Spotify Object
 export type TrackObjectFull = SpotifyApi.TrackObjectFull
+export type KeyOfAudioFeatures = SpotifyApi.AudioFeaturesObject['key']
