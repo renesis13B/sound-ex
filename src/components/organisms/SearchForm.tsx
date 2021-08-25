@@ -28,7 +28,7 @@ const SearchForm = () => {
         onChange={e => setInputValue(e.target.value)}
         value={inputValue}
         required
-        placeholder='好きな曲を検索 ex: 夜に駆ける'
+        placeholder='好きな曲を検索'
         className='w-full p-2 sm:p-3 rounded shadow outline-none search-caret'
       />
       <button

@@ -14,8 +14,12 @@ const TrackSimplifiedCard = ({ trackSimplifiedCard }: Props) => {
           className='flex flex-col md:flex-row md:justify-between md:items-center cursor-pointer px-3 pt-3 hover:bg-gray-100'>
           <div className='flex'>
             <div className='block mr-4'>
-              <figure className='w-16 h-16 bg-center bg-cover border border-gray-100'>
-                <img className='rounded-lg' src={trackSimplifiedCard.albumImage} alt='' />
+              <figure>
+                <img
+                  className='rounded-lg w-16 h-16'
+                  src={trackSimplifiedCard.albumImage}
+                  alt={`${trackSimplifiedCard.artistsName} - ${trackSimplifiedCard.trackName}`}
+                />
               </figure>
             </div>
             <div className='flex-1 text-gray-800'>
