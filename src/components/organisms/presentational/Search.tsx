@@ -1,5 +1,5 @@
 import React, { VFC } from 'react'
-import Icons from '../atoms/Icons'
+import { Icons } from '../../atoms/Icons'
 
 type Props = {
   searchValue: string

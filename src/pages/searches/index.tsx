@@ -1,23 +1,21 @@
 import Layout from '../../components/templates/Layout'
 import useSearchInteractor from '../../interactors/api/useSearchInteractor'
-import IndexContents from '../../components/organisms/IndexContents'
-import { useContext } from 'react'
+import TrackIndex from '../../components/organisms/presentational/TrackIndex'
+import { useContext, VFC } from 'react'
 import { StoreContext } from '../../contexts/StoreContext'
 
 
-const SearchesIndex = () => {
+const SearchesIndex: VFC = () => {
   const [response] = useSearchInteractor()
   const { search } = useContext(StoreContext)
-  const title = {
+  const heading = {
     main: 'Search',
     sub: `検索結果： ${search}`,
   }
 
   return (
     <Layout title={`SOUND EX - Search 検索結果： ${search}`}>
-      <section className='px-4 py-8'>
-        {response && <IndexContents tracks={response} title={title} />}
-      </section>
+      {response && <TrackIndex tracks={response} heading={heading} />}
     </Layout>
   )
 }

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Icons from './Icons'
+import { Icons } from './Icons'
 import React from 'react'
 
 const Title = React.memo(() => (

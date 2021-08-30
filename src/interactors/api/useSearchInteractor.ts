@@ -1,6 +1,6 @@
 import { getAudioFeatures, searchItem } from './spotifyInteractor'
 import { useEffect, useState } from 'react'
-import { TrackSimplified } from '../../models/track'
+import { TrackSimplified } from '../../types/track'
 import { useRouter } from 'next/router'
 import searchMapper from '../mapper/searchMapper'
 

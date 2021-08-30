@@ -1,4 +1,4 @@
-import { KeyOfAudioFeatures } from '../models/spotify'
+import { KeyOfAudioFeatures } from '../types/spotify'
 
 type SoundSymbol = 'C' | 'C♯/D♭' | 'D' | 'D♯/E♭' | 'E' | 'F' | 'F♯/G♭' | 'G' |
   'G♯/A♭' | 'A' | 'A♯/B♭' | 'B' | '-'

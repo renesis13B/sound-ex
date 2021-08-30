@@ -1,4 +1,4 @@
-import { Artist } from '../../models/artist'
+import { Artist } from '../../types/artist'
 import { useRouter } from 'next/router'
 import { useContext } from 'react'
 import { StoreContext } from '../../contexts/StoreContext'

@@ -18,12 +18,12 @@ const FooterContent: VFC = () => (
           />
         </svg>
       </div>
-      <span className='ml-2 text-xl font-bold tracking-wide text-gray-100'>
+      <span className='ml-2 text-xl font-bold tracking-wide'>
           SOUND EX
         </span>
     </div>
     <div className='pt-4 border-t border-deep-purple-accent-200'>
-      <p className='text-xs text-gray-100'>
+      <p className='text-xs'>
         © Copyright 2021 SOUND EX All rights reserved.
       </p>
     </div>

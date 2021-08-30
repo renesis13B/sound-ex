@@ -1,4 +1,4 @@
-import { SpotifyId } from '../../models/spotify'
+import { SpotifyId } from '../../types/spotify'
 import { getAudioFeature, getRelatedArtists, getTrack } from './spotifyInteractor'
 import trackMapper from '../mapper/trackMapper'
 

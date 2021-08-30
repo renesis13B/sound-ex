@@ -1,7 +1,7 @@
-import { TrackSimplified } from '../../models/track'
-import { Playlist } from '../../models/playlist'
+import { TrackSimplified } from '../../types/track'
+import { Playlist } from '../../types/playlist'
 import moment from 'moment'
-import { MultipleAudioFeaturesResponse, TrackObjectFull } from '../../models/spotify'
+import { MultipleAudioFeaturesResponse, TrackObjectFull } from '../../types/spotify'
 import { convertPitchIntoSymbol } from '../../utils/convertPitchIntoSymbol'
 
 

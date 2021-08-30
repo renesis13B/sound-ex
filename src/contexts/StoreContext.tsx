@@ -1,7 +1,7 @@
 import { createContext, Dispatch, ReactNode, useReducer } from 'react'
-import { Track, TrackSimplified } from '../models/track'
+import { Track, TrackSimplified } from '../types/track'
 
-type StoreState = {
+export type StoreState = {
   search: string
   track: Track
   tracks: TrackSimplified[]

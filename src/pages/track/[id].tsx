@@ -3,20 +3,28 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import playlistInteractor from '../../interactors/api/playlistInteractor'
 import trackInteractor from '../../interactors/api/trackInteractor'
 import { useRouter } from 'next/router'
-import TrackContents from '../../components/organisms/TrackContents'
+import TrackView from '../../components/organisms/presentational/TrackView'
+import { useContext, VFC } from 'react'
+import { StoreContext } from '../../contexts/StoreContext'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
-const Track = ({ track }: Props) => {
+const Track: VFC<Props> = ({ track }: Props) => {
+  const { search, dispatch } = useContext(StoreContext)
+  const searchArtist = () => {
+    dispatch({ type: 'SET_SEARCH', payload: track.artistsName })
+    router.push({
+      pathname: '/searches',
+      query: { search: `${track.artistsName}`, type: 'artist' },
+    })
+  }
   const router = useRouter()
   if (router.isFallback || !track) {
     return <div>Loading...</div>
   }
   return (
     <Layout title={`SOUND EX - ${track.trackName} ${track.artistsName}`}>
-      <article>
-        <TrackContents track={track} />
-      </article>
+      <TrackView track={track} searchArtist={searchArtist} search={search} />
     </Layout>
   )
 }

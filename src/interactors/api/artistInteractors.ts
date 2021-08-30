@@ -1,5 +1,5 @@
 import { getRelatedArtists } from './spotifyInteractor'
-import { SpotifyId } from '../../models/spotify'
+import { SpotifyId } from '../../types/spotify'
 import artistsMapper from '../mapper/artistsMapper'
 
 const artistInteractor = {

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, VFC } from 'react'
-import Search from '../Search'
+import Search from '../presentational/Search'
 import { StoreContext } from '../../../contexts/StoreContext'
 import { useRouter } from 'next/router'
 
