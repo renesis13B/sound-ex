@@ -1,5 +1,5 @@
-import { ArtistsRelatedArtistsResponse } from '../../models/spotify'
-import { Artist } from '../../models/artist'
+import { ArtistsRelatedArtistsResponse } from '../../types/spotify'
+import { Artist } from '../../types/artist'
 
 type Artists = ArtistsRelatedArtistsResponse
 

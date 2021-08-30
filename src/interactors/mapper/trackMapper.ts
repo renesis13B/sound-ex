@@ -1,5 +1,5 @@
-import { ArtistsRelatedArtistsResponse, MultipleAudioFeaturesResponse, SingleTrackResponse } from '../../models/spotify'
-import { Track } from '../../models/track'
+import { ArtistsRelatedArtistsResponse, MultipleAudioFeaturesResponse, SingleTrackResponse } from '../../types/spotify'
+import { Track } from '../../types/track'
 import moment from 'moment'
 import artistsMapper from './artistsMapper'
 import { convertPitchIntoSymbol } from '../../utils/convertPitchIntoSymbol'

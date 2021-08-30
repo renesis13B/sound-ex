@@ -1,14 +1,14 @@
 import axios, { AxiosResponse } from 'axios'
-import { Playlist } from '../../models/playlist'
+import { Playlist } from '../../types/playlist'
 import {
   MultipleAudioFeaturesResponse,
   SingleTrackResponse,
   SpotifyId,
   TrackSearchResponse,
-} from '../../models/spotify'
+} from '../../types/spotify'
 import { Buffer } from 'buffer'
 import authInteractor from './authInteractors'
-import { AcsessToken } from '../../models/accessToken'
+import { AcsessToken } from '../../types/accessToken'
 
 export type GetPlaylistsResponse = AxiosResponse<{ items: Playlist[] }>
 export type GetAudioFeaturesResponse = AxiosResponse<MultipleAudioFeaturesResponse>

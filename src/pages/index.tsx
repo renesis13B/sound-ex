@@ -1,29 +1,28 @@
 import Layout from '../components/templates/Layout'
 import { InferGetStaticPropsType } from 'next'
 import playlistInteractor from '../interactors/api/playlistInteractor'
-import IndexContents from '../components/organisms/IndexContents'
-import { useContext, useEffect } from 'react'
+import TrackIndex from '../components/organisms/presentational/TrackIndex'
+import { useContext, useEffect, VFC } from 'react'
 import { StoreContext } from '../contexts/StoreContext'
-
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
-const Index = ({ tracks }: Props) => {
-  const { dispatch } = useContext(StoreContext)
+const Index: VFC<Props> = ({ tracks }) => {
+  const { search, dispatch } = useContext(StoreContext)
   useEffect(() => {
-    dispatch({ type: 'SET_SEARCH', payload: '' })
-    // TODO: 調べて修正する
-  }, [])// eslint-disable-line react-hooks/exhaustive-deps
+    if (search !== '') {
+      dispatch({ type: 'SET_SEARCH', payload: '' })
+    }
+  }, [])
 
-  const title = {
+  const heading = {
     main: 'Top 20 Japan',
     sub: '日本で今一番再生回数が多い曲',
   }
+
   return (
     <Layout title='SOUND EX'>
-      <section className='px-4 py-8'>
-        {tracks && <IndexContents tracks={tracks} title={title} />}
-      </section>
+      {tracks && <TrackIndex tracks={tracks} heading={heading} />}
     </Layout>
   )
 }

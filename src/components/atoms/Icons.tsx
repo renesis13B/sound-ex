@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { VFC } from 'react'
+
+export type IconType = 'SEARCH' | 'SPOTIFY' | 'BACK' | 'LOGO'
 
 type Props = {
-  icon: 'SEARCH' | 'SPOTIFY' | 'BACK' | 'LOGO'
+  icon: IconType
 }
 
-const Icons = ({ icon }: Props) => {
+export const Icons: VFC<Props> = ({ icon }) => {
   switch (icon) {
     case 'SEARCH':
       return (
@@ -64,5 +66,3 @@ const Icons = ({ icon }: Props) => {
       )
   }
 }
-
-export default Icons
