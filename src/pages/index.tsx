@@ -3,12 +3,12 @@ import { InferGetStaticPropsType } from 'next'
 import playlistInteractor from '../interactors/api/playlistInteractor'
 import TrackIndex from '../components/organisms/presentational/TrackIndex'
 import { useContext, useEffect, VFC } from 'react'
-import { StoreContext } from '../contexts/StoreContext'
+import { SearchContext } from '../contexts/SearchContext'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 const Index: VFC<Props> = ({ tracks }) => {
-  const { search, dispatch } = useContext(StoreContext)
+  const { search, dispatch } = useContext(SearchContext)
   useEffect(() => {
     if (search !== '') {
       dispatch({ type: 'SET_SEARCH', payload: '' })

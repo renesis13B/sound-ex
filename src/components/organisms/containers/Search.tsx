@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState, VFC } from 'react'
 import Search from '../presentational/Search'
-import { StoreContext } from '../../../contexts/StoreContext'
+import { SearchContext } from '../../../contexts/SearchContext'
 import { useRouter } from 'next/router'
 
 const EnhancedSearch: VFC = () => {
   const [searchValue, setSearchValue] = useState('')
-  const { search, dispatch } = useContext(StoreContext)
+  const { search, dispatch } = useContext(SearchContext)
   const router = useRouter()
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()

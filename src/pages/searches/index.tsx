@@ -2,12 +2,12 @@ import Layout from '../../components/templates/Layout'
 import useSearchInteractor from '../../interactors/api/useSearchInteractor'
 import TrackIndex from '../../components/organisms/presentational/TrackIndex'
 import { useContext, VFC } from 'react'
-import { StoreContext } from '../../contexts/StoreContext'
+import { SearchContext } from '../../contexts/SearchContext'
 
 
 const SearchesIndex: VFC = () => {
   const [response] = useSearchInteractor()
-  const { search } = useContext(StoreContext)
+  const { search } = useContext(SearchContext)
   const heading = {
     main: 'Search',
     sub: `検索結果： ${search}`,
