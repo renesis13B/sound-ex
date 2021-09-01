@@ -5,14 +5,13 @@ import trackInteractor from '../../interactors/api/trackInteractor'
 import { useRouter } from 'next/router'
 import TrackView from '../../components/organisms/presentational/TrackView'
 import { useContext, VFC } from 'react'
-import { StoreContext } from '../../contexts/StoreContext'
+import { SearchStateContext } from '../../contexts/SearchContext'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 const Track: VFC<Props> = ({ track }: Props) => {
-  const { search, dispatch } = useContext(StoreContext)
+  const { search } = useContext(SearchStateContext)
   const searchArtist = () => {
-    dispatch({ type: 'SET_SEARCH', payload: track.artistsName })
     router.push({
       pathname: '/searches',
       query: { search: `${track.artistsName}`, type: 'artist' },

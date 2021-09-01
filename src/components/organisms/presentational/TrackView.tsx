@@ -1,6 +1,6 @@
 import { Track } from '../../../types/track'
 import { VFC } from 'react'
-import { StoreState } from '../../../contexts/StoreContext'
+import { SearchState } from '../../../contexts/SearchContext'
 import TrackSummary from '../../molecules/TrackSummary'
 import TrackViewCard from '../../molecules/TrackViewCard'
 import TrackDetail from '../../molecules/TrackDetail'
@@ -10,7 +10,7 @@ import LinkGroup from '../../molecules/LinkGroup'
 type Props = {
   track: Track
   searchArtist: () => void
-  search: StoreState['search']
+  search: SearchState['search']
 }
 
 const TrackView: VFC<Props> = ({ track, search, searchArtist }) => {

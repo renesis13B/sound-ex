@@ -1,10 +1,11 @@
 import '../../styles/tailwind.css'
 import '../../styles/tailwind-util.css'
+import NextNprogress from 'nextjs-progressbar'
 import { AppProps } from 'next/app'
-import { StoreContextProvider } from '../contexts/StoreContext'
+import { SearchContextProvider } from '../contexts/SearchContext'
 
 const App = ({ Component, pageProps }: AppProps) => {
-  return <StoreContextProvider><Component {...pageProps} /></StoreContextProvider>
+  return <SearchContextProvider><NextNprogress /><Component {...pageProps} /></SearchContextProvider>
 }
 
 export default App

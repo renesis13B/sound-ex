@@ -1,14 +1,16 @@
 import React, { VFC } from 'react'
 import { Icons } from '../../atoms/Icons'
+import { SearchDispatchContextType } from '../../../contexts/SearchContext'
 
 type Props = {
-  searchValue: string
-  setSearchValue: React.Dispatch<React.SetStateAction<string>>
+  inputValue: string
+  setInputValue: React.Dispatch<React.SetStateAction<string>>
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
+  dispatch: SearchDispatchContextType
 }
 
 const Search: VFC<Props> = (
-  { searchValue, setSearchValue, onSubmit },
+  { inputValue, setInputValue, onSubmit, dispatch },
 ) => (
   <form
     onSubmit={onSubmit}
@@ -16,8 +18,11 @@ const Search: VFC<Props> = (
   >
     <input
       type='text'
-      onChange={e => setSearchValue(e.target.value)}
-      value={searchValue}
+      onChange={e => {
+        setInputValue(e.target.value)
+        dispatch({ type: 'SET_SEARCH', payload: e.target.value })
+      }}
+      value={inputValue}
       required
       placeholder='好きな曲を検索'
       className='w-full p-2 sm:p-3 rounded shadow outline-none search-caret'

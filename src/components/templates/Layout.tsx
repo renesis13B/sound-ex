@@ -14,10 +14,10 @@ const Layout = ({ children, title }:ComponentProps) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <Header />
-      <Main>
-        {children}
-      </Main>
+        <Header />
+        <Main>
+          {children}
+        </Main>
       <Footer />
     </div>
   )
