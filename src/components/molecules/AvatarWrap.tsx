@@ -1,17 +1,13 @@
 import { Artist } from '../../types/artist'
 import { useRouter } from 'next/router'
-import { useContext } from 'react'
-import { SearchContext } from '../../contexts/SearchContext'
 
 type Avatar = {
   avatar: Artist
 }
 
 const AvatarWrap = ({ avatar }: Avatar) => {
-  const { dispatch } = useContext(SearchContext)
   const router = useRouter()
   const pushArtistSearchIndex = () => {
-    dispatch({ type: 'SET_SEARCH', payload: avatar.name })
     router.push({
       pathname: '/searches',
       query: { search: `${avatar.name}`, type: 'artist' },

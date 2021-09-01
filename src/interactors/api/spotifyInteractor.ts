@@ -119,6 +119,7 @@ export const searchItem = async (searchValue: SearchItemValue, type: SearchItemT
   const headers = {
     'Authorization': 'Bearer ' + token,
   }
+  console.log(token)
   const limit = type === 'track' ? 10 : type === 'artist' ? 30 : 0
   return spotifyApi.get(`/search?q=${searchValue}&type=track&market=JP&limit=${limit}`, { headers })
 }

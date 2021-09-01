@@ -6,7 +6,8 @@ export type SearchState = {
 
 type SearchAction = { type: 'SET_SEARCH', payload: string }
 
-export type SearchContextType = SearchState & { dispatch: Dispatch<SearchAction> }
+export type SearchStateContextType = SearchState
+export type SearchDispatchContextType = Dispatch<SearchAction>
 
 const reducer = (state: SearchState, action: SearchAction) => {
   switch (action.type) {
@@ -21,17 +22,18 @@ const initialState: SearchState = {
   search: '',
 }
 
-export const SearchContext = createContext<SearchContextType>(
-  initialState as SearchContextType,
-)
+export const SearchStateContext = createContext<SearchStateContextType>({ search: '' })
+export const SearchDispatchContext = createContext<SearchDispatchContextType>({} as SearchDispatchContextType)
 
 export const SearchContextProvider = ({ children }: { children: ReactNode }) => {
   const [SearchState, dispatch] = useReducer(reducer, initialState)
 
   return (
-    <SearchContext.Provider value={{ ...SearchState, dispatch }}>
-      {children}
-    </SearchContext.Provider>
+    <SearchStateContext.Provider value={{ ...SearchState }}>
+      <SearchDispatchContext.Provider value={dispatch}>
+        {children}
+      </SearchDispatchContext.Provider>
+    </SearchStateContext.Provider>
   )
 }
 

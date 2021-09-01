@@ -2,7 +2,6 @@ import Head from 'next/head'
 import Header from './Header'
 import Footer from './Footer'
 import Main from './Main'
-import { SearchContextProvider } from '../../contexts/SearchContext'
 
 type ComponentProps = {
   children: React.ReactNode;
@@ -15,12 +14,10 @@ const Layout = ({ children, title }:ComponentProps) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <SearchContextProvider>
         <Header />
         <Main>
           {children}
         </Main>
-      </SearchContextProvider>
       <Footer />
     </div>
   )
