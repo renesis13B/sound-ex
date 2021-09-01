@@ -2,31 +2,16 @@ import Layout from '../../components/templates/Layout'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import playlistInteractor from '../../interactors/api/playlistInteractor'
 import trackInteractor from '../../interactors/api/trackInteractor'
-import { useRouter } from 'next/router'
-import TrackView from '../../components/organisms/presentational/TrackView'
-import { useContext, VFC } from 'react'
-import { SearchStateContext } from '../../contexts/SearchContext'
+import { VFC } from 'react'
+import EnhancedTrackView from '../../components/organisms/containers/TrackView'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
-const Track: VFC<Props> = ({ track }: Props) => {
-  const { search } = useContext(SearchStateContext)
-  const searchArtist = () => {
-    router.push({
-      pathname: '/searches',
-      query: { search: `${track.artistsName}`, type: 'artist' },
-    })
-  }
-  const router = useRouter()
-  if (router.isFallback || !track) {
-    return <div>Loading...</div>
-  }
-  return (
-    <Layout title={`SOUND EX - ${track.trackName} ${track.artistsName}`}>
-      <TrackView track={track} searchArtist={searchArtist} search={search} />
-    </Layout>
-  )
-}
+const Track: VFC<Props> = ({ track }: Props) => (
+  <Layout title={`SOUND EX - ${track.trackName} ${track.artistsName}`}>
+    <EnhancedTrackView track={track} />
+  </Layout>
+)
 
 export default Track
 

@@ -6,18 +6,11 @@ import { VFC } from 'react'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
-const Index: VFC<Props> = ({ tracks }) => {
-  const heading = {
-    main: 'Top 20 Japan',
-    sub: '日本で今一番再生回数が多い曲',
-  }
-
-  return (
-    <Layout title='SOUND EX'>
-      {tracks && <TrackIndex tracks={tracks} heading={heading} />}
-    </Layout>
-  )
-}
+const Index: VFC<Props> = ({ tracks }) => (
+  <Layout title='SOUND EX'>
+    {tracks && <TrackIndex tracks={tracks} heading={{ main: 'Top 20 Japan', sub: '日本で今一番再生回数が多い曲' }} />}
+  </Layout>
+)
 
 export default Index
 
