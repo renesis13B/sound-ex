@@ -6,7 +6,7 @@ type Props = {
 }
 
 const TrackViewCard: FC<Props> = ({ children, heading }) => (
-  <div className='shadow-lg bg-white mx-4 p-4 sm:mx-0 text-gray-800 mt-4'>
+  <div className='shadow-lg bg-white mx-4 p-4 sm:mx-0 text-gray-800 mt-8'>
     <h2 className='text-4xl font-bold'>
       {heading}
     </h2>

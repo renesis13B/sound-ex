@@ -1,6 +1,7 @@
 import TrackLabel from '../atoms/TrackLabel'
 import { Track } from '../../types/track'
 import { VFC } from 'react'
+import { Icons } from '../atoms/Icons'
 
 type Props = {
   track: Track
@@ -9,32 +10,37 @@ type Props = {
 
 const TrackSummary: VFC<Props> = ({ track, searchArtist }) => (
   <figure className='sm:flex sm:justify-center sm:items-center'>
-    <div>
+    <div className='sm:w-1/2'>
       <img
-        className='sm:w-96 sm:h-96'
+        className=''
         src={`${track.albumImage}`}
         alt={`${track.artistsName} | ${track.trackName}`}
       />
-      <div className='aspect-w-4 aspect-h-1'>
+      <div className='w-full h-20'>
         <iframe
           src={`https://open.spotify.com/embed/track/${track.id}`}
-          width='400'
-          height='380'
+          width='100%'
+          height='80'
           allow='encrypted-media'
         />
       </div>
     </div>
-    <figcaption className='px-4 py-8 sm:p-0 sm:ml-8 min-w-0 sm:flex-grow'>
+    <figcaption className='px-4 py-8 sm:py-0 sm:px-8 min-w-0 sm:w-1/2'>
       <h2 className='text-2xl'>
-        <span onClick={searchArtist} className='cursor-pointer'>{track.artistsName}</span>
+        <span onClick={searchArtist} className='cursor-pointer relative border-b-2 border-black hover:text-gray-500'>
+          {track.artistsName}
+          <span className='absolute -top-1 -right-4'>
+            <Icons icon={'LINK'} />
+          </span>
+        </span>
         <span className='text-4xl font-bold block'>{track.trackName}</span>
       </h2>
-      <ul>
-        <TrackLabel heading={'Release'} date={track.releaseDate} />
-        <TrackLabel heading={'KEY'} date={track.key} />
-        <TrackLabel heading={'再生時間'} date={track.duration} />
+      <dl className='mt-4 flex flex-wrap flex-col'>
+        <TrackLabel heading={'Key'} date={track.key} />
+        <TrackLabel heading={'Time'} date={track.duration} />
         <TrackLabel heading={'BPM'} date={track.bpm} />
-      </ul>
+        <TrackLabel heading={'Release'} date={track.releaseDate} />
+      </dl>
     </figcaption>
   </figure>
 )

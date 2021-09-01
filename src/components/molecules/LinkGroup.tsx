@@ -12,12 +12,14 @@ type props = {
 
 const LinkGroup: VFC<props> = ({ linkGroup }) => (
   <div>
-    <Link href={linkGroup.href}>
-      <div className='flex cursor-pointer mt-8 justify-center items-center'>
-        <Icons icon={linkGroup.icon} />
-        <span>{linkGroup.text}</span>
-      </div>
-    </Link>
+    <div className='text-center mt-8'>
+      <Link href={linkGroup.href}>
+        <span className='cursor-pointer'>
+          <Icons icon={linkGroup.icon} />
+          <span>{linkGroup.text}</span>
+        </span>
+      </Link>
+    </div>
   </div>
 )
 
