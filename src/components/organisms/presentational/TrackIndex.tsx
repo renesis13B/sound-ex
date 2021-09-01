@@ -5,7 +5,7 @@ import TrackCardLists from './TrackCardLists'
 
 type Props = {
   tracks?: TrackSimplified[]
-  error?: Error
+  error?: string
   heading: HeadingText
 }
 
