@@ -8,7 +8,7 @@ import EnhancedTrackView from '../../components/organisms/containers/TrackView'
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 const Track: VFC<Props> = ({ track }: Props) => (
-  <Layout title={`SOUND EX - ${track.trackName} ${track.artistsName}`}>
+  <Layout title={'SOUND EX - トラック詳細'}>
     <EnhancedTrackView track={track} />
   </Layout>
 )

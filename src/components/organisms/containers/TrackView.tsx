@@ -17,7 +17,12 @@ const EnhancedTrackView: VFC<Props> = ({ track }) => {
       query: { search: `${track.artistsName}`, type: 'artist' },
     })
   }
-  return <TrackView track={track} searchArtist={searchArtist} search={search} />
+  return (
+    <>
+      {(!router.isFallback && track)
+      && <TrackView track={track} search={search} searchArtist={searchArtist} />}
+    </>
+  )
 }
 
 export default EnhancedTrackView
