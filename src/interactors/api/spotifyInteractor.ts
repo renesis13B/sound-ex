@@ -27,6 +27,33 @@ const spotifyApi = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_SPOTIFY_END_POINT_URL}`,
 })
 
+const tryReLogin = async () => {
+  return new Promise((resolve) => {
+    const newToken = getTokenFromSpotify()
+    console.log('tryReLogin')
+    resolve(newToken)
+  })
+}
+
+const handleExpiredTokenRejectedInterceptor = async (error: any) => {
+  const { response } = error
+  const statusCode = response?.status
+
+  if (statusCode === 401 && !error.config.isRetry) {
+    const { config } = error
+    return tryReLogin().then((newToken) => {
+      const headers = {
+        ...config.headers,
+        'Authorization': `Bearer ${newToken}`,
+      }
+      return axios.request({ ...config, headers, isRetry: true })
+    })
+  }
+  return Promise.reject(error)
+}
+
+spotifyApi.interceptors.response.use(undefined, handleExpiredTokenRejectedInterceptor)
+
 const urlencoded = new URLSearchParams()
 urlencoded.append('grant_type', 'client_credentials')
 
@@ -119,7 +146,6 @@ export const searchItem = async (searchValue: SearchItemValue, type: SearchItemT
   const headers = {
     'Authorization': 'Bearer ' + token,
   }
-  console.log(token)
   const limit = type === 'track' ? 10 : type === 'artist' ? 30 : 0
   return spotifyApi.get(`/search?q=${searchValue}&type=track&market=JP&limit=${limit}`, { headers })
 }
