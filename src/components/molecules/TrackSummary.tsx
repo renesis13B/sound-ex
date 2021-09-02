@@ -11,8 +11,8 @@ const TrackSummary: VFC<Props> = ({ track, searchArtist }) => (
   <figure className='sm:flex sm:justify-center sm:items-center'>
     <div className='w-full sm:w-1/2'>
       <img
-        width='640'
-        height='640'
+        width='100%'
+        height='368'
         src={`${track.albumImage}`}
         alt={`${track.artistsName} | ${track.trackName}`}
       />
