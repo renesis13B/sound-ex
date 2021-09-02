@@ -11,7 +11,7 @@ type Props = {
 }
 
 const TrackView: VFC<Props> = ({ track }) => (
-  <Layout title={`SOUND EX - ${track.artistsName} | ${track.trackName}`}>
+  <Layout title={`SOUND EX - ${track?.artistsName} | ${track?.trackName}`}>
     <EnhancedTrackView track={track} />
   </Layout>
 )
