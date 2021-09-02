@@ -8,13 +8,13 @@ const useSearchTracks = () => {
   const [tracks, setTracks] = useState<TrackSimplified[]>()
   const [error, setError] = useState<string>()
   const router = useRouter()
-  const { search, type } = router.query
+  const { search, type: searchType } = router.query
 
   useEffect(() => {
     const fetch = async () => {
-      if (typeof search === 'string' && (type === 'track' || type === 'artist')) {
+      if (typeof search === 'string' && (searchType === 'track' || searchType === 'artist')) {
         try {
-          const tracks = await searchItem(search, type, true)
+          const tracks = await searchItem(search, searchType, true)
           const trackIds = tracks.data.tracks.items.map(track => track.id).join('%2C')
           const audioFeatures = await getAudioFeatures(trackIds, true)
           setTracks(searchMapper(tracks.data.tracks.items, audioFeatures.data))
@@ -30,7 +30,7 @@ const useSearchTracks = () => {
   }, [router.query])
 
 
-  return { tracks, error, search }
+  return { tracks, error, search, searchType }
 }
 
 export default useSearchTracks

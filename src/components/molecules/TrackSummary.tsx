@@ -1,7 +1,6 @@
 import TrackLabel from '../atoms/TrackLabel'
 import { Track } from '../../types/track'
 import { VFC } from 'react'
-import { Icons } from '../atoms/Icons'
 
 type Props = {
   track: Track
@@ -27,13 +26,11 @@ const TrackSummary: VFC<Props> = ({ track, searchArtist }) => (
     </div>
     <figcaption className='px-4 py-8 sm:py-0 sm:px-8 min-w-0 sm:w-1/2'>
       <h2 className='text-2xl'>
-        <span onClick={searchArtist} className='cursor-pointer relative border-b-2 border-black hover:text-gray-500'>
+        <span onClick={searchArtist}
+              className='cursor-pointer border-b-2 border-gray-700 hover:text-gray-500 hover:border-gray-500'>
           {track.artistsName}
-          <span className='absolute -top-1 -right-4'>
-            <Icons icon={'LINK'} />
-          </span>
         </span>
-        <span className='text-4xl font-bold block'>{track.trackName}</span>
+        <span className='text-4xl font-bold block mt-1'>{track.trackName}</span>
       </h2>
       <dl className='mt-4 flex flex-wrap flex-col'>
         <TrackLabel heading={'Key'} date={track.key} />
