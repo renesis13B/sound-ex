@@ -29,6 +29,7 @@ const Search: VFC<Props> = (
     />
     <button
       type='submit'
+      aria-label='検索ボタン'
       className='
         absolute
         top-0 right-0

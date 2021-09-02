@@ -14,7 +14,7 @@ const searchMapper = (
 ): TrackSimplified[] => items.map((item: Item, index: number) => ({
     id: item.id,
     trackName: item.name,
-    albumImage: item.album.images.slice(-1)[0].url,
+    albumImage: item.album.images[1].url,
     artistsName: item.album.artists[0].name,
     bpm: audioFeatures.audio_features[index]?.tempo ? Math.round(audioFeatures.audio_features[index].tempo) : '-',
     key: audioFeatures.audio_features[index]?.key ? convertPitchIntoSymbol(audioFeatures.audio_features[index].key) : '-',

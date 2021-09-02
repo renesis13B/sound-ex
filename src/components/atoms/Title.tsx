@@ -7,7 +7,7 @@ const Title = React.memo(() => (
     <Link href='/'>
       <a
         className='sm:hidden sm:mx-1 inline-flex items-center justify-center w-9 h-9 rounded-full bg-teal-accent-400'>
-        <Icons icon={'LOGO'} />
+        <Icons aria-label='ホーム' icon={'LOGO'} />
       </a>
     </Link>
 
