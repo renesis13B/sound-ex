@@ -12,7 +12,6 @@ type Props = {
   track: Track
   searchArtist: () => void
   search: SearchState['search']
-  searchType: SearchState['searchType']
 }
 
 const TrackView: VFC<Props> = (
