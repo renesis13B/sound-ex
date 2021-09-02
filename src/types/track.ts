@@ -7,8 +7,8 @@ export type TrackSimplified = Readonly<{
   trackName: SpotifyApi.TrackObjectSimplified['name']
   albumImage: SpotifyApi.ImageObject['url']
   artistsName: SpotifyApi.ArtistObjectSimplified['name']
-  bpm: SpotifyApi.AudioFeaturesObject['tempo']
-  key: ConvertPitchIntoSymbol
+  bpm: SpotifyApi.AudioFeaturesObject['tempo'] | '-'
+  key: ConvertPitchIntoSymbol | '-'
   duration: string
   // トラックのSpotifyリンクURL
   spotify_url: SpotifyApi.TrackObjectSimplified['external_urls']['spotify']

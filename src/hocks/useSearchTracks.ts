@@ -18,6 +18,7 @@ const useSearchTracks = () => {
           const trackIds = tracks.data.tracks.items.map(track => track.id).join('%2C')
           const audioFeatures = await getAudioFeatures(trackIds, true)
           setTracks(searchMapper(tracks.data.tracks.items, audioFeatures.data))
+
         } catch (error) {
           const message = error.response.status === 401
             ? '認証に失敗しました。更新ボタンを押していただくか再度時間がたってからお試しください。'
@@ -28,8 +29,7 @@ const useSearchTracks = () => {
     }
     fetch()
   }, [router.query])
-
-
+  
   return { tracks, error, search, searchType }
 }
 

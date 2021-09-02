@@ -17,7 +17,7 @@ const Search: VFC<Props> = (
     className='relative'
   >
     <input
-      type='search'
+      type='text'
       onChange={e => {
         setInputValue(e.target.value)
         dispatch({ type: 'SET_SEARCH', payload: e.target.value })
