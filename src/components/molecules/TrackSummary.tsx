@@ -9,10 +9,10 @@ type Props = {
 
 const TrackSummary: VFC<Props> = ({ track, searchArtist }) => (
   <figure className='sm:flex sm:justify-center sm:items-center'>
-    <div className='sm:w-1/2'>
+    <div className='w-full sm:w-1/2'>
       <img
-        width='320'
-        height='320'
+        width='640'
+        height='640'
         src={`${track.albumImage}`}
         alt={`${track.artistsName} | ${track.trackName}`}
       />
