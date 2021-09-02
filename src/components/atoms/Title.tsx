@@ -6,8 +6,10 @@ const Title = React.memo(() => (
   <>
     <Link href='/'>
       <a
-        className='sm:hidden sm:mx-1 inline-flex items-center justify-center w-9 h-9 rounded-full bg-teal-accent-400'>
-        <Icons aria-label='ホーム' icon={'LOGO'} />
+        className='sm:hidden sm:mx-1 inline-flex items-center justify-center w-9 h-9 rounded-full bg-teal-accent-400'
+        aria-label='ホーム'
+      >
+        <Icons icon={'LOGO'} />
       </a>
     </Link>
 

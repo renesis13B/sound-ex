@@ -21,7 +21,6 @@ const Layout = ({ children, title }:ComponentProps) => {
         <meta property='og:image' content='/og.png' />
         <meta property='og:site_name' content='SOUND EX' />
         <meta property='og:locale' content='ja_JP' />
-        <meta name='robots' content='noindex,nofollow' />
       </Head>
       <Header />
       <Main>
