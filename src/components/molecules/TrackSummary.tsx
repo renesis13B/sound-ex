@@ -11,7 +11,8 @@ const TrackSummary: VFC<Props> = ({ track, searchArtist }) => (
   <figure className='sm:flex sm:justify-center sm:items-center'>
     <div className='sm:w-1/2'>
       <img
-        className=''
+        width='320'
+        height='320'
         src={`${track.albumImage}`}
         alt={`${track.artistsName} | ${track.trackName}`}
       />
@@ -21,6 +22,7 @@ const TrackSummary: VFC<Props> = ({ track, searchArtist }) => (
           width='100%'
           height='80'
           allow='encrypted-media'
+          title='Spotify Widgets'
         />
       </div>
     </div>
