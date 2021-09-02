@@ -9,8 +9,8 @@ type Props = {
 
 const TrackCard: VFC<Props> = ({ track }) => (
   <div className='data-track my-4 shadow-lg'>
-    <Link href={`/track/${track.id}`}>
-      <div
+    <Link href='/track/[id]' as={`/track/${track.id}`}>
+      <a
         className='flex flex-col md:flex-row md:justify-between md:items-center cursor-pointer px-3 pt-3 hover:bg-gray-100'>
         <div className='flex'>
           <div className='block mr-4'>
@@ -55,7 +55,7 @@ const TrackCard: VFC<Props> = ({ track }) => (
               </span>
           </div>
         </div>
-        </div>
+      </a>
       </Link>
       <div className='flex flex-row border-t border-gray-200'>
         <a target='_blank' rel='noopener noreferrer' href={track.spotify_url}

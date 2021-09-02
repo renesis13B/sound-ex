@@ -9,7 +9,7 @@ type Props = {
 }
 
 const EnhancedTrackView: VFC<Props> = ({ track }) => {
-  const { search } = useContext(SearchStateContext)
+  const { search, searchType } = useContext(SearchStateContext)
   const router = useRouter()
   const searchArtist = () => {
     router.push({
@@ -20,7 +20,7 @@ const EnhancedTrackView: VFC<Props> = ({ track }) => {
   return (
     <>
       {(!router.isFallback && track)
-      && <TrackView track={track} search={search} searchArtist={searchArtist} />}
+      && <TrackView track={track} search={search} searchType={searchType} searchArtist={searchArtist} />}
     </>
   )
 }

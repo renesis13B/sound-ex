@@ -1,23 +1,21 @@
 import Link from 'next/link'
-import { Icons, IconType } from '../atoms/Icons'
-import { VFC } from 'react'
+import React, { VFC } from 'react'
 
 type props = {
-  linkGroup: {
-    href: string
-    icon: IconType
-    text: string
-  }
+  linkUrl: string
+  children: React.ReactNode
 }
 
-const LinkGroup: VFC<props> = ({ linkGroup }) => (
+const LinkGroup: VFC<props> = ({ children, linkUrl }) => (
   <div>
     <div className='text-center mt-8'>
-      <Link href={linkGroup.href}>
-        <span className='cursor-pointer'>
-          <Icons icon={linkGroup.icon} />
-          <span>{linkGroup.text}</span>
-        </span>
+      <Link href={linkUrl}>
+        <a>
+          <button className='border-b-2 border-gray-700 hover:text-gray-500 hover:border-gray-500'>
+            {children}
+          </button>
+
+        </a>
       </Link>
     </div>
   </div>

@@ -12,8 +12,7 @@ type Props = {
 const TrackIndex: VFC<Props> = ({ tracks, error, heading }) => (
   <section className='mt-8'>
     <Heading heading={heading} />
-    {error ? <p className='error'>{error}</p>
-      : tracks && <TrackCardLists tracks={tracks} />}
+    {error ? <p className='text-red-400'>{error}</p> : tracks && <TrackCardLists tracks={tracks} />}
   </section>
 
 )
