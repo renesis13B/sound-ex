@@ -1,19 +1,22 @@
 import Layout from '../../components/templates/Layout'
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import playlistInteractor from '../../interactors/api/playlistInteractor'
 import trackInteractor from '../../interactors/api/trackInteractor'
 import { VFC } from 'react'
 import EnhancedTrackView from '../../components/organisms/containers/TrackView'
+import { Track } from '../../types/track'
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = {
+  track: Track
+}
 
-const Track: VFC<Props> = ({ track }: Props) => (
-  <Layout title={'SOUND EX - トラック詳細'}>
+const TrackView: VFC<Props> = ({ track }) => (
+  <Layout title={`SOUND EX - ${track?.artistsName} | ${track?.trackName}`}>
     <EnhancedTrackView track={track} />
   </Layout>
 )
 
-export default Track
+export default TrackView
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await playlistInteractor.getPlaylistIds()
