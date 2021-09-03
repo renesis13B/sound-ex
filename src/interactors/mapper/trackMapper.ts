@@ -12,7 +12,7 @@ const trackMapper = (
 ): Track => ({
   id: track.id,
   trackName: track.name,
-  albumImage: track.album.images[1].url,
+  albumImage: track.album.images[0].url,
   artistsName: track.artists[0].name,
   releaseDate: track.album.release_date,
   danceability: audioFeatures.audio_features[0].danceability,
