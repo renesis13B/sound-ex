@@ -4,4 +4,7 @@ module.exports = {
     locales: ['ja'],
     defaultLocale: 'ja',
   },
+  images: {
+    domains: ['i.scdn.co'],
+  },
 }

@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { TrackSimplified } from '../../types/track'
 import { Icons } from '../atoms/Icons'
 import { VFC } from 'react'
+import Image from 'next/image'
+
 
 type Props = {
   track: TrackSimplified
@@ -15,12 +17,11 @@ const TrackCard: VFC<Props> = ({ track }) => (
         <div className='flex'>
           <div className='block mr-4'>
             <figure>
-              <img
-                className='rounded-lg w-16 h-16'
-                width='128'
-                height='128'
+              <Image
+                className='rounded-lg'
                 src={track.albumImage}
-                alt={`${track.artistsName} - ${track.trackName}`}
+                width={64} height={64}
+                alt={`${track.artistsName} | ${track.trackName}`}
               />
             </figure>
           </div>
