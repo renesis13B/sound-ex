@@ -1,4 +1,3 @@
-import Layout from '../../components/templates/Layout'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import playlistInteractor from '../../interactors/api/playlistInteractor'
 import trackInteractor from '../../interactors/api/trackInteractor'
@@ -11,9 +10,7 @@ type Props = {
 }
 
 const TrackView: VFC<Props> = ({ track }) => (
-  <Layout title={`SOUND EX - ${track?.artistsName} | ${track?.trackName}`}>
     <EnhancedTrackView track={track} />
-  </Layout>
 )
 
 export default TrackView

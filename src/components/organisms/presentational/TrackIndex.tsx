@@ -1,17 +1,18 @@
 import { TrackSimplified } from '../../../types/track'
-import { VFC } from 'react'
-import { Heading, HeadingText } from '../../atoms/Heading'
+import React, { VFC } from 'react'
+import { Heading } from '../../atoms/Heading'
 import TrackCardLists from './TrackCardLists'
 
 type Props = {
   tracks?: TrackSimplified[]
   error?: string
-  heading: HeadingText
+  headingMain: string
+  headingSub?: string
 }
 
-const TrackIndex: VFC<Props> = ({ tracks, error, heading }) => (
+const TrackIndex: VFC<Props> = ({ tracks, error, headingMain, headingSub }) => (
   <section className='mt-8 px-4 sm:px-0'>
-    <Heading heading={heading} />
+    <Heading headingMain={headingMain} headingSub={headingSub} />
     {error ? <p className='text-red-400'>{error}</p> : tracks && <TrackCardLists tracks={tracks} />}
   </section>
 
