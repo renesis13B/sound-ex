@@ -1,5 +1,6 @@
 import { Artist } from '../../types/artist'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 
 type Avatar = {
   avatar: Artist
@@ -14,12 +15,13 @@ const AvatarWrap = ({ avatar }: Avatar) => {
     })
   }
   return (
-    <figure onClick={pushArtistSearchIndex} className='w-6/12 sm:w-2/12 p-2 hover:bg-gray-100'>
-      <div
-        className='bg-cover bg-center rounded-full cursor-pointer aspect-w-1 aspect-h-1'
-        style={{ backgroundImage: `url("${avatar.image ?? '/noImage.jpg'}")` }}
-      >
-      </div>
+    <figure onClick={pushArtistSearchIndex} className='w-6/12 sm:w-2/12 p-2 hover:bg-gray-100 text-center'>
+      <Image
+        className='rounded-full cursor-pointer'
+        src={avatar.image ?? '/noImage.jpg'}
+        width={320}
+        height={320}
+      />
       <figcaption className='text-center cursor-pointer'>
         {avatar.name}
       </figcaption>
