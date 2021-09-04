@@ -1,23 +1,19 @@
-import { VFC } from 'react'
-
-export type HeadingText = Readonly<{
-  main: string
-  sub?: string
-}>
+import React, { VFC } from 'react'
 
 type Props = {
-  heading: HeadingText
+  headingMain: string
+  headingSub?: string
 }
 
-export const Heading: VFC<Props> = ({ heading }) => (
+export const Heading: VFC<Props> = React.memo(({ headingMain, headingSub }) => (
   <>
     <h2 className='text-4xl text-gray-800 font-bold'>
-      {heading.main}
+      {headingMain}
     </h2>
-    {heading.sub && (
+    {headingSub && (
       <p className='text-sm text-gray-700  border-t-2 border-gray-700'>
-        {heading.sub}
+        {headingSub}
       </p>
     )}
   </>
-)
+))
