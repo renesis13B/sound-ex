@@ -3,6 +3,7 @@ import FooterContent from '../organisms/presentational/FooterContent'
 
 const Footer = React.memo(() => (
   <footer className='bg-deep-purple-accent-700'>
+    {console.log('footer')}
     <div className='max-w-screen-md px-4 mx-auto py-4 md:px-12 lg:px-0 text-gray-100'>
       <FooterContent />
     </div>

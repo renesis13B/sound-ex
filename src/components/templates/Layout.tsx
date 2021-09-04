@@ -12,6 +12,7 @@ type ComponentProps = {
 const Layout = ({ children, title }: ComponentProps) => {
   return (
     <div className='flex flex-col min-h-screen break-words'>
+      {console.log('Layout')}
       <Head>
         <title>{title}</title>
         <meta content='SOUND EXは好きな曲のBPMやKeyなどの情報がわかるサイトです。またアーティスト検索で人気の曲を聞く事もできます' name='description' />

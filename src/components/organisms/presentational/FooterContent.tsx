@@ -2,6 +2,7 @@ import React, { VFC } from 'react'
 
 const FooterContent: VFC = () => (
   <>
+    {console.log('FooterContent')}
     <div className='flex items-center mb-4'>
       <div className='flex items-center justify-center w-6 h-6 rounded-full bg-teal-accent-400'>
         <svg

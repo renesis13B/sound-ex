@@ -9,6 +9,7 @@ type Props = {
 
 const TrackCardLists: VFC<Props> = React.memo(({ tracks }) => (
   <>
+    {console.log('TrackCardLists')}
     {tracks.map(track =>
       <TrackCard key={track.id} track={track} />)
     }

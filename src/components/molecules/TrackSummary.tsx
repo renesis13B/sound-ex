@@ -1,6 +1,6 @@
 import TrackLabel from '../atoms/TrackLabel'
 import { Track } from '../../types/track'
-import { VFC } from 'react'
+import React, { VFC } from 'react'
 import Image from 'next/image'
 
 type Props = {
@@ -8,8 +8,9 @@ type Props = {
   searchArtist: () => void
 }
 
-const TrackSummary: VFC<Props> = ({ track, searchArtist }) => (
+const TrackSummary: VFC<Props> = React.memo(({ track, searchArtist }) => (
   <figure className='sm:flex sm:justify-center sm:items-center'>
+    {console.log('TrackSummary')}
     <div className='w-full sm:w-1/2'>
       <Image src={track.albumImage} width={640} height={640} alt={`${track.artistsName} | ${track.trackName}`} />
       <div className='w-full h-20 -mt-2'>
@@ -38,6 +39,9 @@ const TrackSummary: VFC<Props> = ({ track, searchArtist }) => (
       </dl>
     </figcaption>
   </figure>
-)
+), (a, b) => {
+  console.log(a, b)
+  return a.track.id === b.track.id
+})
 
 export default TrackSummary

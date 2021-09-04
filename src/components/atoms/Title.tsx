@@ -4,6 +4,7 @@ import React from 'react'
 
 const Title = React.memo(() => (
   <>
+    {console.log('Title')}
     <Link href='/'>
       <a
         className='sm:hidden sm:mx-1 inline-flex items-center justify-center w-9 h-9 rounded-full bg-teal-accent-400'

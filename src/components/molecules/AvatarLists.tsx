@@ -7,8 +7,8 @@ type Props = {
 }
 
 const AvatarLists: VFC<Props> = ({ relatedArtists }) => (
-
   <div className='flex flex-row justify-between p-2 flex-wrap'>
+    {console.log('AvatarLists')}
     {
       relatedArtists.map(artists => <AvatarWrap key={artists.id} avatar={artists} />)
     }

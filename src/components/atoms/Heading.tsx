@@ -7,6 +7,7 @@ type Props = {
 
 export const Heading: VFC<Props> = React.memo(({ headingMain, headingSub }) => (
   <>
+    {console.log('Heading')}
     <h2 className='text-4xl text-gray-800 font-bold'>
       {headingMain}
     </h2>

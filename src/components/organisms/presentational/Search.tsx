@@ -26,6 +26,7 @@ const Search: VFC<Props> = (
       placeholder='好きな曲を検索'
       className='w-full p-2 sm:p-3 rounded shadow outline-none search-caret'
     />
+    {console.log('Search')}
     <button
       type='submit'
       aria-label='検索ボタン'

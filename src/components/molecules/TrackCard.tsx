@@ -10,6 +10,7 @@ type Props = {
 
 const TrackCard: VFC<Props> = ({ track }) => (
   <div className='data-track my-4 shadow-lg'>
+    {console.log('TrackCard')}
     <Link href='/track/[id]' as={`/track/${track.id}`}>
       <a
         className='flex flex-col md:flex-row md:justify-between md:items-center cursor-pointer px-3 pt-3 hover:bg-gray-100'>

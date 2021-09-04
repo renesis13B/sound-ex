@@ -1,6 +1,5 @@
 import { Track } from '../../../types/track'
 import React, { VFC } from 'react'
-import { SearchState } from '../../../contexts/SearchContext'
 import TrackSummary from '../../molecules/TrackSummary'
 import TrackViewCard from '../../molecules/TrackViewCard'
 import TrackInfo from '../../molecules/TrackInfo'
@@ -11,10 +10,9 @@ import { Icons } from '../../atoms/Icons'
 type Props = {
   track: Track
   searchArtist: () => void
-  search: SearchState['search']
 }
 
-const TrackView: VFC<Props> = (
+const TrackContent: VFC<Props> = (
   {
     track,
     searchArtist,
@@ -22,6 +20,7 @@ const TrackView: VFC<Props> = (
   return (
     <article>
       <div className='sm:px-4 sm:mt-8 max-w-screen-md mx-auto'>
+        {console.log('TrackContent')}
         <TrackSummary track={track} searchArtist={searchArtist} />
         <TrackViewCard heading={'Track Info'}>
           <TrackInfo track={track} searchArtist={searchArtist} />
@@ -39,4 +38,4 @@ const TrackView: VFC<Props> = (
   )
 }
 
-export default TrackView
+export default TrackContent

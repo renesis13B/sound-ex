@@ -9,6 +9,7 @@ type Props = {
 
 const TrackInfo: VFC<Props> = ({ track, searchArtist }) => (
   <>
+    {console.log('TrackInfo')}
     <p className='text-xl mt-2'>
       <span className='font-bold'>{track.trackName}</span>は
       <span className='font-bold'>{track.releaseDate}</span>にリリースされた
