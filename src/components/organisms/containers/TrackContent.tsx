@@ -15,7 +15,7 @@ const EnhancedTrackContent: VFC<Props> = ({ track }) => {
       pathname: '/searches',
       query: { search: `${track.artistsName}`, type: 'artist' },
     })
-  }, [track.artistsName])
+  }, [])
   return (
     <>
       {console.log('EnhancedTrackContent')}
