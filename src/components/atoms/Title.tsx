@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { Icons } from './Icons'
 import React from 'react'
 
 const Title = React.memo(() => (
@@ -9,7 +8,19 @@ const Title = React.memo(() => (
         className='sm:hidden sm:mx-1 inline-flex items-center justify-center w-9 h-9 rounded-full bg-teal-accent-400'
         aria-label='ホーム'
       >
-        <Icons icon={'LOGO'} />
+        <svg
+          className='w-7 h-7 text-deep-purple-900'
+          stroke='currentColor'
+          viewBox='0 0 52 52'
+        >
+          <polygon
+            strokeWidth='3'
+            strokeLinecap='round'
+            strokeLinejoin='round'
+            fill='none'
+            points='29 13 14 29 25 29 23 39 38 23 27 23'
+          />
+        </svg>
       </a>
     </Link>
 
@@ -18,7 +29,19 @@ const Title = React.memo(() => (
         <a className='flex items-center'>
           SOUND
           <div className='mx-1 inline-flex items-center justify-center w-9 h-9 rounded-full bg-teal-accent-400'>
-            <Icons icon={'LOGO'} />
+            <svg
+              className='w-7 h-7 text-deep-purple-900'
+              stroke='currentColor'
+              viewBox='0 0 52 52'
+            >
+              <polygon
+                strokeWidth='3'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                fill='none'
+                points='29 13 14 29 25 29 23 39 38 23 27 23'
+              />
+            </svg>
           </div>
           EX
         </a>

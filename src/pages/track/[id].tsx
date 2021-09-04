@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import playlistInteractor from '../../interactors/api/playlistInteractor'
 import trackInteractor from '../../interactors/api/trackInteractor'
 import { VFC } from 'react'
-import EnhancedTrackView from '../../components/organisms/containers/TrackView'
+import EnhancedTrackContent from '../../components/organisms/containers/TrackContent'
 import { Track } from '../../types/track'
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
 }
 
 const TrackView: VFC<Props> = ({ track }) => (
-    <EnhancedTrackView track={track} />
+  <EnhancedTrackContent track={track} />
 )
 
 export default TrackView
