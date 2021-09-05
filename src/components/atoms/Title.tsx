@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Icons } from './Icons'
 import React from 'react'
 
-const Title = React.memo(() => (
+const Title = () => (
   <>
     {console.log('Title')}
     <Link href='/'>
@@ -26,6 +26,6 @@ const Title = React.memo(() => (
       </Link>
     </h1>
   </>
-))
+)
 
 export default Title
