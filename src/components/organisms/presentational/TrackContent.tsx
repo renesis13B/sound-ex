@@ -10,7 +10,7 @@ import { RelatedArtists } from '../../../types/relatedArtists'
 
 type Props = {
   track: Track
-  relatedArtists: RelatedArtists
+  relatedArtists: RelatedArtists[]
   searchArtist: () => void
   search: SearchState['search']
 }
@@ -44,7 +44,7 @@ const TrackContent: VFC<Props> = (
           </svg>
         </LinkGroup>
         <TrackViewCard heading={'ファンの間で人気'}>
-          <AvatarLists relatedArtists={relatedArtists} />
+          {relatedArtists && <AvatarLists relatedArtists={relatedArtists} />}
         </TrackViewCard>
       </div>
     </article>

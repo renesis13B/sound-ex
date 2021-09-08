@@ -10,6 +10,5 @@ import artistsMapper from './artistsMapper'
  */
 export const getRelatedArtists = async (spotifyId: SpotifyId) => {
   const { data } = await baseAxios.get<ArtistsRelatedArtistsResponse>(`/artists/${spotifyId}/related-artists`)
-  console.log(data)
   return artistsMapper(data)
 }

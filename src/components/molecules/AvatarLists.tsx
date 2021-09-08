@@ -1,9 +1,9 @@
 import AvatarWrap from './AvatarWrap'
-import { Track } from '../../types/track'
 import { VFC } from 'react'
+import { RelatedArtists } from '../../types/relatedArtists'
 
 type Props = {
-  relatedArtists: Track['related_artists']
+  relatedArtists: RelatedArtists[]
 }
 
 const AvatarLists: VFC<Props> = ({ relatedArtists }) => (

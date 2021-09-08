@@ -9,7 +9,7 @@ import { RelatedArtists } from '../../types/relatedArtists'
 
 type Props = {
   track: Track
-  relatedArtists: RelatedArtists
+  relatedArtists: RelatedArtists[]
 }
 
 const TrackView: VFC<Props> = ({ track, relatedArtists }) => (
