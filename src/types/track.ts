@@ -1,4 +1,3 @@
-import { Artist } from './artist'
 import { ConvertPitchIntoSymbol } from '../utils/convertPitchIntoSymbol'
 
 export type TrackSimplified = Readonly<{
@@ -6,7 +5,7 @@ export type TrackSimplified = Readonly<{
   id: SpotifyApi.TrackObjectSimplified['id']
   trackName: SpotifyApi.TrackObjectSimplified['name']
   albumImage: SpotifyApi.ImageObject['url']
-  artistsName: SpotifyApi.ArtistObjectSimplified['name']
+  artistsName: SpotifyApi.TrackObjectSimplified['artists'][0]['name']
   bpm: SpotifyApi.AudioFeaturesObject['tempo'] | '-'
   key: ConvertPitchIntoSymbol | '-'
   duration: string
@@ -23,6 +22,6 @@ export type Track = TrackSimplified & Readonly<{
   energy: SpotifyApi.AudioFeaturesObject['energy']
   // トラックの推定全体的な拍子記号
   time_signature: SpotifyApi.AudioFeaturesObject['time_signature']
-  // artistsNameから取得した関連アーティストの集まり
-  related_artists: Artist[]
+  // アーティストSpotifyID
+  artists_id: SpotifyApi.TrackObjectSimplified['artists'][0]['id']
 }>

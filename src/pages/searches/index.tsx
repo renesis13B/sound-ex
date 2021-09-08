@@ -1,10 +1,15 @@
 import useSearchTracks from '../../hocks/useSearchTracks'
 import TrackIndex from '../../components/organisms/presentational/TrackIndex'
 import { VFC } from 'react'
+import { getRelatedArtists } from '../../interactors/artists/artists'
 
 const SearchesIndex: VFC = () => {
   const { tracks, error, search, searchType } = useSearchTracks()
-
+  const x = async () => {
+    const r = await getRelatedArtists('3Nrfpe0tUJi4K4DXYWgMUX')
+    console.log(r)
+  }
+  x()
   const heading = error
     ? { main: 'Sorry', sub: 'データ取得に失敗しました' }
     : searchType === 'track'

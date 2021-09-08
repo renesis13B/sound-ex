@@ -1,4 +1,4 @@
-import { Artist } from '../../types/artist'
+import { Artist } from '../../types/relatedArtists'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 

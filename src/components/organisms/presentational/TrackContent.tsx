@@ -6,16 +6,18 @@ import TrackViewCard from '../../molecules/TrackViewCard'
 import TrackInfo from '../../molecules/TrackInfo'
 import AvatarLists from '../../molecules/AvatarLists'
 import LinkGroup from '../../molecules/LinkGroup'
+import { RelatedArtists } from '../../../types/relatedArtists'
 
 type Props = {
   track: Track
+  relatedArtists: RelatedArtists
   searchArtist: () => void
   search: SearchState['search']
 }
 
 const TrackContent: VFC<Props> = (
   {
-    track,
+    track, relatedArtists,
     searchArtist,
   }) => {
   return (
@@ -42,7 +44,7 @@ const TrackContent: VFC<Props> = (
           </svg>
         </LinkGroup>
         <TrackViewCard heading={'ファンの間で人気'}>
-          <AvatarLists relatedArtists={track.related_artists} />
+          <AvatarLists relatedArtists={relatedArtists} />
         </TrackViewCard>
       </div>
     </article>

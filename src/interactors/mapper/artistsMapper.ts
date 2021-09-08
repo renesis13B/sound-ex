@@ -1,5 +1,5 @@
 import { ArtistsRelatedArtistsResponse } from '../../types/spotify'
-import { Artist } from '../../types/artist'
+import { Artist } from '../../types/relatedArtists'
 
 type Artists = ArtistsRelatedArtistsResponse
 
