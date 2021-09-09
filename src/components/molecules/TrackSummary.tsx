@@ -2,13 +2,14 @@ import TrackLabel from '../atoms/TrackLabel'
 import { Track } from '../../types/track'
 import { VFC } from 'react'
 import Image from 'next/image'
+import { SearchSubmitHandler } from '../../hocks/useSearchStore'
 
 type Props = {
   track: Track
-  searchArtist: () => void
+  submitHandler: SearchSubmitHandler
 }
 
-const TrackSummary: VFC<Props> = ({ track, searchArtist }) => {
+const TrackSummary: VFC<Props> = ({ track, submitHandler }) => {
   const trackDates = [
     ['Key', track.key],
     ['Time', track.duration],
@@ -31,8 +32,9 @@ const TrackSummary: VFC<Props> = ({ track, searchArtist }) => {
       </div>
       <figcaption className='px-4 py-8 sm:py-0 sm:px-8 min-w-0 sm:w-1/2'>
         <h2 className='text-2xl'>
-        <span onClick={searchArtist}
-              className='cursor-pointer border-b-2 border-gray-700 hover:text-gray-500 hover:border-gray-500'>
+        <span
+          onClick={() => submitHandler(track.artistsName, 'artist')}
+          className='cursor-pointer border-b-2 border-gray-700 hover:text-gray-500 hover:border-gray-500'>
           {track.artistsName}
         </span>
           <span className='text-4xl font-bold block mt-1'>{track.trackName}</span>
