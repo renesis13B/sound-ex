@@ -1,7 +1,9 @@
 import { InferGetStaticPropsType } from 'next'
-import playlistInteractor from '../interactors/api/playlistInteractor'
 import TrackIndex from '../components/organisms/presentational/TrackIndex'
 import React, { VFC } from 'react'
+import { getPlaylists } from '../interactors/playlists/playlists'
+import { getMultipleAudioFeatures } from '../interactors/audioFeatures/audioFeatures'
+import integrateToTracks from '../utils/integrateToTracks'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
@@ -14,7 +16,11 @@ const Index: VFC<Props> = ({ tracks }) => (
 export default Index
 
 export async function getStaticProps() {
-  const tracks = await playlistInteractor.getPlaylistTracks()
+  const playLists = await getPlaylists()
+  const ids = playLists.map(playList => playList.id).join('%2C')
+  const audioFeatures = await getMultipleAudioFeatures(ids)
+  const tracks = integrateToTracks(playLists, audioFeatures)
+  console.log(tracks[0])
   return {
     props: { tracks },
   }

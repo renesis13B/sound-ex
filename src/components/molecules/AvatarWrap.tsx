@@ -1,9 +1,9 @@
-import { Artist } from '../../types/artist'
+import { RelatedArtists } from '../../types/relatedArtists'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 
 type Avatar = {
-  avatar: Artist
+  avatar: RelatedArtists
 }
 
 const AvatarWrap = ({ avatar }: Avatar) => {

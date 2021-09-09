@@ -1,10 +1,10 @@
-import { TrackSimplified } from '../../../types/track'
+import { Track } from '../../../types/track'
 import React, { VFC } from 'react'
 import { Heading } from '../../atoms/Heading'
 import TrackCardLists from './TrackCardLists'
 
 type Props = {
-  tracks?: TrackSimplified[]
+  tracks?: Track[]
   error?: string
   headingMain: string
   headingSub?: string

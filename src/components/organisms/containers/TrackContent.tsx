@@ -3,12 +3,14 @@ import { SearchStateContext } from '../../../contexts/SearchContext'
 import { useContext, VFC } from 'react'
 import { useRouter } from 'next/router'
 import TrackContent from '../presentational/TrackContent'
+import { RelatedArtists } from '../../../types/relatedArtists'
 
 type Props = {
   track: Track
+  relatedArtists: RelatedArtists[]
 }
 
-const EnhancedTrackContent: VFC<Props> = ({ track }) => {
+const EnhancedTrackContent: VFC<Props> = ({ track, relatedArtists }) => {
   const { search } = useContext(SearchStateContext)
   const router = useRouter()
   const searchArtist = () => {
@@ -20,7 +22,12 @@ const EnhancedTrackContent: VFC<Props> = ({ track }) => {
   return (
     <>
       {(!router.isFallback && track)
-      && <TrackContent track={track} search={search} searchArtist={searchArtist} />}
+      && <TrackContent
+        track={track}
+        relatedArtists={relatedArtists}
+        search={search}
+        searchArtist={searchArtist}
+      />}
     </>
   )
 }

@@ -4,7 +4,6 @@ import { VFC } from 'react'
 
 const SearchesIndex: VFC = () => {
   const { tracks, error, search, searchType } = useSearchTracks()
-
   const heading = error
     ? { main: 'Sorry', sub: 'データ取得に失敗しました' }
     : searchType === 'track'
