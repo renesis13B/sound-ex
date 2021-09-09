@@ -1,6 +1,7 @@
 import { ArtistsRelatedArtistsResponse, SpotifyId } from '../../types/spotify'
 import { baseAxios } from '../baseAxios'
 import artistsMapper from './artistsMapper'
+import { getToken } from '../auth/auth'
 
 /**
  * Get an Artist’s Related Artists
@@ -9,6 +10,12 @@ import artistsMapper from './artistsMapper'
  * https://developer.spotify.com/web-api/get-related-artists/
  */
 export const getRelatedArtists = async (spotifyId: SpotifyId) => {
-  const { data } = await baseAxios.get<ArtistsRelatedArtistsResponse>(`/artists/${spotifyId}/related-artists`)
+  const token = await getToken()
+  const headers = {
+    'Authorization': 'Bearer ' + token,
+    'Accept-Language': 'ja;q=1',
+  }
+  const url = `/artists/${spotifyId}/related-artists`
+  const { data } = await baseAxios.get<ArtistsRelatedArtistsResponse>(`${url}`, { headers })
   return artistsMapper(data)
 }

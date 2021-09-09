@@ -25,13 +25,12 @@ export const getTokenForServer = async (): Promise<AcsessToken['access_token']> 
     'Authorization':
       'Basic ' + Buffer.from(`${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID}:${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET}`).toString('base64'),
   }
-  const data = await spotifyAuthorization.post('/api/token', urlencoded, { headers }).then(res => res.data.access_token)
+  const data = await spotifyAuthorization.post('/api/token', urlencoded, { headers }).then(res => res.data.access_token).catch(e => console.error(e))
   return data
 }
 
 const setAuthToken = async (options: CookieSetOptions) => {
   try {
-    console.log('setAuthToken')
     const token = await getTokenForServer()
     cookie.set('access_token', token, options)
     return cookie.get('access_token')
@@ -40,6 +39,6 @@ const setAuthToken = async (options: CookieSetOptions) => {
   }
 }
 
-export const getToken = () => {
-  return cookie.get('access_token') || setAuthToken(options).then(r => r)
+export const getToken = async () => {
+  return cookie.get('access_token') || await setAuthToken(options)
 }

@@ -1,11 +1,6 @@
 import axios, { AxiosResponse } from 'axios'
-import { Playlist } from '../../types/playlist'
-import {
-  MultipleAudioFeaturesResponse,
-  SingleTrackResponse,
-  SpotifyId,
-  TrackSearchResponse,
-} from '../../types/spotify'
+import { Playlist } from '../../types/playlists'
+import { MultipleAudioFeaturesResponse, SingleTrackResponse, TrackSearchResponse } from '../../types/spotify'
 import { Buffer } from 'buffer'
 import authInteractor from './authInteractors'
 import { AcsessToken } from '../../types/accessToken'
@@ -74,24 +69,6 @@ export const getTokenFromSpotify = (): Promise<AcsessToken['access_token']> => {
 }
 
 /**
- * Get a Playlist's Items
- *
- * https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-playlists-tracks
- */
-export const getPlaylists = async (): Promise<GetPlaylistsResponse> => {
-  // NOTE: 現状、サーバー側でのみ使用するのでtokenを直接取得
-  // TODO: ISRのたびにtoken取得しているので直したい
-  const token = await getTokenFromSpotify()
-  const headers = {
-    'Authorization': 'Bearer ' + token,
-    'Accept-Language': 'ja;q=1',
-  }
-  const fields = 'items(track(id,name,duration_ms,external_urls(spotify),album(images,artists(name))))'
-  const limit = 'limit=10'
-  return await spotifyApi.get(`/playlists/${process.env.NEXT_PUBLIC_SPOTIFY_PLAYLIST_ID}/tracks/?fields=${fields}&${limit}`, { headers })
-}
-
-/**
  * Get Audio Features for Several Tracks
  *
  * https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-several-audio-features
@@ -103,36 +80,6 @@ export const getAudioFeatures = async (ids: string, useClientSide?: boolean): Pr
     'Authorization': 'Bearer ' + token,
   }
   return await spotifyApi.get(`/audio-features?ids=${ids}`, { headers })
-}
-
-/**
- * Get Audio Features for a Track
- *
- * https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-audio-features
- */
-export const getAudioFeature = async (spotifyId: SpotifyId): Promise<GetAudioFeatureResponse> => {
-  // NOTE: 現状、サーバー側でのみ使用するのでtokenを直接取得
-  // TODO: ISRのたびにtoken取得しているので直したい
-  const token = await getTokenFromSpotify()
-  const headers = {
-    'Authorization': 'Bearer ' + token,
-  }
-  return await spotifyApi.get(`/audio-features?ids=${spotifyId}`, { headers })
-}
-
-/**
- * Get a Track
- *
- * https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-track
- */
-export const getTrack = async (spotifyId: SpotifyId): Promise<GetTrackResponse> => {
-  // NOTE: 現状、サーバー側でのみ使用するのでtokenを直接取得
-  // TODO: ISRのたびにtoken取得しているので直したい
-  const token = await getTokenFromSpotify()
-  const headers = {
-    'Authorization': 'Bearer ' + token,
-  }
-  return await spotifyApi.get(`/tracks/${spotifyId}?market=JP`, { headers })
 }
 
 /**
