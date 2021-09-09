@@ -1,31 +1,31 @@
 import { Track } from '../../../types/track'
 import React, { VFC } from 'react'
-import { SearchState } from '../../../contexts/SearchContext'
 import TrackSummary from '../../molecules/TrackSummary'
 import TrackViewCard from '../../molecules/TrackViewCard'
 import TrackInfo from '../../molecules/TrackInfo'
 import AvatarLists from '../../molecules/AvatarLists'
 import LinkGroup from '../../molecules/LinkGroup'
 import { RelatedArtists } from '../../../types/relatedArtists'
+import { SearchSubmitHandler } from '../../../hocks/useSearchStore'
 
 type Props = {
   track: Track
   relatedArtists: RelatedArtists[]
-  searchArtist: () => void
-  search: SearchState['search']
+  submitHandler: SearchSubmitHandler
 }
 
 const TrackContent: VFC<Props> = (
   {
-    track, relatedArtists,
-    searchArtist,
+    track,
+    relatedArtists,
+    submitHandler,
   }) => {
   return (
     <article>
       <div className='sm:px-4 sm:mt-8 max-w-screen-md mx-auto'>
-        <TrackSummary track={track} searchArtist={searchArtist} />
+        <TrackSummary track={track} submitHandler={submitHandler} />
         <TrackViewCard heading={'Track Info'}>
-          <TrackInfo track={track} searchArtist={searchArtist} />
+          <TrackInfo track={track} submitHandler={submitHandler} />
         </TrackViewCard>
         <LinkGroup
           linkUrl={`/searches?search=${track.artistsName}&type=artist`}>

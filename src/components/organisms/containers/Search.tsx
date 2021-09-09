@@ -1,16 +1,11 @@
 import React, { VFC } from 'react'
 import Search from '../presentational/Search'
-import useSearchContext from '../../../hocks/useSearchContext'
+import useSearchStore from '../../../hocks/useSearchStore'
 
 const EnhancedSearch: VFC = () => {
-  const { inputValue, setInputValue, onSubmit, dispatch } = useSearchContext()
+  const { searchState, dispatch, submitHandler } = useSearchStore()
   return (
-    <Search
-      inputValue={inputValue}
-      setInputValue={setInputValue}
-      onSubmit={onSubmit}
-      dispatch={dispatch}
-    />
+    <Search searchState={searchState} dispatch={dispatch} submitHandler={submitHandler} />
   )
 }
 

@@ -1,13 +1,14 @@
 import { Track } from '../../types/track'
 import { VFC } from 'react'
 import TrackLabel from '../atoms/TrackLabel'
+import { SearchSubmitHandler } from '../../hocks/useSearchStore'
 
 type Props = {
   track: Track
-  searchArtist: () => void
+  submitHandler: SearchSubmitHandler
 }
 
-const TrackInfo: VFC<Props> = ({ track, searchArtist }) => {
+const TrackInfo: VFC<Props> = ({ track, submitHandler }) => {
   const trackDates = [
     ['Key', track.key],
     ['Time', track.duration],
@@ -22,7 +23,7 @@ const TrackInfo: VFC<Props> = ({ track, searchArtist }) => {
         <span className='font-bold'>{track.trackName}</span>は
         <span className='font-bold'>{track.releaseDate}</span>にリリースされた
         <span
-          onClick={searchArtist}
+          onClick={() => submitHandler(track.artistsName, 'artist')}
           className='font-bold cursor-pointer border-b-2 border-gray-700 ml-1 mr-1 hover:border-gray-500'
         >
         {track.artistsName}
