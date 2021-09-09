@@ -5,8 +5,8 @@ import { Track } from '../../types/track'
 import { getRelatedArtists } from '../../interactors/artists/artists'
 import { RelatedArtists } from '../../types/relatedArtists'
 import { getPlaylistIds } from '../../interactors/playlists/playlists'
-import { getTrack } from '../../interactors/track/track'
 import { getSingleAudioFeature } from '../../interactors/audioFeatures/audioFeatures'
+import { getTracks } from '../../interactors/tracks/tracks'
 
 type Props = {
   track: Track
@@ -28,7 +28,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const track = await getTrack(params?.id as string)
+  const track = await getTracks(params?.id as string)
   const audioFeature = await getSingleAudioFeature(params?.id as string)
   const relatedArtists = await getRelatedArtists(track.artists_id)
   return {

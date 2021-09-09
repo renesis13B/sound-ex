@@ -16,8 +16,9 @@ export type PlaylistItem = {
       spotify: SpotifyApi.TrackObjectSimplified['external_urls']['spotify']
     },
     album: {
-      artists: SpotifyApi.ArtistObjectSimplified[]
+      artists: Pick<SpotifyApi.ArtistObjectSimplified, 'name' | 'id'>[]
       images: SpotifyApi.ImageObject[]
+      release_date: SpotifyApi.TrackObjectFull['album']['release_date']
     }
   }
 }

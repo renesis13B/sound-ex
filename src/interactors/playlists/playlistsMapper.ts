@@ -1,8 +1,8 @@
 import { PlaylistItemsResponse } from '../../types/spotify'
 import moment from 'moment'
-import { Playlists } from '../../types/playlists'
+import { Playlist } from '../../types/playlist'
 
-const playlistsMapper = (items: PlaylistItemsResponse['items']): Playlists => {
+const playlistsMapper = (items: PlaylistItemsResponse['items']): Playlist => {
   return items.map(item => ({
     id: item.track.id,
     trackName: item.track.name,
@@ -10,6 +10,8 @@ const playlistsMapper = (items: PlaylistItemsResponse['items']): Playlists => {
     artistsName: item.track.album.artists[0].name,
     duration: moment(`${item.track.duration_ms}`, 'x').format('m:ss'),
     spotify_url: item.track.external_urls.spotify,
+    releaseDate: item.track.album.release_date,
+    artists_id: item.track.album.artists[0].id,
   }))
 }
 

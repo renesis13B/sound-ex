@@ -14,7 +14,7 @@ const playlistsFetcher = async () => {
     'Authorization': 'Bearer ' + token,
     'Accept-Language': 'ja;q=1',
   }
-  const fields = 'items(track(id,name,duration_ms,external_urls(spotify),album(images,artists(name))))'
+  const fields = 'items(track(id,name,duration_ms,external_urls(spotify),album(images,release_date,artists(name,id))))'
   const limit = '10'
   const url = `/playlists/${process.env.NEXT_PUBLIC_SPOTIFY_PLAYLIST_ID}/tracks/?fields=${fields}&limit=${limit}`
   return await baseAxios.get<PlaylistItemsResponse>(`${url}`, { headers })
@@ -22,7 +22,7 @@ const playlistsFetcher = async () => {
 
 export const getPlaylists = async () => {
   const { data } = await playlistsFetcher()
-  return playlistsMapper(data?.items)
+  return playlistsMapper(data.items)
 }
 
 export const getPlaylistIds = async () => {

@@ -1,8 +1,9 @@
-import { getAudioFeatures, searchItem } from '../interactors/api/spotifyInteractor'
 import { useEffect, useState } from 'react'
 import { TrackSimplified } from '../types/track'
 import { useRouter } from 'next/router'
-import searchMapper from '../interactors/mapper/searchMapper'
+import { getSearchedTracks } from '../interactors/search/search'
+import { getMultipleAudioFeatures } from '../interactors/audioFeatures/audioFeatures'
+import integrateToTracks from '../utils/integrateToTracks'
 
 const useSearchTracks = () => {
   const [tracks, setTracks] = useState<TrackSimplified[]>()
@@ -14,11 +15,11 @@ const useSearchTracks = () => {
     const fetch = async () => {
       if (typeof search === 'string' && (searchType === 'track' || searchType === 'artist')) {
         try {
-          const tracks = await searchItem(search, searchType, true)
-          const trackIds = tracks.data.tracks.items.map(track => track.id).join('%2C')
-          const audioFeatures = await getAudioFeatures(trackIds, true)
-          setTracks(searchMapper(tracks.data.tracks.items, audioFeatures.data))
-
+          const searchedTracks = await getSearchedTracks(search, searchType)
+          const trackIds = searchedTracks.map(track => track.id).join('%2C')
+          const audioFeatures = await getMultipleAudioFeatures(trackIds)
+          const tracks = integrateToTracks(searchedTracks, audioFeatures)
+          setTracks(() => tracks)
         } catch (error) {
           const message = error.response.status === 401
             ? '認証に失敗しました。更新ボタンを押していただくか再度時間がたってからお試しください。'

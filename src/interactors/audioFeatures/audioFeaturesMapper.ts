@@ -2,7 +2,7 @@ import { AudioFeaturesResponse } from '../../types/spotify'
 import { convertPitchIntoSymbol } from '../../utils/convertPitchIntoSymbol'
 import { AudioFeature } from '../../types/audioFeature'
 
-const audioFeatureMapper = (item: AudioFeaturesResponse): AudioFeature => {
+const audioFeaturesMapper = (item: AudioFeaturesResponse): AudioFeature => {
   return {
     bpm: item.tempo ? Math.round(item.tempo) : '-',
     key: item.key ? convertPitchIntoSymbol(item.key) : '-',
@@ -12,4 +12,4 @@ const audioFeatureMapper = (item: AudioFeaturesResponse): AudioFeature => {
   }
 }
 
-export default audioFeatureMapper
+export default audioFeaturesMapper

@@ -3,6 +3,7 @@ import TrackIndex from '../components/organisms/presentational/TrackIndex'
 import React, { VFC } from 'react'
 import { getPlaylists } from '../interactors/playlists/playlists'
 import { getMultipleAudioFeatures } from '../interactors/audioFeatures/audioFeatures'
+import integrateToTracks from '../utils/integrateToTracks'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
@@ -18,9 +19,7 @@ export async function getStaticProps() {
   const playLists = await getPlaylists()
   const ids = playLists.map(playList => playList.id).join('%2C')
   const audioFeatures = await getMultipleAudioFeatures(ids)
-  const tracks = playLists.map((item, index) => {
-    return { ...item, ...audioFeatures[index] }
-  })
+  const tracks = integrateToTracks(playLists, audioFeatures)
   return {
     props: { tracks },
   }

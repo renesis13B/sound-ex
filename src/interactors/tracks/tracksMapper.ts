@@ -1,7 +1,7 @@
 import { SingleTrackResponse } from '../../types/spotify'
 import moment from 'moment'
 
-const trackMapper = (item: SingleTrackResponse) => {
+const tracksMapper = (item: SingleTrackResponse) => {
   return {
     id: item.id,
     trackName: item.name,
@@ -14,4 +14,4 @@ const trackMapper = (item: SingleTrackResponse) => {
   }
 }
 
-export default trackMapper
+export default tracksMapper
