@@ -20,6 +20,7 @@ export async function getStaticProps() {
   const ids = playLists.map(playList => playList.id).join('%2C')
   const audioFeatures = await getMultipleAudioFeatures(ids)
   const tracks = integrateToTracks(playLists, audioFeatures)
+  console.log(tracks[0])
   return {
     props: { tracks },
   }

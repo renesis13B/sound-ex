@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
-import { TrackSimplified } from '../types/track'
+import { Track } from '../types/track'
 import { useRouter } from 'next/router'
 import { getSearchedTracks } from '../interactors/search/search'
 import { getMultipleAudioFeatures } from '../interactors/audioFeatures/audioFeatures'
 import integrateToTracks from '../utils/integrateToTracks'
 
 const useSearchTracks = () => {
-  const [tracks, setTracks] = useState<TrackSimplified[]>()
+  const [tracks, setTracks] = useState<Track[]>()
   const [error, setError] = useState<string>()
   const router = useRouter()
   const { search, type: searchType } = router.query

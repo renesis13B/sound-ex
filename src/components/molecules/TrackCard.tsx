@@ -1,11 +1,11 @@
 import Link from 'next/link'
-import { TrackSimplified } from '../../types/track'
+import { Track } from '../../types/track'
 import React, { VFC } from 'react'
 import Image from 'next/image'
 
 
 type Props = {
-  track: TrackSimplified
+  track: Track
 }
 
 const TrackCard: VFC<Props> = ({ track }) => (

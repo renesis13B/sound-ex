@@ -1,10 +1,10 @@
 import React, { VFC } from 'react'
-import { TrackSimplified } from '../../../types/track'
+import { Track } from '../../../types/track'
 import TrackCard from '../../molecules/TrackCard'
 import isPropsSameObject from '../../../utils/isPropsSameObject'
 
 type Props = {
-  tracks: TrackSimplified[]
+  tracks: Track[]
 }
 
 const TrackCardLists: VFC<Props> = React.memo(({ tracks }) => (

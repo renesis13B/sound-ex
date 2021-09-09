@@ -10,6 +10,8 @@ const searchMapper = (items: TrackSearchResponse): SearchList => {
     artistsName: item.album.artists[0].name,
     duration: moment(`${item.duration_ms}`, 'x').format('m:ss'),
     spotify_url: item.external_urls.spotify,
+    releaseDate: item.album.release_date,
+    artists_id: item.artists[0].id,
   }))
 }
 
