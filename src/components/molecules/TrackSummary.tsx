@@ -19,7 +19,15 @@ const TrackSummary: VFC<Props> = ({ track, submitHandler }) => {
   return (
     <figure className='sm:flex sm:justify-center sm:items-center'>
       <div className='w-full sm:w-1/2'>
-        <Image src={track.albumImage} width={640} height={640} alt={`${track.artistsName} | ${track.trackName}`} />
+        <Image
+          layout={'responsive'}
+          priority
+          quality={60}
+          src={track.albumImage}
+          width={640}
+          height={640}
+          alt={`${track.artistsName} | ${track.trackName}`}
+        />
         <div className='w-full h-20 -mt-2'>
           <iframe
             src={`https://open.spotify.com/embed/track/${track.id}`}

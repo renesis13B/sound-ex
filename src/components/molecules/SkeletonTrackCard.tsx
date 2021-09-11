@@ -7,7 +7,7 @@ const SkeletonTrackCard = () => {
       <div className='w-1/3 leading-loose text-2xl'>
         <Skeleton />
       </div>
-      <Skeleton count={3} />
+      <Skeleton className='text-2xl' count={2} />
     </div>
   )
 }

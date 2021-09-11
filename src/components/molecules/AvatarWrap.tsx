@@ -20,6 +20,7 @@ const AvatarWrap = ({ avatar }: Avatar) => {
         className='rounded-full cursor-pointer'
         src={avatar.image ?? '/noImage.jpg'}
         alt={avatar.name}
+        quality={50}
         width={320}
         height={320}
       />
