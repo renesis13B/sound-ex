@@ -10,12 +10,8 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 const Index: VFC<Props> = ({ tracks }) => (
   <section className='mt-8 px-4 sm:px-0'>
-    {tracks && (
-      <>
-        <Heading headingMain={'Top 20 Japan'} headingSub={'日本で今一番再生回数が多い曲'} />
-        <TrackCardLists tracks={tracks} />
-      </>
-    )}
+    <Heading headingMain={'Top 20 Japan'} headingSub={'日本で今一番再生回数が多い曲'} />
+    {tracks && <TrackCardLists tracks={tracks} />}
   </section>
 )
 
