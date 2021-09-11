@@ -3,7 +3,7 @@ import SkeletonTrackCard from '../../molecules/SkeletonTrackCard'
 
 const SkeletonTrackCardLists = () => (
   <>
-    {Array(10).fill('Skeleton').map((_, index) => (
+    {Array(5).fill('Skeleton').map((_, index) => (
       <SkeletonTrackCard key={index} />
     ))}
   </>
