@@ -1,6 +1,5 @@
 import '../../styles/tailwind.css'
 import '../../styles/tailwind-util.css'
-import NextNprogress from 'nextjs-progressbar'
 import { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
 import Layout from '../components/templates/Layout'
@@ -20,7 +19,7 @@ const queryClient = new QueryClient({
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <Provider store={store}>
-      <NextNprogress />
+      {/*<NextNprogress />*/}
       <QueryClientProvider client={queryClient}>
         <Layout title='SOUND EX'>
           <Component {...pageProps} />
