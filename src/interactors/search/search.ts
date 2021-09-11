@@ -2,6 +2,8 @@ import { getToken } from '../auth/auth'
 import { baseAxios } from '../baseAxios'
 import { TrackSearchResponse } from '../../types/spotify'
 import searchMapper from './searchMapper'
+import { getMultipleAudioFeatures } from '../audioFeatures/audioFeatures'
+import integrateToTracks from '../../utils/integrateToTracks'
 
 /**
  * Search for an Item
@@ -17,5 +19,8 @@ export const getSearchedTracks = async (searchQuery: string, typeQuery: string) 
   const limit = typeQuery === 'track' ? 10 : typeQuery === 'artist' ? 30 : 0
   const url = `/search?q=${searchQuery}&type=track&market=JP&limit=${limit}`
   const { data } = await baseAxios.get<TrackSearchResponse>(`${url}`, { headers })
-  return searchMapper(data)
+  const searchedTracks = searchMapper(data)
+  const trackIds = searchedTracks.map(track => track.id).join('%2C')
+  const audioFeatures = await getMultipleAudioFeatures(trackIds)
+  return integrateToTracks(searchedTracks, audioFeatures)
 }

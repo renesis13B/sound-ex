@@ -8,6 +8,7 @@ export const getTracks = async (spotifyId: SpotifyId) => {
   const token = await getToken()
   const headers = {
     'Authorization': 'Bearer ' + token,
+    'Accept-Language': 'ja;q=1',
   }
   const url = `/tracks/${spotifyId}?market=JP`
   const { data } = await baseAxios.get<SingleTrackResponse>(`${url}`, { headers })
