@@ -8,19 +8,19 @@ const Title = React.memo(() => (
         className='sm:hidden sm:mx-1 inline-flex items-center justify-center w-9 h-9 rounded-full bg-teal-accent-400'
         aria-label='ホーム'
       >
-        {/*<svg*/}
-        {/*  className='w-7 h-7 text-deep-purple-900'*/}
-        {/*  stroke='currentColor'*/}
-        {/*  viewBox='0 0 52 52'*/}
-        {/*>*/}
-        {/*  <polygon*/}
-        {/*    strokeWidth='3'*/}
-        {/*    strokeLinecap='round'*/}
-        {/*    strokeLinejoin='round'*/}
-        {/*    fill='none'*/}
-        {/*    points='29 13 14 29 25 29 23 39 38 23 27 23'*/}
-        {/*  />*/}
-        {/*</svg>*/}
+        <svg
+          className='w-7 h-7 text-deep-purple-900'
+          stroke='currentColor'
+          viewBox='0 0 52 52'
+        >
+          <polygon
+            strokeWidth='3'
+            strokeLinecap='round'
+            strokeLinejoin='round'
+            fill='none'
+            points='29 13 14 29 25 29 23 39 38 23 27 23'
+          />
+        </svg>
       </a>
     </Link>
 

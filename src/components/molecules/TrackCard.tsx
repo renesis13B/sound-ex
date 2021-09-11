@@ -18,7 +18,6 @@ const TrackCard: VFC<Props> = ({ track }) => (
             <figure>
               <Image
                 className='rounded-lg'
-                quality={50}
                 src={track.albumImage}
                 width={64} height={64}
                 alt={`${track.artistsName} | ${track.trackName}`}
