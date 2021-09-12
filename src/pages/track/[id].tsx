@@ -1,7 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { VFC } from 'react'
 import { Track } from '../../types/track'
-import { getRelatedArtists } from '../../interactors/artists/artists'
 import { RelatedArtists } from '../../types/relatedArtists'
 import { getPlaylistIds } from '../../interactors/playlists/playlists'
 import { getSingleAudioFeature } from '../../interactors/audioFeatures/audioFeatures'
@@ -50,15 +49,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
-    // TODO: Promise.allを使ってみる
-    // TODO: それでも遅かっらアーティスト画像だけでもreact-queryを使ってみる
-    const track = await getTracks(params?.id as string)
-    const audioFeature = await getSingleAudioFeature(params?.id as string)
-    const relatedArtists = await getRelatedArtists(track.artists_id)
+    const responses = await Promise.all([getTracks(params?.id as string), getSingleAudioFeature(params?.id as string)]).then(r => r)
     return {
       props: {
-        track: { ...track, ...audioFeature },
-        relatedArtists,
+        track: { ...responses[0], ...responses[1] },
       },
     }
   } catch (error) {

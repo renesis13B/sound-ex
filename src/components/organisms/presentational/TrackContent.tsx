@@ -3,11 +3,11 @@ import React, { VFC } from 'react'
 import TrackSummary from '../../molecules/TrackSummary'
 import TrackViewCard from '../../molecules/TrackViewCard'
 import TrackInfo from '../../molecules/TrackInfo'
-import AvatarLists from '../../molecules/AvatarLists'
 import LinkGroup from '../../molecules/LinkGroup'
 import { RelatedArtists } from '../../../types/relatedArtists'
 import { SearchSubmitHandler } from '../../../hocks/useSearchStore'
 import { LinkIcon } from '@heroicons/react/outline'
+import EnhancedAvatarLists from '../containers/AvatarLists'
 
 type Props = {
   track: Track
@@ -34,7 +34,7 @@ const TrackContent: VFC<Props> = (
           <LinkIcon className='h-4 w-4 inline align-baseline' />
         </LinkGroup>
         <TrackViewCard heading={'ファンの間で人気'}>
-          {relatedArtists && <AvatarLists relatedArtists={relatedArtists} />}
+          <EnhancedAvatarLists track={track} />
         </TrackViewCard>
       </div>
     </article>
