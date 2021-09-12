@@ -4,7 +4,7 @@
 [サイトへのリンク](https://sound-ex.vercel.app/)
 
 
-## 状態管理に関して
+## アプリの状態管理に関して
 ### featchしたデータの状態管理
 featchしたデータの状態は**react-query**で管理するようにしました。
 
