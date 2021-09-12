@@ -41,10 +41,8 @@ eslint
 
 最初はHocksを使って状態管理をおこなっていたのですが、いろいろと考えた末現在は以下のような構成に落ち着きました。
 
-```
 1. **Sever data management**： 過去 useState, useEffect -> 現在 React Query
-2. **App Global state management：**: 過去 useContext, useReducer -> 現在 Redux Toolkit 
-```
+2. **App Global state management：**: 過去 useContext, useReducer -> 現在 Redux Toolkit
 
 ### Sever data management
 
@@ -66,7 +64,7 @@ React Queryを導入することで以下のように問題をある程度解決
 
 コード量の削減してシンプルに：用意されているuseQueryを使うことで、error、loadingのstatusが返って来るのでこちらで用意しなくても良い。またキャッシュ化されたデータは専用のメソッドを使うことでどのコンポーネントからも呼び出せるのでuseContextなどを利用してグローバル化しなくてもよくなった
 
-### React state management
+### App Global state management
 
 現在はアプリ内全体で使用するstateの管理には [Redux Toolkit](https://redux-toolkit.js.org/) を使用しております。
 
@@ -136,9 +134,3 @@ Redux Toolkitを導入することで以下のように問題をある程度解�
 - next/imageを用いて画像の最適化を行い表示の高速化をおこなった
 - LargestContentfulPaintを高速化するために、コンポーネント分割と表示の切替を工夫した
 - 「Cumulative Layout Shift」を軽減するために横縦を指定したり、react-loading-skeletonを導入してレイアウトの大きな変化を直した
-
-
-
-
-
-
