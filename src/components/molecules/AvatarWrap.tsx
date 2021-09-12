@@ -19,6 +19,7 @@ const AvatarWrap = ({ avatar }: Avatar) => {
       <Image
         className='rounded-full cursor-pointer'
         src={avatar.image ?? '/noImage.jpg'}
+        alt={avatar.name}
         width={320}
         height={320}
       />

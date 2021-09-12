@@ -3,6 +3,7 @@ import { Track } from '../../types/track'
 import { VFC } from 'react'
 import Image from 'next/image'
 import { SearchSubmitHandler } from '../../hocks/useSearchStore'
+import Skeleton from 'react-loading-skeleton'
 
 type Props = {
   track: Track
@@ -19,7 +20,14 @@ const TrackSummary: VFC<Props> = ({ track, submitHandler }) => {
   return (
     <figure className='sm:flex sm:justify-center sm:items-center'>
       <div className='w-full sm:w-1/2'>
-        <Image src={track.albumImage} width={640} height={640} alt={`${track.artistsName} | ${track.trackName}`} />
+        {!!track.albumImage ?? <Skeleton height={360} />}
+        <Image
+          layout={'responsive'}
+          src={track.albumImage}
+          width={640}
+          height={640}
+          alt={`${track.artistsName} | ${track.trackName}`}
+        />
         <div className='w-full h-20 -mt-2'>
           <iframe
             src={`https://open.spotify.com/embed/track/${track.id}`}
