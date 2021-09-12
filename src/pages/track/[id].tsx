@@ -21,7 +21,7 @@ const TrackView: VFC<Props> = ({ track, relatedArtists, errorCode }) => {
   const router = useRouter()
   const { submitHandler } = useSearchStore()
 
-  // NOTE: カスタムエラーページを作成したい
+  // NOTE: 時間ある時にカスタムエラーページを作成したい
   if (errorCode) {
     return <Error statusCode={errorCode} />
   }
@@ -50,6 +50,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
+    // TODO: Promise.allを使ってみる
+    // TODO: それでも遅かっらアーティスト画像だけでもreact-queryを使ってみる
     const track = await getTracks(params?.id as string)
     const audioFeature = await getSingleAudioFeature(params?.id as string)
     const relatedArtists = await getRelatedArtists(track.artists_id)
