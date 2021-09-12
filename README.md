@@ -2,13 +2,17 @@
 
 [SOUND EX](https://sound-ex.vercel.app/)は気軽に楽曲の詳細な情報(BPMやキー)を調べたり、好きなアーティストの人気曲を視聴できるサービスです。
 
-[サイトへのリンク](https://sound-ex.vercel.app/)
+
+(サービスの主な内容)
+![iMac - 1](https://user-images.githubusercontent.com/27562468/132991495-cfaa8efb-b4f8-4588-a70b-fa06ea0e65bb.png)
+
+[サイトへのリンクはこちら](https://sound-ex.vercel.app/)
 
 ## 開発に関して
 
 以下のテーマで今回の個人開発を行いました。
 
-- Vueは仕事で使っていたので、これまで全く触ったことのないReact・Nextを用いて開発すること
+- Vue.jsは仕事で使っていたので、これまで全く触ったことのないReact.js・Next.jsを用いて開発すること
 - 仕事ではないので、完全に趣味で自分が欲しいと思ったサービスを作ること
 
 制作期間はだいたい１カ月程
@@ -30,16 +34,16 @@ eslint
 
 ## アプリの状態管理に関して
 
-アプリの状態管理は、責務を2つに分けて実装をおこないました。
+アプリの状態管理は、責務を以下の2つに分けて実装をおこないました。
 
-1. Sever data management：クライアントから外部のサーバーを通してfetchしたデータとfetch状況(isLoading、isError)の管理
-2. React state management：アプリ内全体で使用するstateの管理
+1. **Sever data management**: クライアントから外部のサーバーを通してfetchしたデータとfetch状況(isLoading、isError)の管理
+2. **App Global state management：**: アプリ内全体で使用するstateの管理
 
-最初はHocksを使って状態を管理をおこなっていたのですが、いろいろと考えた末現在は以下のような構成になりました。
+最初はHocksを使って状態管理をおこなっていたのですが、いろいろと考えた末現在は以下のような構成に落ち着きました。
 
 ```
-1. Sever data management： useState, useEffect -> React Query
-2. React state management： useContext, useReducer -> Redux Toolkit 
+1. **Sever data management**： 過去 useState, useEffect -> 現在 React Query
+2. **App Global state management：**: 過去 useContext, useReducer -> 現在 Redux Toolkit 
 ```
 
 ### Sever data management
