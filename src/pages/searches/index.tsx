@@ -26,11 +26,11 @@ const SearchesIndex: VFC = () => {
 
   return (
     <section className='mt-8 px-4 sm:px-0'>
-      <Heading headingMain={!error ? heading.main : 'Sorry'} headingSub={!error ? heading.sub : error.message} />
+      <Heading headingMain={!error ? heading.main : 'Sorry'} headingSub={!error ? heading.sub : ''} />
       {status === 'loading' ? (
         <SkeletonTrackCardLists />
       ) : status === 'error' ? (
-        <p>{error?.message}</p>
+        <p>データの取得に失敗しました。更新ボタンを押すか、別のキーワードをお試しください。</p>
       ) : (
         searchedTracks && (
           <>

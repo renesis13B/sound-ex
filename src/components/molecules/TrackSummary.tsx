@@ -3,7 +3,6 @@ import { Track } from '../../types/track'
 import { VFC } from 'react'
 import Image from 'next/image'
 import { SearchSubmitHandler } from '../../hocks/useSearchStore'
-import Skeleton from 'react-loading-skeleton'
 
 type Props = {
   track: Track
@@ -20,9 +19,9 @@ const TrackSummary: VFC<Props> = ({ track, submitHandler }) => {
   return (
     <figure className='sm:flex sm:justify-center sm:items-center'>
       <div className='w-full sm:w-1/2'>
-        {!!track.albumImage ?? <Skeleton height={360} />}
         <Image
           layout={'responsive'}
+          loading={'eager'}
           src={track.albumImage}
           width={640}
           height={640}

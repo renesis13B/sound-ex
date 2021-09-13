@@ -50,14 +50,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
-    // TODO: Promise.allを使ってみる
-    // TODO: それでも遅かっらアーティスト画像だけでもreact-queryを使ってみる
-    const track = await getTracks(params?.id as string)
-    const audioFeature = await getSingleAudioFeature(params?.id as string)
-    const relatedArtists = await getRelatedArtists(track.artists_id)
+    const responses = await Promise.all([getTracks(params?.id as string), getSingleAudioFeature(params?.id as string)])
+    const relatedArtists = await getRelatedArtists(responses[0].artists_id)
     return {
       props: {
-        track: { ...track, ...audioFeature },
+        track: { ...responses[0], ...responses[1] },
         relatedArtists,
       },
     }
