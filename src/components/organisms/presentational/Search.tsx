@@ -1,4 +1,4 @@
-import React, { VFC } from 'react'
+import React, { useRef, VFC } from 'react'
 import { SearchState, setSearch } from '../../../store/search/searchSlice'
 import { AppDispatch } from '../../../store/store'
 import { SearchSubmitHandler } from '../../../hocks/useSearchStore'
@@ -11,9 +11,13 @@ type Props = {
 }
 
 const Search: VFC<Props> = ({ searchState, dispatch, submitHandler }) => {
+  const searchInput = useRef<HTMLInputElement>(null)
   return (
     <form
-      onSubmit={(e) => submitHandler(searchState.search, 'track', e)}
+      onSubmit={(e) => {
+        searchInput.current?.blur()
+        submitHandler(searchState.search, 'track', e)
+      }}
       className='relative'
     >
       <input
@@ -21,6 +25,7 @@ const Search: VFC<Props> = ({ searchState, dispatch, submitHandler }) => {
         onChange={e => {
           dispatch(setSearch(e.target.value))
         }}
+        ref={searchInput}
         value={searchState.search}
         required
         placeholder='好きな曲を検索'
