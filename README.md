@@ -38,6 +38,8 @@ eslint
 機能的にはシンプルなアプリになったので、パフォーマンスやUX部分を意識した実装や技術選定をするように工夫しました。
 
 具体的には、**Chrome DevTools**の**Lighthouse**を使って計測し、指標が悪いところの実装を変えたりライブラリの導入をして改善をはかりました。
+
+(トップページ:Desktop Lighthouseの結果)
 ![タイトルなし](https://user-images.githubusercontent.com/27562468/133018938-8e6996d7-219b-40bd-a359-1773881c401b.gif)
 
 
