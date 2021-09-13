@@ -15,7 +15,7 @@ const playlistsFetcher = async () => {
     'Accept-Language': 'ja;q=1',
   }
   const fields = 'items(track(id,name,duration_ms,external_urls(spotify),album(images,release_date,artists(name,id))))'
-  const limit = '10'
+  const limit = '20'
   const url = `/playlists/${process.env.NEXT_PUBLIC_SPOTIFY_PLAYLIST_ID}/tracks/?fields=${fields}&limit=${limit}`
   return await baseAxios.get<PlaylistItemsResponse>(`${url}`, { headers })
 }
