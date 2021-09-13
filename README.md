@@ -1,6 +1,6 @@
 ## SOUND EX
 
-[SOUND EX](https://sound-ex.vercel.app/)は気軽に楽曲の詳細な情報(BPMやキー)を調べたり、好きなアーティストの人気曲を視聴できるサービスです。
+[SOUND EX](https://sound-ex.vercel.app/)は気軽に楽曲の詳細な情報(BPMやリリース日、Dansabilotyなど)を調べたり、好きなアーティストの人気曲を視聴できるサービスです。
 
 
 (サービスの主な内容)
