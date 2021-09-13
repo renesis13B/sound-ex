@@ -53,7 +53,7 @@ eslint
 - **FirstMeaningfulPaint**を上げてUXを高めるために、**react-query**を導入しレンダリングと同時にfetchするようにした
 - **next/image**を用いて画像の最適化を行い表示の高速化をおこなった
 - **Largest Contentful Paint**を高速化するために、コンポーネント分割と表示の切替を工夫した
-- **Cumulative Layout Shift**を軽減するために横縦を指定したり、**react-loading-skeleton**を導入してレイアウトの大きな変化を直した
+- **Cumulative Layout Shift**を軽減するために横縦を指定したり、**react-loading-skeleton**を導入してレイアウトの大きな変化がないようにした
 
 ## アプリの状態管理に関して
 
