@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
-import { selectSearch } from '../store/search/searchSlice'
+import { resetSearch, selectSearch } from '../store/search/searchSlice'
 import { FormEvent } from 'react'
 
 export type SearchSubmitHandler = (searchQuery: string, typeQuery: 'track' | 'artist', e?: FormEvent<HTMLFormElement>) => void
@@ -15,6 +15,7 @@ const useSearchStore = () => {
     e?,
   ) => {
     e && e.preventDefault()
+    dispatch(resetSearch())
     router.push({
       pathname: '/searches',
       query: { search: `${searchQuery}`, type: typeQuery },
