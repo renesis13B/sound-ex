@@ -1,4 +1,29 @@
 import axios from 'axios'
+import { getTokenForServer } from './auth/auth'
+
+const tryReLogin = async () => {
+  return new Promise((resolve) => {
+    const newToken = getTokenForServer()
+    resolve(newToken)
+  })
+}
+
+const handleExpiredTokenRejectedInterceptor = async (error: any) => {
+  const { response } = error
+  const statusCode = response?.status
+
+  if (statusCode === 401 && !error.config.isRetry) {
+    const { config } = error
+    return tryReLogin().then((newToken) => {
+      const headers = {
+        ...config.headers,
+        'Authorization': `Bearer ${newToken}`,
+      }
+      return axios.request({ ...config, headers, isRetry: true })
+    })
+  }
+  return Promise.reject(error)
+}
 
 const createAxiosInstance = () => {
   const axiosInstance = axios.create({
@@ -11,12 +36,7 @@ const createAxiosInstance = () => {
   // })
   axiosInstance.interceptors.response.use(
     response => response,
-    (error) => {
-      error.message = error.response.status === 401
-        ? '認証に失敗しました。更新ボタンを押していただくか再度時間がたってからお試しください。'
-        : 'データの取得に失敗しました。再度時間をおくか別のキーワードをお試しください。'
-      throw error
-    },
+    handleExpiredTokenRejectedInterceptor,
   )
   return axiosInstance
 }
