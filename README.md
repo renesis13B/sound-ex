@@ -4,7 +4,8 @@
 
 
 (サービスの主な内容)
-![iMac - 1](https://user-images.githubusercontent.com/27562468/132991495-cfaa8efb-b4f8-4588-a70b-fa06ea0e65bb.png)
+![iMac - 1](https://user-images.githubusercontent.com/27562468/133018070-fff08c3f-3150-4a6b-937c-4ac5d1fd3c7b.png)
+
 
 [サイトへのリンクはこちら](https://sound-ex.vercel.app/)
 
