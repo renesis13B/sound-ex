@@ -43,6 +43,8 @@ eslint
 
 ![タイトルなし](https://user-images.githubusercontent.com/27562468/133018938-8e6996d7-219b-40bd-a359-1773881c401b.gif)
 
+その他のページも90以上のスコアを計測できました
+
 
 ### 改善のためにやったこと
 
