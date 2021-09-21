@@ -3,9 +3,6 @@
 [SOUND EX](https://sound-ex.vercel.app/)は気軽に楽曲の詳細な情報(BPMやリリース日、Dansabilotyなど)を調べたり、好きなアーティストの人気曲を視聴できるサービスです。
 
 
-(サービスの主な内容)
-![iMac - 1](https://user-images.githubusercontent.com/27562468/133018070-fff08c3f-3150-4a6b-937c-4ac5d1fd3c7b.png)
-
 
 [サイトへのリンクはこちら](https://sound-ex.vercel.app/)
 
